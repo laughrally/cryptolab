@@ -3166,13 +3166,19 @@ function enterApp() {
   document.body.style.overflow = '';
 }
 
-// Check if already entered this session
+// Check if already entered this session or ?app=1 param
 (function() {
   restoreSharedMarks();
-if (sessionStorage.getItem('crypto_entered')) {
+  const urlParams = new URLSearchParams(window.location.search);
+  if (sessionStorage.getItem('crypto_entered') || urlParams.get('app') === '1') {
     const lp = document.getElementById('landingPage');
     if (lp) lp.style.display = 'none';
     document.body.style.overflow = '';
+    sessionStorage.setItem('crypto_entered', '1');
+    // URLパラメータをきれいに除去
+    if (urlParams.get('app') === '1') {
+      history.replaceState(null, '', window.location.pathname);
+    }
   }
 })();
 
