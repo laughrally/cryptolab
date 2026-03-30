@@ -1363,7 +1363,9 @@ aside {
     <button class="nav-tab" onclick="showSection('cert')">🏆 修了証</button>
   </div>
   <div style="display:flex;align-items:center;gap:6px">
-    <a href="https://discord.gg/ZhVHj3CV" target="_blank" class="nav-discord">🎮 Discord</a>
+    <div id="navAuthArea">
+      <button class="nav-discord" id="navLoginBtn" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button>
+    </div>
     <div class="theme-controls">
       <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" title="ダーク/ライト切替">🌙</button>
     </div>
@@ -3455,13 +3457,143 @@ const MINI_QUIZ = {
 };
 
 const DISCORD_LEVELS = ['intermediate', 'advanced'];
+const WORKER_URL = 'https://cryptolab-discord-auth.laughrally.workers.dev';
+const JWT_STORAGE_KEY = 'crypto_discord_jwt';
+
+let discordUser = null;  // { id, username, global_name, avatar }
+let isDiscordMember = false;
+
+// ─── JWT クライアント検証（署名検証なし・有効期限チェックのみ） ──────────────
+function parseJWTPayload(token) {
+  try {
+    const parts = token.split('.');
+    if (parts.length !== 3) return null;
+    const b64 = parts[1].replace(/-/g, '+').replace(/_/g, '/') + '=='.slice(0, (4 - parts[1].length % 4) % 4);
+    return JSON.parse(atob(b64));
+  } catch { return null; }
+}
+
+function isTokenValid(token) {
+  const p = parseJWTPayload(token);
+  if (!p) return false;
+  if (p.exp && p.exp < Math.floor(Date.now() / 1000)) return false;
+  return true;
+}
+
+// ─── 認証初期化 ─────────────────────────────────────────────────────────────
+async function initAuth() {
+  // URL フラグメントからトークンを取得（OAuth コールバック後）
+  const hash = window.location.hash;
+  if (hash.startsWith('#token=')) {
+    const token = hash.slice(7);
+    localStorage.setItem(JWT_STORAGE_KEY, token);
+    // フラグメントを除去してきれいな URL に
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }
+
+  // URL パラメータでエラーを確認
+  const params = new URLSearchParams(window.location.search);
+  const authResult = params.get('auth');
+  if (authResult === 'not_member') {
+    showAuthModal('not_member');
+    history.replaceState(null, '', window.location.pathname);
+    return;
+  }
+  if (authResult === 'cancelled') {
+    history.replaceState(null, '', window.location.pathname);
+    return;
+  }
+  if (authResult === 'error') {
+    showToast('⚠️ 認証エラーが発生しました。もう一度お試しください。');
+    history.replaceState(null, '', window.location.pathname);
+    return;
+  }
+
+  // ローカルストレージからトークンを確認
+  const savedToken = localStorage.getItem(JWT_STORAGE_KEY);
+  if (savedToken && isTokenValid(savedToken)) {
+    const payload = parseJWTPayload(savedToken);
+    discordUser = {
+      id: payload.sub,
+      username: payload.username,
+      global_name: payload.global_name || payload.username,
+      avatar: payload.avatar,
+    };
+    isDiscordMember = true;
+    onAuthSuccess();
+  }
+}
+
+function onAuthSuccess() {
+  updateNavAuth();
+  renderSidebar();
+  // auth=success の場合はトースト表示
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('auth') === 'success') {
+    showToast(`🎉 ようこそ ${discordUser.global_name} さん！全コンテンツが解放されました！`);
+    history.replaceState(null, '', window.location.pathname);
+    launchConfetti();
+  }
+}
+
+function updateNavAuth() {
+  const area = document.getElementById('navAuthArea');
+  if (!area) return;
+  if (isDiscordMember && discordUser) {
+    const avatarUrl = discordUser.avatar
+      ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.png?size=32`
+      : `https://cdn.discordapp.com/embed/avatars/0.png`;
+    area.innerHTML = `
+      <div style="display:flex;align-items:center;gap:8px">
+        <img src="${avatarUrl}" alt="" style="width:28px;height:28px;border-radius:50%;border:2px solid #5865f2">
+        <span style="font-size:12px;font-weight:600;color:var(--text)">${discordUser.global_name}</span>
+        <button onclick="logoutDiscord()" style="padding:4px 10px;background:none;border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--muted);cursor:pointer">ログアウト</button>
+      </div>`;
+  } else {
+    area.innerHTML = `<button class="nav-discord" id="navLoginBtn" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button>`;
+  }
+}
+
+function startDiscordLogin() {
+  window.location.href = `${WORKER_URL}/api/discord/login`;
+}
+
+function logoutDiscord() {
+  localStorage.removeItem(JWT_STORAGE_KEY);
+  discordUser = null;
+  isDiscordMember = false;
+  updateNavAuth();
+  renderSidebar();
+  showToast('ログアウトしました');
+}
+
+function showAuthModal(reason) {
+  const modal = document.createElement('div');
+  modal.id = 'authModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+  modal.innerHTML = `
+    <div style="background:var(--surface);border-radius:16px;padding:32px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.3)">
+      <div style="font-size:48px;margin-bottom:16px">😢</div>
+      <h2 style="margin-bottom:12px;font-size:18px">Discordサーバーに参加していません</h2>
+      <p style="color:var(--muted);font-size:14px;margin-bottom:24px">コンテンツを解放するには、まず「仮想通貨入門ラボ」のDiscordサーバーに参加してください。参加後、再度ログインしてください。</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+        <a href="${DISCORD_URL}" target="_blank" class="btn btn-discord" style="text-decoration:none">🎮 Discordに参加する</a>
+        <button onclick="document.getElementById('authModal').remove();startDiscordLogin()" class="btn btn-primary">参加後にログイン</button>
+        <button onclick="document.getElementById('authModal').remove()" class="btn btn-secondary">閉じる</button>
+      </div>
+    </div>`;
+  document.body.appendChild(modal);
+}
+
+
 let completedLessons = new Set();
 let currentLesson = null;
 let quizState = { level: null, questions: [], idx: 0, score: 0, answered: false, started: false, finished: false, failed: false };
 
 let userName = localStorage.getItem('crypto_userName') || '';
 
-function init() {
+async function init() {
+  await initAuth();
   renderSidebar();
   selectLesson('beginner', 0);
   updateProgress();
