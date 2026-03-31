@@ -396,10 +396,14 @@ aside {
 .bottom-nav { display: none; }
 
 @media (max-width: 768px) {
-  nav { padding: 0 12px; gap: 6px; height: 54px; }
+  nav { padding: 0; gap: 0; }
+  .nav-top-row { padding: 0 12px; height: 52px; }
+  .nav-bottom-row { display: none !important; }
   .logo { font-size: 13px; }
   .nav-center { display: none; }
   .nav-discord { font-size: 11px; padding: 7px 10px; }
+  .nav-user-name { display: none !important; }
+  .nav-logout-btn { display: none !important; }
 
   main { flex-direction: column; height: auto; min-height: calc(100vh - 80px); }
 
@@ -1390,7 +1394,7 @@ aside {
   <button class="bottom-nav-item" id="bn3" onclick="showSection('dashboard');setBottomActive(3)"><span class="bn-icon">📊</span>進捗</button>
   <button class="bottom-nav-item" id="bn4" onclick="showSection('leaderboard');setBottomActive(4)"><span class="bn-icon">🏅</span>順位</button>
   <button class="bottom-nav-item" id="bn5" onclick="showSection('cert');setBottomActive(5)"><span class="bn-icon">🏆</span>修了証</button>
-  <a href="https://discord.gg/ZhVHj3CV" target="_blank" class="bottom-nav-item" style="text-decoration:none;color:inherit"><span class="bn-icon">🎮</span>Discord</a>
+  <button class="bottom-nav-item" id="bnDiscord" onclick="handleBottomDiscordBtn()"><span class="bn-icon">🎮</span><span id="bnDiscordLabel">Discord</span></button>
 </nav>
 </div>
 <div id="progressStrip" class="progress-strip"><div class="progress-fill" id="topBar" style="width:0%"></div></div>
@@ -4421,14 +4425,15 @@ function updateNavAuth() {
     const avatarUrl = discordUser.avatar
       ? 'https://cdn.discordapp.com/avatars/' + discordUser.id + '/' + discordUser.avatar + '.png?size=32'
       : 'https://cdn.discordapp.com/embed/avatars/0.png';
-    area.innerHTML = '<div style="display:flex;align-items:center;gap:8px">'
+    area.innerHTML = '<div style="display:flex;align-items:center;gap:6px">'
       + '<img src="' + avatarUrl + '" alt="" style="width:28px;height:28px;border-radius:50%;border:2px solid #5865f2">'
-      + '<span style="font-size:12px;font-weight:600;color:var(--text)">' + discordUser.global_name + '</span>'
-      + '<button onclick="logoutDiscord()" style="padding:4px 10px;background:none;border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--muted);cursor:pointer">ログアウト</button>'
+      + '<span class="nav-user-name" style="font-size:12px;font-weight:600;color:var(--text)">' + discordUser.global_name + '</span>'
+      + '<button class="nav-logout-btn" onclick="logoutDiscord()" style="padding:4px 10px;background:none;border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--muted);cursor:pointer">ログアウト</button>'
       + '</div>';
   } else {
     area.innerHTML = '<button class="nav-discord" id="navLoginBtn" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button>';
   }
+  updateBottomDiscordBtn();
 }
 
 function startDiscordLogin() {
@@ -4442,6 +4447,22 @@ function logoutDiscord() {
   updateNavAuth();
   renderSidebar();
   showToast('ログアウトしました');
+}
+
+function handleBottomDiscordBtn() {
+  if (isDiscordMember) {
+    if (confirm('ログアウトしますか？')) logoutDiscord();
+  } else {
+    window.open('https://discord.gg/ZhVHj3CV', '_blank');
+  }
+}
+
+function updateBottomDiscordBtn() {
+  var label = document.getElementById('bnDiscordLabel');
+  if (!label) return;
+  label.textContent = isDiscordMember ? 'ログアウト' : 'Discord';
+  var btn = document.getElementById('bnDiscord');
+  if (btn) btn.querySelector('.bn-icon').textContent = isDiscordMember ? '🚪' : '🎮';
 }
 
 function showAuthModal(reason) {
