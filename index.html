@@ -4328,8 +4328,8 @@ document.addEventListener('DOMContentLoaded', applyDiscordGridLayout);
 // ===== DISCORD AUTH =====
 const WORKER_URL = 'https://cryptolab-discord-auth.laughrally.workers.dev';
 const JWT_STORAGE_KEY = 'crypto_discord_jwt';
-let discordUser = null;
-let isDiscordMember = false;
+var discordUser = null;
+var isDiscordMember = false;
 
 function parseJWTPayload(token) {
   try {
