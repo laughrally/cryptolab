@@ -385,10 +385,13 @@ aside {
 .bottom-nav { display: none; }
 
 @media (max-width: 768px) {
-  nav { padding: 0 12px; gap: 6px; height: 54px; }
-  .logo { font-size: 13px; }
+  nav { padding: 0 12px; gap: 6px; height: 54px; flex-wrap: nowrap; }
+  .logo { font-size: 13px; white-space: nowrap; }
   .nav-center { display: none; }
-  .nav-discord { font-size: 11px; padding: 7px 10px; }
+  .nav-discord { font-size: 11px; padding: 6px 10px; white-space: nowrap; }
+  #navLoginBtn { font-size: 11px; padding: 6px 10px; }
+  .theme-controls { margin-left: 4px; }
+  .theme-btn { width: 30px; height: 30px; font-size: 14px; }
 
   main { flex-direction: column; height: auto; min-height: calc(100vh - 80px); }
 
@@ -483,6 +486,11 @@ aside {
   .cert-h1 { font-size: 16px; }
   .cert-footer { flex-direction: column; gap: 10px; align-items: center; }
   .cert-desc { font-size: 12px; }
+  /* ヘッダーのディスコードボタンを更に小さく */
+  nav { padding: 0 10px; height: 52px; }
+  .logo { font-size: 12px; }
+  #navLoginBtn, .nav-discord { font-size: 10px; padding: 5px 8px; }
+  .theme-btn { width: 28px; height: 28px; font-size: 13px; }
 }
 
 /* ===== LANDING PAGE ===== */
