@@ -431,13 +431,19 @@ aside {
 
   .bottom-nav {
     display: flex !important;
-    position: fixed;
-    bottom: 0; left: 0; right: 0;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
     background: var(--surface);
     border-top: 1px solid var(--border);
-    z-index: 140;
+    z-index: 9999;
     height: 56px;
     box-shadow: 0 -2px 12px rgba(0,0,0,.08);
+    width: 100%;
   }
   .bottom-nav-item {
     flex: 1;
