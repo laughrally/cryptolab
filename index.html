@@ -48,12 +48,22 @@ body { background: var(--bg); color: var(--text); font-family: var(--sans); min-
 
 /* NAV */
 nav {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 28px; height: 60px;
+  display: flex; flex-direction: column; align-items: stretch;
+  padding: 0;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
   position: sticky; top: 0; z-index: 100;
   box-shadow: 0 1px 8px rgba(0,0,0,.06);
+}
+.nav-top-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 20px; height: 52px; gap: 8px;
+}
+.nav-bottom-row {
+  display: flex; align-items: center; gap: 2px;
+  padding: 0 12px 6px;
+  border-top: 1px solid var(--border);
+  overflow-x: auto;
 }
 .logo { font-family: var(--mono); font-size: 15px; color: var(--accent); font-weight: 700; letter-spacing: 1px; white-space: nowrap; }
 .logo span { color: var(--orange); }
@@ -79,7 +89,7 @@ nav {
 .progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--orange)); transition: width .5s; box-shadow: 0 0 8px rgba(37,99,235,.3); }
 
 /* LAYOUT */
-main { display: flex; height: calc(100vh - 63px); }
+main { display: flex; height: calc(100vh - 96px); }
 
 /* SIDEBAR */
 aside {
@@ -1354,20 +1364,22 @@ aside {
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
 <nav id="mainNav">
-  <div class="logo">仮想通貨<span>入門</span>ラボ</div>
-  <div class="nav-center">
+  <div class="nav-top-row">
+    <div class="logo">仮想通貨<span>入門</span>ラボ</div>
+    <div style="display:flex;align-items:center;gap:6px">
+      <div id="navAuthArea"><button class="nav-discord" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button></div>
+      <div class="theme-controls">
+        <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" title="ダーク/ライト切替">🌙</button>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bottom-row">
     <button class="nav-tab active" onclick="showSection('learn')">📚 学習</button>
     <button class="nav-tab" onclick="showSection('chat')">🤖 AIチューター</button>
     <button class="nav-tab" onclick="showSection('quiz')">📝 テスト</button>
     <button class="nav-tab" onclick="showSection('dashboard')">📊 進捗</button>
     <button class="nav-tab" onclick="showSection('leaderboard')">🏅 ランキング</button>
     <button class="nav-tab" onclick="showSection('cert')">🏆 修了証</button>
-  </div>
-  <div style="display:flex;align-items:center;gap:6px">
-    <div id="navAuthArea"><button class="nav-discord" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button></div>
-    <div class="theme-controls">
-      <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" title="ダーク/ライト切替">🌙</button>
-    </div>
   </div>
 </nav>
 
