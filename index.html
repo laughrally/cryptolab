@@ -3665,7 +3665,7 @@ function renderSidebar() {
 }
 
 function selectLesson(level, idx) {
-  if (DISCORD_LEVELS.includes(level) || (level === 'beginner' && idx >= FREE_COUNT)) {
+  if (!isDiscordMember && (DISCORD_LEVELS.includes(level) || (level === 'beginner' && idx >= FREE_COUNT))) {
     showDiscordGate(level, idx); return;
   }
   const l = LESSONS[level][idx];
@@ -3689,12 +3689,16 @@ function selectLesson(level, idx) {
       <div id="mqContent">${renderMiniQuizQ(l.id, 0)}</div>
     </div>` : '';
 
+  const levelLabel = level === 'beginner' ? '初級編' : level === 'intermediate' ? '中級編' : '上級編';
+  const levelBadgeClass = level === 'beginner' ? 'badge-beginner' : level === 'intermediate' ? 'badge-intermediate' : 'badge-advanced';
+  const accessLabel = (level === 'beginner' && idx < FREE_COUNT) ? '公開中' : 'Discord限定';
+  const accessBadgeClass = (level === 'beginner' && idx < FREE_COUNT) ? 'badge-free-tag' : 'badge-discord';
   document.getElementById('lessonContent').innerHTML = `
     ${nameBanner}
     <div class="lesson-meta">
       <span class="badge badge-lesson">LESSON ${String(idx+1).padStart(2,'0')}</span>
-      <span class="badge badge-beginner">初級編</span>
-      <span class="badge badge-free-tag">公開中</span>
+      <span class="badge ${levelBadgeClass}">${levelLabel}</span>
+      <span class="badge ${accessBadgeClass}">${accessLabel}</span>
     </div>
     <h1 class="lesson-h1">${l.emoji} ${l.title}</h1>
     <div class="lesson-body">${l.content}</div>
@@ -3715,7 +3719,7 @@ function selectLesson(level, idx) {
       ${isDone
         ? '<button class="btn btn-secondary">✓ 完了済み</button>'
         : `<button class="btn btn-primary" id="completeBtn" onclick="completeLesson('${level}', ${idx})">✅ 理解した！次へ</button>`}
-      ${idx < FREE_COUNT - 1
+      ${(idx < LESSONS[level].length - 1)
         ? `<button class="btn btn-secondary" onclick="selectLesson('${level}', ${idx+1})">次のレッスン →</button>`
         : isLastFree
         ? `<button class="btn btn-secondary" onclick="showSection('quiz')">📝 テストを受ける</button>`
