@@ -421,11 +421,15 @@ aside {
     display: flex !important;
     position: fixed;
     bottom: 0; left: 0; right: 0;
+    top: auto;
     background: var(--surface);
     border-top: 1px solid var(--border);
     z-index: 140;
     height: 56px;
     box-shadow: 0 -2px 12px rgba(0,0,0,.08);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform;
   }
   .bottom-nav-item {
     flex: 1;
@@ -3202,7 +3206,17 @@ document.body.style.overflow = "hidden";
 function enterApp() {
   const lp = document.getElementById('landingPage');
   lp.classList.add('hide');
-  setTimeout(() => { lp.style.display = 'none'; }, 400);
+  setTimeout(() => {
+    lp.style.display = 'none';
+    // iOS Safari: force bottom-nav reflow after landing page hides
+    const bn = document.getElementById('bottomNav');
+    if (bn) {
+      bn.style.display = 'none';
+      // eslint-disable-next-line no-unused-expressions
+      bn.offsetHeight; // trigger reflow
+      bn.style.display = '';
+    }
+  }, 400);
   // Save to session so LP doesn't show again on refresh within session
   sessionStorage.setItem('crypto_entered', '1');
   document.body.style.overflow = '';
