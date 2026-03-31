@@ -71,6 +71,7 @@ nav {
   font-size: 12px; font-weight: 600; cursor: pointer; text-decoration: none;
   white-space: nowrap; transition: background .15s;
 }
+@media (max-width: 768px) { .nav-discord { display: none !important; } }
 .nav-discord:hover { background: #4752c4; }
 
 /* PROGRESS BAR */
@@ -385,13 +386,10 @@ aside {
 .bottom-nav { display: none; }
 
 @media (max-width: 768px) {
-  nav { padding: 0 12px; gap: 6px; height: 54px; flex-wrap: nowrap; }
-  .logo { font-size: 13px; white-space: nowrap; }
+  nav { padding: 0 12px; gap: 6px; height: 54px; }
+  .logo { font-size: 13px; }
   .nav-center { display: none; }
-  .nav-discord { font-size: 11px; padding: 6px 10px; white-space: nowrap; }
-  #navLoginBtn { font-size: 11px; padding: 6px 10px; }
-  .theme-controls { margin-left: 4px; }
-  .theme-btn { width: 30px; height: 30px; font-size: 14px; }
+  .nav-discord { font-size: 11px; padding: 7px 10px; }
 
   main { flex-direction: column; height: auto; min-height: calc(100vh - 80px); }
 
@@ -421,15 +419,11 @@ aside {
     display: flex !important;
     position: fixed;
     bottom: 0; left: 0; right: 0;
-    top: auto;
     background: var(--surface);
     border-top: 1px solid var(--border);
     z-index: 140;
     height: 56px;
     box-shadow: 0 -2px 12px rgba(0,0,0,.08);
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    will-change: transform;
   }
   .bottom-nav-item {
     flex: 1;
@@ -490,11 +484,6 @@ aside {
   .cert-h1 { font-size: 16px; }
   .cert-footer { flex-direction: column; gap: 10px; align-items: center; }
   .cert-desc { font-size: 12px; }
-  /* ヘッダーのディスコードボタンを更に小さく */
-  nav { padding: 0 10px; height: 52px; }
-  .logo { font-size: 12px; }
-  #navLoginBtn, .nav-discord { font-size: 10px; padding: 5px 8px; }
-  .theme-btn { width: 28px; height: 28px; font-size: 13px; }
 }
 
 /* ===== LANDING PAGE ===== */
@@ -943,7 +932,7 @@ aside {
     <p class="lp-sub">ビットコインってなに？DeFi・NFT・税金まで——初心者が「騙されない・損しない」ための知識を体系的に学べる。初級5本はすぐ読める。残り95本はDiscord参加で全解放。</p>
     <div class="lp-cta-row">
       <button class="lp-btn-main" onclick="enterApp()">🚀 今すぐ学習を始める</button>
-      <a href="https://discord.gg/KCt6PrwJ" target="_blank" class="lp-btn-sub">🎮 Discordに参加する</a>
+      <a href="https://discord.gg/ZhVHj3CV" target="_blank" class="lp-btn-sub">🎮 Discordに参加する</a>
     </div>
     <div class="lp-stats">
       <div class="lp-stat"><div class="lp-stat-num">100<span>本+</span></div><div class="lp-stat-label">LESSONS</div></div>
@@ -1354,7 +1343,7 @@ aside {
       <div class="lp-discord-icon">🎮</div>
       <div class="lp-discord-title">全部まとめてDiscordで使える</div>
       <div class="lp-discord-desc">参加するだけで上記のコンテンツが全て解放されます。</div>
-      <a href="https://discord.gg/KCt6PrwJ" target="_blank" class="lp-discord-btn">🎮 仮想通貨入門ラボに参加する</a>
+      <a href="https://discord.gg/ZhVHj3CV" target="_blank" class="lp-discord-btn">🎮 仮想通貨入門ラボに参加する</a>
     </div>
   </div>
 
@@ -1364,7 +1353,7 @@ aside {
 <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()" title="レッスン一覧">☰</button>
 <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
 
-<nav>
+<nav id="mainNav">
   <div class="logo">仮想通貨<span>入門</span>ラボ</div>
   <div class="nav-center">
     <button class="nav-tab active" onclick="showSection('learn')">📚 学習</button>
@@ -1375,9 +1364,7 @@ aside {
     <button class="nav-tab" onclick="showSection('cert')">🏆 修了証</button>
   </div>
   <div style="display:flex;align-items:center;gap:6px">
-    <div id="navAuthArea">
-      <button class="nav-discord" id="navLoginBtn" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button>
-    </div>
+    <div id="navAuthArea"><button class="nav-discord" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button></div>
     <div class="theme-controls">
       <button class="theme-btn" id="themeToggle" onclick="toggleTheme()" title="ダーク/ライト切替">🌙</button>
     </div>
@@ -1391,11 +1378,12 @@ aside {
   <button class="bottom-nav-item" id="bn3" onclick="showSection('dashboard');setBottomActive(3)"><span class="bn-icon">📊</span>進捗</button>
   <button class="bottom-nav-item" id="bn4" onclick="showSection('leaderboard');setBottomActive(4)"><span class="bn-icon">🏅</span>順位</button>
   <button class="bottom-nav-item" id="bn5" onclick="showSection('cert');setBottomActive(5)"><span class="bn-icon">🏆</span>修了証</button>
+  <a href="https://discord.gg/ZhVHj3CV" target="_blank" class="bottom-nav-item" style="text-decoration:none;color:inherit"><span class="bn-icon">🎮</span>Discord</a>
 </nav>
 </div>
-<div class="progress-strip"><div class="progress-fill" id="topBar" style="width:0%"></div></div>
+<div id="progressStrip" class="progress-strip"><div class="progress-fill" id="topBar" style="width:0%"></div></div>
 
-<main>
+<main id="mainApp">
 <aside id="sidebar">
   <div class="level-section">
     <div class="level-header">
@@ -1422,7 +1410,23 @@ aside {
 
 <div class="content-area">
   <div class="screen active" id="screen-learn"><div id="lessonContent"></div></div>
-  <div class="screen" id="screen-chat"><div id="chatArea"></div></div>
+  <div class="screen" id="screen-chat">
+    <div class="discord-gate" style="margin-top:20px">
+      <div class="discord-gate-icon">🤖</div>
+      <h2>AIチューター「Satoshi先生」</h2>
+      <p>仮想通貨のことなら何でも答えてくれる専属AI講師。<br>Discordメンバー限定で<strong>使い放題</strong>です。</p>
+      <div class="perk-list">
+        <div class="perk-item"><span class="perk-icon">📚</span>中級・上級レッスン計80本すべて解放</div>
+        <div class="perk-item"><span class="perk-icon">💬</span>用語・仕組みをわかりやすく解説</div>
+        <div class="perk-item"><span class="perk-icon">📈</span>相場・チャートの読み方を伝授</div>
+        <div class="perk-item"><span class="perk-icon">⚠️</span>詐欺・怪しい案件の判別アドバイス</div>
+        <div class="perk-item"><span class="perk-icon">🧠</span>レッスン内容の深掘り質問OK</div>
+        
+      </div>
+      <a href="https://discord.gg/ZhVHj3CV" target="_blank" class="btn btn-discord" style="font-size:14px;padding:13px 32px;">🎮 Discordに参加してSatoshi先生と話す</a>
+      
+    </div>
+  </div>
   <div class="screen" id="screen-quiz"><div id="quizArea"></div></div>
   <div class="screen" id="screen-dashboard"><div id="dashContent"></div></div>
   <div class="screen" id="screen-leaderboard"><div id="lbContent"></div></div>
@@ -1431,7 +1435,7 @@ aside {
 </main>
 
 <script>
-const DISCORD_URL = 'https://discord.gg/KCt6PrwJ';
+const DISCORD_URL = 'https://discord.gg/ZhVHj3CV';
 const FREE_COUNT = 5;
 
 const LESSONS = {
@@ -1611,27 +1615,21 @@ const LESSONS = {
         <h3>ステーブルコインの3種類</h3>
         <div class="box box-blue">
           <strong>① 法定通貨担保型（最も安全）</strong><br>
-          米ドルを銀行に預けてトークンを発行。USDT（テザー）・USDC（サークル）が代表。<br>
-          リスク：発行企業の信頼性・監査の透明性<br><br>
+          米ドルを銀行に預けてトークンを発行。USDT（テザー）・USDC（サークル）が代表。リスク：発行企業の信頼性・監査の透明性。<br><br>
           <strong>② 暗号資産担保型（分散型）</strong><br>
-          ETHなどを担保にアルゴリズムで1ドルを維持。DAIが代表。<br>
-          リスク：担保資産の暴落による清算<br><br>
+          ETHなどを担保にアルゴリズムで1ドルを維持。DAIが代表。リスク：担保資産の暴落による清算。<br><br>
           <strong>③ アルゴリズム型（最もリスク高）</strong><br>
-          担保なしでアルゴリズムのみで価値を維持しようとする。<br>
-          2022年のTerraUSD（UST）崩壊で6兆円以上が消滅した歴史がある。
+          担保なしでアルゴリズムのみで価値を維持しようとする。2022年のTerraUSD（UST）崩壊で6兆円以上が消滅した歴史がある。
         </div>
         <h3>USDTとUSDCの違い</h3>
-        <p>どちらも1ドルに連動するが、発行体と透明性が異なる。USDTはテザー社が発行し時価総額が最大だが、準備金の透明性について長年議論がある。USDCはサークル社が発行し、毎月監査報告を公開しており透明性が高い。大額を長期保有するならUSDCの方が安心という声もある。</p>
-        <h3>ステーブルコインの実際の使い道</h3>
+        <p>どちらも1ドルに連動するが、発行体と透明性が異なる。USDTはテザー社が発行し時価総額が最大だが、準備金の透明性について長年議論がある。USDCはサークル社が発行し、毎月監査報告を公開しており透明性が高い。日本の取引所ではUSDTが多く取引されているが、大額を長期保有するならUSDCの方が安心という声もある。</p>
+        <h3>実際の使い道</h3>
         <div class="box box-green">
-          ✅ 相場急落時の一時避難（BTC→USDC）<br>
-          ✅ 国際送金（数秒・数十円で世界中に送れる）<br>
-          ✅ DeFiのレンディングで年利3〜8%程度の利息を得る<br>
-          ✅ 発展途上国でのインフレヘッジ（アルゼンチン・トルコなど）
+          相場急落時の一時避難（BTC→USDC）・国際送金（数秒・数十円で世界中に送れる）・DeFiのレンディングで年利3〜8%程度の利息を得る・発展途上国でのインフレヘッジ（アルゼンチン・トルコなど）
         </div>
         <div class="box box-orange">
           <strong>⚠️ 注意点</strong><br>
-          「ステーブル」という名前に油断しないこと。アルゴリズム型はペッグが崩れる可能性がある。また法定通貨担保型でも、発行企業の経営破綻リスクはゼロではない。大額を長期保有するときは分散を。
+          「ステーブル」という名前に油断しないこと。アルゴリズム型はペッグが崩れる可能性がある。また法定通貨担保型でも、発行企業の経営破綻リスクはゼロではない。シリコンバレー銀行破綻時にUSDCが一時0.87ドルまで下落した例もある。大額を長期保有するときは分散が鉄則。
         </div>` },
     { id: 'b8', emoji: '🌍', title: '世界の仮想通貨規制を知る', locked: true, content: `<p>仮想通貨は国によって扱いが全く違う。「日本では合法なのに隣の国では禁止」ということが普通に起きている。規制を知らずに投資すると予期せぬ損失につながる。逆に規制動向を先読みすることが投資の武器になる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「規制ニュースで価格が動く。中国がBTCを禁止するたびに相場が急落して、その後戻る——これを何度も繰り返してきました。だから規制動向は必ずチェックする習慣をつけてください。」</div></div></div>
@@ -1703,9 +1701,7 @@ const LESSONS = {
         </div>` },,
 
     { id: 'b11', emoji: '💹', title: 'ビットコインの価格はなぜ動く？', locked: true, content: `<p>「なぜ今日BTCが下がったのか」——これを理解するだけで、パニック売りを防げる。価格変動には必ず理由がある。その理由のパターンを知っておくことが、冷静な判断につながる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「価格が動く理由は必ずある。でも全部わかる必要はない。「こういう時は下がりやすい」という傾向を知るだけで十分。それだけで感情的な売買が減ります。」</div></div></div>
-        <h3>需要と供給の基本</h3>
-        <p>BTCを買いたい人が増えれば価格は上がる。売りたい人が増えれば下がる。シンプルだが、これが全ての基本だ。問題は「なぜ買いたい／売りたい人が増えるか」だ。それを動かす要因を整理しておこう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「価格が動く理由は必ずある。でも全部わかる必要はない。「こういう時は下がりやすい」という傾向を知るだけで十分。それだけで感情的な売買が大幅に減ります。」</div></div></div>
         <h3>主な上昇要因</h3>
         <div class="box box-green">
           ✅ 機関投資家・大企業の大口購入発表<br>
@@ -1713,7 +1709,7 @@ const LESSONS = {
           ✅ 半減期後の供給減少（4年に1度）<br>
           ✅ インフレ懸念・法定通貨の信頼低下<br>
           ✅ 著名企業・国家によるBTC採用ニュース<br>
-          ✅ マクロ的な金融緩和局面（低金利環境）
+          ✅ マクロ的な金融緩和局面（低金利・ドル安）
         </div>
         <h3>主な下落要因</h3>
         <div class="box box-orange">
@@ -1721,16 +1717,17 @@ const LESSONS = {
           ⚠️ 大手取引所のハッキング・破綻<br>
           ⚠️ FRBの利上げなど金融引き締め<br>
           ⚠️ 大口ホルダー（クジラ）の大量売却<br>
-          ⚠️ 大規模なレバレッジ清算の連鎖（カスケード清算）
+          ⚠️ 大規模なレバレッジ清算の連鎖（カスケード清算）<br>
+          ⚠️ テロ・戦争などの地政学リスク
         </div>
         <h3>「クジラ」の影響を読む</h3>
-        <p>1,000BTC以上を保有する大口投資家を「クジラ」と呼ぶ。クジラが動くと市場全体が揺れる。Whale AlertというツールでクジラのBTC移動をリアルタイムで追跡できる。クジラが取引所にBTCを送ったら「売る準備」、取引所から引き出したら「長期保有に移行」のサインとして使われることが多い。</p>
+        <p>1,000BTC以上を保有する大口投資家を「クジラ」と呼ぶ。クジラが動くと市場全体が揺れる。Whale AlertというツールでクジラのBTC移動をリアルタイムで追跡できる。クジラが取引所にBTCを送ったら「売る準備」、取引所から引き出したら「長期保有に移行」のサインとして使われる。</p>
+        <h3>価格変動との正しい付き合い方</h3>
         <div class="box box-blue">
-          <strong>📌 結論</strong><br>
-          価格変動は「当たり前のもの」として受け入れること。-30%でも慌てないために、最初から「下がっても大丈夫な金額」だけ投資するのが鉄則。価格変動の理由を追いかけるより、自分のルールを守る方がずっと重要。
+          価格変動は「当たり前のもの」として受け入れること。BTCは過去に-80%以上の下落を何度も経験し、その都度回復してきた。-30%でも慌てないために、最初から「下がっても大丈夫な金額」だけ投資するのが鉄則。価格変動の理由を追いかけるより、自分のルールを守る方がずっと重要。
         </div>` },
     { id: 'b12', emoji: '🔄', title: 'ビットコインの送金の仕組み', locked: true, content: `<p>「BTCを送る」とはどういうことか——銀行振込とどう違うのか。送金の仕組みを理解すると、手数料や確認時間、そして「なぜ送り間違えると取り戻せないのか」がわかる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「BTC送金は「取引の申告」です。ブロックチェーンに記録されて初めて完了。銀行のように中央で管理する人は誰もいない。だから取り消しも不可能なんです。」</div></div></div>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「BTC送金は「取引の申告」です。ブロックチェーンに記録されて初めて完了。銀行のように中央で管理する人は誰もいない。だから取り消しも不可能。送金前の確認が命取り。」</div></div></div>
         <h3>送金の3ステップ</h3>
         <div class="box box-blue">
           <strong>① トランザクション作成</strong><br>
@@ -1738,7 +1735,7 @@ const LESSONS = {
           <strong>② ネットワークへの伝播</strong><br>
           署名された取引データがP2Pネットワーク上の全ノードに広がる。未確認のまま「メモリプール（Mempool）」と呼ばれる待機場所に入る。<br><br>
           <strong>③ ブロックへの取り込みと確認</strong><br>
-          マイナーが取引をブロックに含めてマイニング（複雑な計算）し、ブロックチェーンに追加されると「1確認」完了。通常6確認（約60分）でほぼ確実とされる。
+          マイナーが取引をブロックに含めてマイニングし、ブロックチェーンに追加されると「1確認」完了。通常6確認（約60分）でほぼ確実とされる。
         </div>
         <h3>手数料の決まり方</h3>
         <p>BTCの手数料はデータ量（バイト数）と混雑度で変わる。混雑時は高い手数料を払った取引が優先的にブロックに入る仕組みだ。急ぎでない場合は手数料を低めに設定して時間がかかるのを許容するのも手。送金前にMempool.spaceなどで現在の混雑状況を確認できる。</p>
@@ -1746,7 +1743,7 @@ const LESSONS = {
         <div class="box box-orange">
           <strong>銀行振込</strong>：銀行が間違いを取り消せる。手数料は固定。1〜3営業日かかることも。<br>
           <strong>BTC送金</strong>：一度送ったら取り消し不可。手数料は変動。世界中に数秒〜1時間で届く。<br><br>
-          <strong>⚠️ 送金ミスの恐怖</strong><br>
+          <strong>送金ミスの恐怖</strong><br>
           アドレスを1文字でも間違えて送ると永遠に取り戻せない。必ず少額でテスト送金してからまとめて送ること。アドレスはコピペで使い、目で確認するのは最初と最後の数文字だけでいい。
         </div>` },
     { id: 'b13', emoji: '📈', title: 'チャートを初めて見る人へ', locked: true, content: `<p>チャートは難しく見えるが、基本さえ押さえれば誰でも読める。投資判断に使わなくても、「今の相場感」を掴むためだけに知っておく価値は十分ある。まず「大きな流れ」を読む目を育てよう。</p>
@@ -3614,147 +3611,13 @@ const MINI_QUIZ = {
 };
 
 const DISCORD_LEVELS = ['intermediate', 'advanced'];
-const WORKER_URL = 'https://cryptolab-discord-auth.laughrally.workers.dev';
-const JWT_STORAGE_KEY = 'crypto_discord_jwt';
-
-let discordUser = null;  // { id, username, global_name, avatar }
-let isDiscordMember = false;
-
-// ─── JWT クライアント検証（署名検証なし・有効期限チェックのみ） ──────────────
-function parseJWTPayload(token) {
-  try {
-    const parts = token.split('.');
-    if (parts.length !== 3) return null;
-    const b64 = parts[1].replace(/-/g, '+').replace(/_/g, '/') + '=='.slice(0, (4 - parts[1].length % 4) % 4);
-    // UTF-8対応デコード（日本語・絵文字などマルチバイト文字に対応）
-    const binary = atob(b64);
-    const bytes = new Uint8Array(binary.length);
-    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
-    return JSON.parse(new TextDecoder().decode(bytes));
-  } catch { return null; }
-}
-
-function isTokenValid(token) {
-  const p = parseJWTPayload(token);
-  if (!p) return false;
-  if (p.exp && p.exp < Math.floor(Date.now() / 1000)) return false;
-  return true;
-}
-
-// ─── 認証初期化 ─────────────────────────────────────────────────────────────
-async function initAuth() {
-  // URL フラグメントからトークンを取得（OAuth コールバック後）
-  const hash = window.location.hash;
-  if (hash.startsWith('#token=')) {
-    const token = hash.slice(7);
-    localStorage.setItem(JWT_STORAGE_KEY, token);
-    // フラグメントを除去してきれいな URL に
-    history.replaceState(null, '', window.location.pathname + window.location.search);
-  }
-
-  // URL パラメータでエラーを確認
-  const params = new URLSearchParams(window.location.search);
-  const authResult = params.get('auth');
-  if (authResult === 'not_member') {
-    showAuthModal('not_member');
-    history.replaceState(null, '', window.location.pathname);
-    return;
-  }
-  if (authResult === 'cancelled') {
-    history.replaceState(null, '', window.location.pathname);
-    return;
-  }
-  if (authResult === 'error') {
-    showToast('⚠️ 認証エラーが発生しました。もう一度お試しください。');
-    history.replaceState(null, '', window.location.pathname);
-    return;
-  }
-
-  // ローカルストレージからトークンを確認
-  const savedToken = localStorage.getItem(JWT_STORAGE_KEY);
-  if (savedToken && isTokenValid(savedToken)) {
-    const payload = parseJWTPayload(savedToken);
-    discordUser = {
-      id: payload.sub,
-      username: payload.username,
-      global_name: payload.global_name || payload.username,
-      avatar: payload.avatar,
-    };
-    isDiscordMember = true;
-    onAuthSuccess();
-  }
-}
-
-function onAuthSuccess() {
-  updateNavAuth();
-  renderSidebar();
-  // auth=success の場合はトースト表示
-  const params = new URLSearchParams(window.location.search);
-  if (params.get('auth') === 'success') {
-    showToast(`🎉 ようこそ ${discordUser.global_name} さん！全コンテンツが解放されました！`);
-    history.replaceState(null, '', window.location.pathname);
-    launchConfetti();
-  }
-}
-
-function updateNavAuth() {
-  const area = document.getElementById('navAuthArea');
-  if (!area) return;
-  if (isDiscordMember && discordUser) {
-    const avatarUrl = discordUser.avatar
-      ? `https://cdn.discordapp.com/avatars/${discordUser.id}/${discordUser.avatar}.png?size=32`
-      : `https://cdn.discordapp.com/embed/avatars/0.png`;
-    area.innerHTML = `
-      <div style="display:flex;align-items:center;gap:8px">
-        <img src="${avatarUrl}" alt="" style="width:28px;height:28px;border-radius:50%;border:2px solid #5865f2">
-        <span style="font-size:12px;font-weight:600;color:var(--text)">${discordUser.global_name}</span>
-        <button onclick="logoutDiscord()" style="padding:4px 10px;background:none;border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--muted);cursor:pointer">ログアウト</button>
-      </div>`;
-  } else {
-    area.innerHTML = `<button class="nav-discord" id="navLoginBtn" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button>`;
-  }
-}
-
-function startDiscordLogin() {
-  window.location.href = `${WORKER_URL}/api/discord/login`;
-}
-
-function logoutDiscord() {
-  localStorage.removeItem(JWT_STORAGE_KEY);
-  discordUser = null;
-  isDiscordMember = false;
-  updateNavAuth();
-  renderSidebar();
-  showToast('ログアウトしました');
-}
-
-function showAuthModal(reason) {
-  const modal = document.createElement('div');
-  modal.id = 'authModal';
-  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
-  modal.innerHTML = `
-    <div style="background:var(--surface);border-radius:16px;padding:32px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.3)">
-      <div style="font-size:48px;margin-bottom:16px">😢</div>
-      <h2 style="margin-bottom:12px;font-size:18px">Discordサーバーに参加していません</h2>
-      <p style="color:var(--muted);font-size:14px;margin-bottom:24px">コンテンツを解放するには、まず「仮想通貨入門ラボ」のDiscordサーバーに参加してください。参加後、再度ログインしてください。</p>
-      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-        <a href="${DISCORD_URL}" target="_blank" class="btn btn-discord" style="text-decoration:none">🎮 Discordに参加する</a>
-        <button onclick="document.getElementById('authModal').remove();startDiscordLogin()" class="btn btn-primary">参加後にログイン</button>
-        <button onclick="document.getElementById('authModal').remove()" class="btn btn-secondary">閉じる</button>
-      </div>
-    </div>`;
-  document.body.appendChild(modal);
-}
-
-
 let completedLessons = new Set();
 let currentLesson = null;
 let quizState = { level: null, questions: [], idx: 0, score: 0, answered: false, started: false, finished: false, failed: false };
 
 let userName = localStorage.getItem('crypto_userName') || '';
 
-async function init() {
-  await initAuth();
+function init() {
   renderSidebar();
   selectLesson('beginner', 0);
   updateProgress();
@@ -3802,21 +3665,16 @@ function renderSidebar() {
 }
 
 function selectLesson(level, idx) {
-  if (!isDiscordMember && (DISCORD_LEVELS.includes(level) || (level === 'beginner' && idx >= FREE_COUNT))) {
+  if (DISCORD_LEVELS.includes(level) || (level === 'beginner' && idx >= FREE_COUNT)) {
     showDiscordGate(level, idx); return;
   }
   const l = LESSONS[level][idx];
   currentLesson = l;
   showSection('learn');
   renderSidebar();
-  const isLastFree = !isDiscordMember && level === 'beginner' && idx === FREE_COUNT - 1;
+  const isLastFree = level === 'beginner' && idx === FREE_COUNT - 1;
   const isDone = completedLessons.has(l.id);
   const mq = MINI_QUIZ[l.id] || [];
-  // 次のレッスンへのナビゲーションを計算
-  const levels = ['beginner', 'intermediate', 'advanced'];
-  const hasNextInLevel = idx + 1 < LESSONS[level].length;
-  const hasNextLevel = levels.indexOf(level) + 1 < levels.length;
-  const nextLevelName = levels[levels.indexOf(level) + 1];
 
   const nameBanner = !userName ? `
     <div class="name-banner">
@@ -3831,28 +3689,12 @@ function selectLesson(level, idx) {
       <div id="mqContent">${renderMiniQuizQ(l.id, 0)}</div>
     </div>` : '';
 
-  // 次へのボタンを構築
-  let nextBtn = '';
-  if (isDiscordMember) {
-    if (hasNextInLevel) {
-      nextBtn = `<button class="btn btn-secondary" onclick="selectLesson('${level}', ${idx+1})">次のレッスン →</button>`;
-    } else if (hasNextLevel) {
-      nextBtn = `<button class="btn btn-secondary" onclick="selectLesson('${nextLevelName}', 0)">次のレベルへ →</button>`;
-    }
-  } else {
-    if (idx < FREE_COUNT - 1) {
-      nextBtn = `<button class="btn btn-secondary" onclick="selectLesson('${level}', ${idx+1})">次のレッスン →</button>`;
-    } else if (isLastFree) {
-      nextBtn = `<button class="btn btn-secondary" onclick="showSection('quiz')">📝 テストを受ける</button>`;
-    }
-  }
-
   document.getElementById('lessonContent').innerHTML = `
     ${nameBanner}
     <div class="lesson-meta">
       <span class="badge badge-lesson">LESSON ${String(idx+1).padStart(2,'0')}</span>
-      <span class="badge badge-beginner">${level === 'beginner' ? '初級編' : level === 'intermediate' ? '中級編' : '上級編'}</span>
-      ${isDiscordMember ? '<span class="badge" style="background:rgba(88,101,242,.15);color:#5865f2">Discord限定</span>' : '<span class="badge badge-free-tag">公開中</span>'}
+      <span class="badge badge-beginner">初級編</span>
+      <span class="badge badge-free-tag">公開中</span>
     </div>
     <h1 class="lesson-h1">${l.emoji} ${l.title}</h1>
     <div class="lesson-body">${l.content}</div>
@@ -3864,13 +3706,20 @@ function selectLesson(level, idx) {
         <div style="font-weight:700;font-size:15px;margin-bottom:4px">このレッスンはDiscord限定です</div>
         <div style="font-size:13px;color:var(--muted)">初級レッスン6〜10・中級・上級編（各10本）・AIチューター・が全て無料解放</div>
       </div>
-      <a href="${DISCORD_URL}" target="_blank" class="btn btn-discord">🎮 Discordに参加する</a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+        <button onclick="startDiscordLogin()" class="btn btn-discord">🎮 Discordでログイン</button>
+        <a href="${DISCORD_URL}" target="_blank" class="btn btn-secondary">サーバーに参加する</a>
+      </div>
     </div>` : ''}
     <div class="btn-row" style="margin-top:20px">
       ${isDone
         ? '<button class="btn btn-secondary">✓ 完了済み</button>'
         : `<button class="btn btn-primary" id="completeBtn" onclick="completeLesson('${level}', ${idx})">✅ 理解した！次へ</button>`}
-      ${nextBtn}
+      ${idx < FREE_COUNT - 1
+        ? `<button class="btn btn-secondary" onclick="selectLesson('${level}', ${idx+1})">次のレッスン →</button>`
+        : isLastFree
+        ? `<button class="btn btn-secondary" onclick="showSection('quiz')">📝 テストを受ける</button>`
+        : ''}
       <button class="btn btn-secondary" onclick="showSection('chat')">🤖 AIに質問する</button>
     </div>
     <div class="share-bar">
@@ -3935,21 +3784,9 @@ function completeLesson(level, idx) {
   updateProgress();
   renderSidebar();
   updateLeaderboard();
-  const isLastFree = !isDiscordMember && level === 'beginner' && idx === FREE_COUNT - 1;
+  const isLastFree = level === 'beginner' && idx === FREE_COUNT - 1;
   if (isLastFree) {
     selectLesson(level, idx);
-  } else if (isDiscordMember) {
-    // Discordメンバーは全レッスン順に進める
-    const levels = ['beginner', 'intermediate', 'advanced'];
-    const nextIdx = idx + 1;
-    if (nextIdx < LESSONS[level].length) {
-      setTimeout(() => selectLesson(level, nextIdx), 300);
-    } else {
-      const nextLevelIdx = levels.indexOf(level) + 1;
-      if (nextLevelIdx < levels.length) {
-        setTimeout(() => selectLesson(levels[nextLevelIdx], 0), 300);
-      }
-    }
   } else if (idx < FREE_COUNT - 1) {
     setTimeout(() => selectLesson(level, idx + 1), 300);
   }
@@ -4035,7 +3872,6 @@ function showSection(name) {
   document.querySelectorAll('.nav-tab').forEach((t, i) => {
     t.classList.toggle('active', ['learn','chat','quiz','dashboard','leaderboard','cert'][i] === name);
   });
-  if (name === 'chat') renderChat();
   if (name === 'quiz') renderQuizHome();
   if (name === 'dashboard') renderDashboard();
   if (name === 'leaderboard') renderLeaderboard();
@@ -4141,119 +3977,12 @@ function saveNameFromLb() {
   showToast(`✅ 「${userName}」でランキングに登録しました！`);
 }
 
-// ═══ CHAT ═══
-let chatMessages = [];
-
-function renderChat() {
-  const area = document.getElementById('chatArea');
-  if (!isDiscordMember) {
-    area.innerHTML = `
-      <div class="discord-gate" style="margin-top:20px">
-        <div class="discord-gate-icon">🤖</div>
-        <h2>AIチューター「Satoshi先生」</h2>
-        <p>仮想通貨のことなら何でも答えてくれる専属AI講師。<br>Discordメンバー限定で<strong>使い放題</strong>です。</p>
-        <div class="perk-list">
-          <div class="perk-item"><span class="perk-icon">📚</span>中級・上級レッスン計80本すべて解放</div>
-          <div class="perk-item"><span class="perk-icon">💬</span>用語・仕組みをわかりやすく解説</div>
-          <div class="perk-item"><span class="perk-icon">📈</span>相場・チャートの読み方を伝授</div>
-          <div class="perk-item"><span class="perk-icon">⚠️</span>詐欺・怪しい案件の判別アドバイス</div>
-          <div class="perk-item"><span class="perk-icon">🧠</span>レッスン内容の深掘り質問OK</div>
-        </div>
-        <a href="https://discord.gg/KCt6PrwJ" target="_blank" class="btn btn-discord" style="font-size:14px;padding:13px 32px;">🎮 Discordに参加してSatoshi先生と話す</a>
-      </div>`;
-    return;
-  }
-  area.innerHTML = `
-    <div style="max-width:720px">
-      <div class="lesson-meta" style="margin-bottom:8px"><span class="badge badge-lesson">AI</span><span class="badge" style="background:rgba(88,101,242,.15);color:#5865f2">Discord限定</span></div>
-      <h1 class="lesson-h1" style="margin-bottom:4px">🤖 AIチューター「Satoshi先生」</h1>
-      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">仮想通貨のことなら何でも聞いてください！</p>
-      <div id="chatMessages" style="display:flex;flex-direction:column;gap:12px;margin-bottom:16px;min-height:80px;max-height:420px;overflow-y:auto;padding:4px 0">${renderChatMessages()}</div>
-      <div style="display:flex;gap:8px;align-items:flex-end">
-        <textarea id="chatInput" placeholder="Satoshi先生に質問する..." rows="2" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:14px;resize:none;background:var(--surface);color:var(--text);outline:none" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"></textarea>
-        <button onclick="sendChat()" class="btn btn-primary" style="padding:10px 18px;white-space:nowrap" id="chatSendBtn">送信</button>
-      </div>
-      <p style="color:var(--muted);font-size:11px;margin-top:6px">Shift+Enterで改行 / Enterで送信</p>
-    </div>`;
-  // scroll to bottom
-  const msgs = document.getElementById('chatMessages');
-  if (msgs) msgs.scrollTop = msgs.scrollHeight;
-}
-
-function renderChatMessages() {
-  if (chatMessages.length === 0) {
-    return `<div style="text-align:center;color:var(--muted);font-size:14px;padding:20px 0">👋 こんにちは！仮想通貨について何でも聞いてください。</div>`;
-  }
-  return chatMessages.map(m => {
-    const isUser = m.role === 'user';
-    return `<div style="display:flex;justify-content:${isUser ? 'flex-end' : 'flex-start'}">
-      <div style="max-width:80%;padding:10px 14px;border-radius:${isUser ? '14px 14px 4px 14px' : '14px 14px 14px 4px'};background:${isUser ? 'var(--accent)' : 'var(--surface2)'};color:${isUser ? '#fff' : 'var(--text)'};font-size:14px;line-height:1.7;white-space:pre-wrap;word-break:break-word">${escapeHtml(m.content)}</div>
-    </div>`;
-  }).join('');
-}
-
-function escapeHtml(str) {
-  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-}
-
-async function sendChat() {
-  const input = document.getElementById('chatInput');
-  const btn = document.getElementById('chatSendBtn');
-  if (!input || !btn) return;
-  const text = input.value.trim();
-  if (!text) return;
-  input.value = '';
-  btn.disabled = true;
-  btn.textContent = '...';
-  chatMessages.push({ role: 'user', content: text });
-  // add loading
-  chatMessages.push({ role: 'assistant', content: '考え中...' });
-  const msgs = document.getElementById('chatMessages');
-  if (msgs) { msgs.innerHTML = renderChatMessages(); msgs.scrollTop = msgs.scrollHeight; }
-  try {
-    const token = localStorage.getItem('discord_jwt') || '';
-    const res = await fetch(`${WORKER_URL}/api/chat`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
-      body: JSON.stringify({ messages: chatMessages.slice(0, -1).map(m => ({ role: m.role, content: m.content })) })
-    });
-    const data = await res.json();
-    chatMessages[chatMessages.length - 1] = { role: 'assistant', content: data.content || 'エラーが発生しました。' };
-  } catch (e) {
-    chatMessages[chatMessages.length - 1] = { role: 'assistant', content: 'エラーが発生しました。もう一度お試しください。' };
-  }
-  if (msgs) { msgs.innerHTML = renderChatMessages(); msgs.scrollTop = msgs.scrollHeight; }
-  btn.disabled = false;
-  btn.textContent = '送信';
-}
-
 // ═══ QUIZ ═══
 const QUIZ_COUNT = 30;
 
 function renderQuizHome() {
+  const allDone = LESSONS.beginner.slice(0, FREE_COUNT).every(l => completedLessons.has(l.id));
   const passed = quizState.finished && !quizState.failed && quizState.score === quizState.questions.length;
-  const intermediateCard = isDiscordMember
-    ? `<div class="level-card" onclick="startQuiz('intermediate')">
-        <div class="level-card-icon">🟠</div>
-        <div class="level-card-name">中級編テスト</div>
-        <div class="level-card-desc">全${QUIZ_BANK.intermediate.length}問から${QUIZ_COUNT}問出題<br>挑戦しよう！</div>
-      </div>`
-    : `<div class="level-card locked-card">
-        <div class="level-card-icon">🟠</div>
-        <div class="level-card-name">中級編テスト</div>
-        <div class="level-card-desc">Discord限定</div>
-      </div>`;
-  const advancedCard = isDiscordMember
-    ? `<div class="level-card" onclick="startQuiz('advanced')">
-        <div class="level-card-icon">🔴</div>
-        <div class="level-card-name">上級編テスト</div>
-        <div class="level-card-desc">全${QUIZ_BANK.advanced.length}問から${QUIZ_COUNT}問出題<br>挑戦しよう！</div>
-      </div>`
-    : `<div class="level-card locked-card">
-        <div class="level-card-icon">🔴</div>
-        <div class="level-card-name">上級編テスト</div>
-        <div class="level-card-desc">Discord限定</div>
-      </div>`;
   document.getElementById('quizArea').innerHTML = `
     <div class="lesson-meta" style="margin-bottom:14px"><span class="badge badge-lesson">TEST</span></div>
     <h1 class="lesson-h1" style="margin-bottom:8px">📝 理解度テスト</h1>
@@ -4265,8 +3994,16 @@ function renderQuizHome() {
         <div class="level-card-name">初級編テスト</div>
         <div class="level-card-desc">全${QUIZ_BANK.beginner.length}問から${QUIZ_COUNT}問出題<br>${passed ? '✅ 合格済み' : '挑戦しよう！'}</div>
       </div>
-      ${intermediateCard}
-      ${advancedCard}
+      <div class="level-card locked-card">
+        <div class="level-card-icon">🟠</div>
+        <div class="level-card-name">中級編テスト</div>
+        <div class="level-card-desc">Discord限定</div>
+      </div>
+      <div class="level-card locked-card">
+        <div class="level-card-icon">🔴</div>
+        <div class="level-card-name">上級編テスト</div>
+        <div class="level-card-desc">Discord限定</div>
+      </div>
     </div>`;
 }
 
@@ -4587,39 +4324,173 @@ function applyDiscordGridLayout() {
 window.addEventListener('resize', applyDiscordGridLayout);
 document.addEventListener('DOMContentLoaded', applyDiscordGridLayout);
 
-// ===== LANDING PAGE =====
-document.body.style.overflow = "hidden";
-function enterApp() {
-  const lp = document.getElementById('landingPage');
-  lp.classList.add('hide');
-  setTimeout(() => {
-    lp.style.display = 'none';
-    // iOS Safari: force bottom-nav reflow after landing page hides
-    const bn = document.getElementById('bottomNav');
-    if (bn) {
-      bn.style.display = 'none';
-      // eslint-disable-next-line no-unused-expressions
-      bn.offsetHeight; // trigger reflow
-      bn.style.display = '';
-    }
-  }, 400);
-  // Save to session so LP doesn't show again on refresh within session
-  sessionStorage.setItem('crypto_entered', '1');
-  document.body.style.overflow = '';
+
+// ===== DISCORD AUTH =====
+const WORKER_URL = 'https://cryptolab-discord-auth.laughrally.workers.dev';
+const JWT_STORAGE_KEY = 'crypto_discord_jwt';
+let discordUser = null;
+let isDiscordMember = false;
+
+function parseJWTPayload(token) {
+  try {
+    const parts = token.split('.');
+    if (parts.length !== 3) return null;
+    const b64 = parts[1].replace(/-/g, '+').replace(/_/g, '/') + '=='.slice(0, (4 - parts[1].length % 4) % 4);
+    const binary = atob(b64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return JSON.parse(new TextDecoder().decode(bytes));
+  } catch { return null; }
 }
 
-// Check if already entered this session or skip via URL param
-(function() {
-  restoreSharedMarks();
-  const params = new URLSearchParams(window.location.search);
-  const skipLP = params.get('app') === '1' || sessionStorage.getItem('crypto_entered');
-  if (skipLP) {
-    const lp = document.getElementById('landingPage');
-    if (lp) lp.style.display = 'none';
-    document.body.style.overflow = '';
-    // sessionStorageにも保存してリロード時もスキップ
-    sessionStorage.setItem('crypto_entered', '1');
+function isTokenValid(token) {
+  const p = parseJWTPayload(token);
+  if (!p) return false;
+  if (p.exp && p.exp < Math.floor(Date.now() / 1000)) return false;
+  return true;
+}
+
+async function initAuth() {
+  const hash = window.location.hash;
+  if (hash.startsWith('#token=')) {
+    const token = hash.slice(7);
+    localStorage.setItem(JWT_STORAGE_KEY, token);
+    history.replaceState(null, '', window.location.pathname + window.location.search);
   }
+  const params = new URLSearchParams(window.location.search);
+  const authResult = params.get('auth');
+  if (authResult === 'not_member') {
+    showAuthModal('not_member');
+    history.replaceState(null, '', window.location.pathname);
+    return;
+  }
+  if (authResult === 'cancelled') {
+    history.replaceState(null, '', window.location.pathname);
+    return;
+  }
+  if (authResult === 'error') {
+    showToast('⚠️ 認証エラーが発生しました。もう一度お試しください。');
+    history.replaceState(null, '', window.location.pathname);
+    return;
+  }
+  const savedToken = localStorage.getItem(JWT_STORAGE_KEY);
+  if (savedToken && isTokenValid(savedToken)) {
+    const payload = parseJWTPayload(savedToken);
+    discordUser = {
+      id: payload.sub,
+      username: payload.username,
+      global_name: payload.global_name || payload.username,
+      avatar: payload.avatar,
+    };
+    isDiscordMember = true;
+    onAuthSuccess();
+  }
+}
+
+function onAuthSuccess() {
+  updateNavAuth();
+  renderSidebar();
+  const params = new URLSearchParams(window.location.search);
+  if (params.get('auth') === 'success') {
+    showToast('🎉 ようこそ ' + discordUser.global_name + ' さん！全コンテンツが解放されました！');
+    history.replaceState(null, '', window.location.pathname);
+    launchConfetti();
+  }
+}
+
+function updateNavAuth() {
+  const area = document.getElementById('navAuthArea');
+  if (!area) return;
+  if (isDiscordMember && discordUser) {
+    const avatarUrl = discordUser.avatar
+      ? 'https://cdn.discordapp.com/avatars/' + discordUser.id + '/' + discordUser.avatar + '.png?size=32'
+      : 'https://cdn.discordapp.com/embed/avatars/0.png';
+    area.innerHTML = '<div style="display:flex;align-items:center;gap:8px">'
+      + '<img src="' + avatarUrl + '" alt="" style="width:28px;height:28px;border-radius:50%;border:2px solid #5865f2">'
+      + '<span style="font-size:12px;font-weight:600;color:var(--text)">' + discordUser.global_name + '</span>'
+      + '<button onclick="logoutDiscord()" style="padding:4px 10px;background:none;border:1px solid var(--border);border-radius:6px;font-size:11px;color:var(--muted);cursor:pointer">ログアウト</button>'
+      + '</div>';
+  } else {
+    area.innerHTML = '<button class="nav-discord" id="navLoginBtn" onclick="startDiscordLogin()" style="background:#5865f2;color:#fff;border:none;cursor:pointer">🎮 Discordでログイン</button>';
+  }
+}
+
+function startDiscordLogin() {
+  window.location.href = WORKER_URL + '/api/discord/login';
+}
+
+function logoutDiscord() {
+  localStorage.removeItem(JWT_STORAGE_KEY);
+  discordUser = null;
+  isDiscordMember = false;
+  updateNavAuth();
+  renderSidebar();
+  showToast('ログアウトしました');
+}
+
+function showAuthModal(reason) {
+  var modal = document.createElement('div');
+  modal.id = 'authModal';
+  modal.style.cssText = 'position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px';
+  var inner = document.createElement('div');
+  inner.style.cssText = 'background:var(--surface);border-radius:16px;padding:32px 28px;max-width:400px;width:100%;text-align:center;box-shadow:0 8px 40px rgba(0,0,0,.3)';
+  inner.innerHTML = '<div style="font-size:48px;margin-bottom:16px">😢</div>'
+    + '<h2 style="margin-bottom:12px;font-size:18px">Discordサーバーに参加していません</h2>'
+    + '<p style="color:var(--muted);font-size:14px;margin-bottom:24px">コンテンツを解放するには、まず「仮想通貨入門ラボ」のDiscordサーバーに参加してください。</p>'
+    + '<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">'
+    + '<a href="' + DISCORD_URL + '" target="_blank" class="btn btn-discord" style="text-decoration:none">🎮 Discordに参加する</a>'
+    + '<button id="authModalLogin" class="btn btn-primary">参加後にログイン</button>'
+    + '<button id="authModalClose" class="btn btn-secondary">閉じる</button>'
+    + '</div>';
+  modal.appendChild(inner);
+  document.body.appendChild(modal);
+  document.getElementById('authModalLogin').onclick = function() { modal.remove(); startDiscordLogin(); };
+  document.getElementById('authModalClose').onclick = function() { modal.remove(); };
+}
+
+// ===== LANDING PAGE =====
+(function() {
+  var params = new URLSearchParams(window.location.search);
+  var skipLP = params.get('app') === '1' || sessionStorage.getItem('crypto_entered');
+  if (skipLP) {
+    var lp = document.getElementById('landingPage');
+    if (lp) lp.style.display = 'none';
+    sessionStorage.setItem('crypto_entered', '1');
+    setTimeout(function() {
+      renderSidebar();
+      selectLesson('beginner', 0);
+      updateProgress();
+    }, 100);
+  } else {
+    document.body.style.overflow = 'hidden';
+    var mainNav = document.getElementById('mainNav');
+    var mainApp = document.getElementById('mainApp');
+    var ps = document.getElementById('progressStrip');
+    if (mainNav) mainNav.style.display = 'none';
+    if (mainApp) mainApp.style.display = 'none';
+    if (ps) ps.style.display = 'none';
+  }
+})();
+
+function enterApp() {
+  var lp = document.getElementById('landingPage');
+  var mainNav = document.getElementById('mainNav');
+  var mainApp = document.getElementById('mainApp');
+  var ps = document.getElementById('progressStrip');
+  if (lp) { lp.classList.add('hide'); setTimeout(function(){ lp.style.display='none'; }, 400); }
+  if (mainNav) mainNav.style.display = '';
+  if (mainApp) mainApp.style.display = '';
+  if (ps) ps.style.display = '';
+  document.body.style.overflow = '';
+  sessionStorage.setItem('crypto_entered', '1');
+  renderSidebar();
+  selectLesson('beginner', 0);
+  updateProgress();
+}
+
+(async function() {
+  restoreSharedMarks();
+  await initAuth();
 })();
 
 </script>
