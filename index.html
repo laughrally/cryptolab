@@ -1422,23 +1422,7 @@ aside {
 
 <div class="content-area">
   <div class="screen active" id="screen-learn"><div id="lessonContent"></div></div>
-  <div class="screen" id="screen-chat">
-    <div class="discord-gate" style="margin-top:20px">
-      <div class="discord-gate-icon">🤖</div>
-      <h2>AIチューター「Satoshi先生」</h2>
-      <p>仮想通貨のことなら何でも答えてくれる専属AI講師。<br>Discordメンバー限定で<strong>使い放題</strong>です。</p>
-      <div class="perk-list">
-        <div class="perk-item"><span class="perk-icon">📚</span>中級・上級レッスン計80本すべて解放</div>
-        <div class="perk-item"><span class="perk-icon">💬</span>用語・仕組みをわかりやすく解説</div>
-        <div class="perk-item"><span class="perk-icon">📈</span>相場・チャートの読み方を伝授</div>
-        <div class="perk-item"><span class="perk-icon">⚠️</span>詐欺・怪しい案件の判別アドバイス</div>
-        <div class="perk-item"><span class="perk-icon">🧠</span>レッスン内容の深掘り質問OK</div>
-        
-      </div>
-      <a href="https://discord.gg/KCt6PrwJ" target="_blank" class="btn btn-discord" style="font-size:14px;padding:13px 32px;">🎮 Discordに参加してSatoshi先生と話す</a>
-      
-    </div>
-  </div>
+  <div class="screen" id="screen-chat"><div id="chatArea"></div></div>
   <div class="screen" id="screen-quiz"><div id="quizArea"></div></div>
   <div class="screen" id="screen-dashboard"><div id="dashContent"></div></div>
   <div class="screen" id="screen-leaderboard"><div id="lbContent"></div></div>
@@ -2749,6 +2733,7 @@ function showSection(name) {
   document.querySelectorAll('.nav-tab').forEach((t, i) => {
     t.classList.toggle('active', ['learn','chat','quiz','dashboard','leaderboard','cert'][i] === name);
   });
+  if (name === 'chat') renderChat();
   if (name === 'quiz') renderQuizHome();
   if (name === 'dashboard') renderDashboard();
   if (name === 'leaderboard') renderLeaderboard();
@@ -2854,12 +2839,119 @@ function saveNameFromLb() {
   showToast(`✅ 「${userName}」でランキングに登録しました！`);
 }
 
+// ═══ CHAT ═══
+let chatMessages = [];
+
+function renderChat() {
+  const area = document.getElementById('chatArea');
+  if (!isDiscordMember) {
+    area.innerHTML = `
+      <div class="discord-gate" style="margin-top:20px">
+        <div class="discord-gate-icon">🤖</div>
+        <h2>AIチューター「Satoshi先生」</h2>
+        <p>仮想通貨のことなら何でも答えてくれる専属AI講師。<br>Discordメンバー限定で<strong>使い放題</strong>です。</p>
+        <div class="perk-list">
+          <div class="perk-item"><span class="perk-icon">📚</span>中級・上級レッスン計80本すべて解放</div>
+          <div class="perk-item"><span class="perk-icon">💬</span>用語・仕組みをわかりやすく解説</div>
+          <div class="perk-item"><span class="perk-icon">📈</span>相場・チャートの読み方を伝授</div>
+          <div class="perk-item"><span class="perk-icon">⚠️</span>詐欺・怪しい案件の判別アドバイス</div>
+          <div class="perk-item"><span class="perk-icon">🧠</span>レッスン内容の深掘り質問OK</div>
+        </div>
+        <a href="https://discord.gg/KCt6PrwJ" target="_blank" class="btn btn-discord" style="font-size:14px;padding:13px 32px;">🎮 Discordに参加してSatoshi先生と話す</a>
+      </div>`;
+    return;
+  }
+  area.innerHTML = `
+    <div style="max-width:720px">
+      <div class="lesson-meta" style="margin-bottom:8px"><span class="badge badge-lesson">AI</span><span class="badge" style="background:rgba(88,101,242,.15);color:#5865f2">Discord限定</span></div>
+      <h1 class="lesson-h1" style="margin-bottom:4px">🤖 AIチューター「Satoshi先生」</h1>
+      <p style="color:var(--muted);font-size:13px;margin-bottom:16px">仮想通貨のことなら何でも聞いてください！</p>
+      <div id="chatMessages" style="display:flex;flex-direction:column;gap:12px;margin-bottom:16px;min-height:80px;max-height:420px;overflow-y:auto;padding:4px 0">${renderChatMessages()}</div>
+      <div style="display:flex;gap:8px;align-items:flex-end">
+        <textarea id="chatInput" placeholder="Satoshi先生に質問する..." rows="2" style="flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:var(--sans);font-size:14px;resize:none;background:var(--surface);color:var(--text);outline:none" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat();}"></textarea>
+        <button onclick="sendChat()" class="btn btn-primary" style="padding:10px 18px;white-space:nowrap" id="chatSendBtn">送信</button>
+      </div>
+      <p style="color:var(--muted);font-size:11px;margin-top:6px">Shift+Enterで改行 / Enterで送信</p>
+    </div>`;
+  // scroll to bottom
+  const msgs = document.getElementById('chatMessages');
+  if (msgs) msgs.scrollTop = msgs.scrollHeight;
+}
+
+function renderChatMessages() {
+  if (chatMessages.length === 0) {
+    return `<div style="text-align:center;color:var(--muted);font-size:14px;padding:20px 0">👋 こんにちは！仮想通貨について何でも聞いてください。</div>`;
+  }
+  return chatMessages.map(m => {
+    const isUser = m.role === 'user';
+    return `<div style="display:flex;justify-content:${isUser ? 'flex-end' : 'flex-start'}">
+      <div style="max-width:80%;padding:10px 14px;border-radius:${isUser ? '14px 14px 4px 14px' : '14px 14px 14px 4px'};background:${isUser ? 'var(--accent)' : 'var(--surface2)'};color:${isUser ? '#fff' : 'var(--text)'};font-size:14px;line-height:1.7;white-space:pre-wrap;word-break:break-word">${escapeHtml(m.content)}</div>
+    </div>`;
+  }).join('');
+}
+
+function escapeHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+async function sendChat() {
+  const input = document.getElementById('chatInput');
+  const btn = document.getElementById('chatSendBtn');
+  if (!input || !btn) return;
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  btn.disabled = true;
+  btn.textContent = '...';
+  chatMessages.push({ role: 'user', content: text });
+  // add loading
+  chatMessages.push({ role: 'assistant', content: '考え中...' });
+  const msgs = document.getElementById('chatMessages');
+  if (msgs) { msgs.innerHTML = renderChatMessages(); msgs.scrollTop = msgs.scrollHeight; }
+  try {
+    const token = localStorage.getItem('discord_jwt') || '';
+    const res = await fetch(`${WORKER_URL}/api/chat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` },
+      body: JSON.stringify({ messages: chatMessages.slice(0, -1).map(m => ({ role: m.role, content: m.content })) })
+    });
+    const data = await res.json();
+    chatMessages[chatMessages.length - 1] = { role: 'assistant', content: data.content || 'エラーが発生しました。' };
+  } catch (e) {
+    chatMessages[chatMessages.length - 1] = { role: 'assistant', content: 'エラーが発生しました。もう一度お試しください。' };
+  }
+  if (msgs) { msgs.innerHTML = renderChatMessages(); msgs.scrollTop = msgs.scrollHeight; }
+  btn.disabled = false;
+  btn.textContent = '送信';
+}
+
 // ═══ QUIZ ═══
 const QUIZ_COUNT = 30;
 
 function renderQuizHome() {
-  const allDone = LESSONS.beginner.slice(0, FREE_COUNT).every(l => completedLessons.has(l.id));
   const passed = quizState.finished && !quizState.failed && quizState.score === quizState.questions.length;
+  const intermediateCard = isDiscordMember
+    ? `<div class="level-card" onclick="startQuiz('intermediate')">
+        <div class="level-card-icon">🟠</div>
+        <div class="level-card-name">中級編テスト</div>
+        <div class="level-card-desc">全${QUIZ_BANK.intermediate.length}問から${QUIZ_COUNT}問出題<br>挑戦しよう！</div>
+      </div>`
+    : `<div class="level-card locked-card">
+        <div class="level-card-icon">🟠</div>
+        <div class="level-card-name">中級編テスト</div>
+        <div class="level-card-desc">Discord限定</div>
+      </div>`;
+  const advancedCard = isDiscordMember
+    ? `<div class="level-card" onclick="startQuiz('advanced')">
+        <div class="level-card-icon">🔴</div>
+        <div class="level-card-name">上級編テスト</div>
+        <div class="level-card-desc">全${QUIZ_BANK.advanced.length}問から${QUIZ_COUNT}問出題<br>挑戦しよう！</div>
+      </div>`
+    : `<div class="level-card locked-card">
+        <div class="level-card-icon">🔴</div>
+        <div class="level-card-name">上級編テスト</div>
+        <div class="level-card-desc">Discord限定</div>
+      </div>`;
   document.getElementById('quizArea').innerHTML = `
     <div class="lesson-meta" style="margin-bottom:14px"><span class="badge badge-lesson">TEST</span></div>
     <h1 class="lesson-h1" style="margin-bottom:8px">📝 理解度テスト</h1>
@@ -2871,16 +2963,8 @@ function renderQuizHome() {
         <div class="level-card-name">初級編テスト</div>
         <div class="level-card-desc">全${QUIZ_BANK.beginner.length}問から${QUIZ_COUNT}問出題<br>${passed ? '✅ 合格済み' : '挑戦しよう！'}</div>
       </div>
-      <div class="level-card locked-card">
-        <div class="level-card-icon">🟠</div>
-        <div class="level-card-name">中級編テスト</div>
-        <div class="level-card-desc">Discord限定</div>
-      </div>
-      <div class="level-card locked-card">
-        <div class="level-card-icon">🔴</div>
-        <div class="level-card-name">上級編テスト</div>
-        <div class="level-card-desc">Discord限定</div>
-      </div>
+      ${intermediateCard}
+      ${advancedCard}
     </div>`;
 }
 
