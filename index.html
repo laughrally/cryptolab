@@ -4454,7 +4454,14 @@ function showAuthModal(reason) {
   var skipLP = params.get('app') === '1' || sessionStorage.getItem('crypto_entered');
   if (skipLP) {
     var lp = document.getElementById('landingPage');
+    var mainNav = document.getElementById('mainNav');
+    var mainApp = document.getElementById('mainApp');
+    var ps = document.getElementById('progressStrip');
     if (lp) lp.style.display = 'none';
+    if (mainNav) mainNav.style.display = '';
+    if (mainApp) mainApp.style.display = '';
+    if (ps) ps.style.display = '';
+    document.body.style.overflow = '';
     sessionStorage.setItem('crypto_entered', '1');
     setTimeout(function() {
       renderSidebar();
