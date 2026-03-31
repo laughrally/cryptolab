@@ -3469,7 +3469,11 @@ function parseJWTPayload(token) {
     const parts = token.split('.');
     if (parts.length !== 3) return null;
     const b64 = parts[1].replace(/-/g, '+').replace(/_/g, '/') + '=='.slice(0, (4 - parts[1].length % 4) % 4);
-    return JSON.parse(atob(b64));
+    // UTF-8対応デコード（日本語・絵文字などマルチバイト文字に対応）
+    const binary = atob(b64);
+    const bytes = new Uint8Array(binary.length);
+    for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+    return JSON.parse(new TextDecoder().decode(bytes));
   } catch { return null; }
 }
 
@@ -3620,11 +3624,11 @@ function updateProgress() {
 function renderSidebar() {
   ['beginner', 'intermediate', 'advanced'].forEach(level => {
     const el = document.getElementById('sb-' + level);
-    const levelLocked = DISCORD_LEVELS.includes(level);
+    const levelLocked = !isDiscordMember && DISCORD_LEVELS.includes(level);
     el.innerHTML = LESSONS[level].map((l, i) => {
       const done = completedLessons.has(l.id);
       const isActive = currentLesson && currentLesson.id === l.id;
-      const locked = levelLocked || (level === 'beginner' && i >= FREE_COUNT);
+      const locked = levelLocked || (!isDiscordMember && level === 'beginner' && i >= FREE_COUNT);
       if (locked) {
         return `<div class="lesson-item locked" onclick="showDiscordGate('${level}', ${i})">
           <span class="lesson-num">🔒</span>
@@ -3641,16 +3645,21 @@ function renderSidebar() {
 }
 
 function selectLesson(level, idx) {
-  if (DISCORD_LEVELS.includes(level) || (level === 'beginner' && idx >= FREE_COUNT)) {
+  if (!isDiscordMember && (DISCORD_LEVELS.includes(level) || (level === 'beginner' && idx >= FREE_COUNT))) {
     showDiscordGate(level, idx); return;
   }
   const l = LESSONS[level][idx];
   currentLesson = l;
   showSection('learn');
   renderSidebar();
-  const isLastFree = level === 'beginner' && idx === FREE_COUNT - 1;
+  const isLastFree = !isDiscordMember && level === 'beginner' && idx === FREE_COUNT - 1;
   const isDone = completedLessons.has(l.id);
   const mq = MINI_QUIZ[l.id] || [];
+  // 次のレッスンへのナビゲーションを計算
+  const levels = ['beginner', 'intermediate', 'advanced'];
+  const hasNextInLevel = idx + 1 < LESSONS[level].length;
+  const hasNextLevel = levels.indexOf(level) + 1 < levels.length;
+  const nextLevelName = levels[levels.indexOf(level) + 1];
 
   const nameBanner = !userName ? `
     <div class="name-banner">
@@ -3665,12 +3674,28 @@ function selectLesson(level, idx) {
       <div id="mqContent">${renderMiniQuizQ(l.id, 0)}</div>
     </div>` : '';
 
+  // 次へのボタンを構築
+  let nextBtn = '';
+  if (isDiscordMember) {
+    if (hasNextInLevel) {
+      nextBtn = `<button class="btn btn-secondary" onclick="selectLesson('${level}', ${idx+1})">次のレッスン →</button>`;
+    } else if (hasNextLevel) {
+      nextBtn = `<button class="btn btn-secondary" onclick="selectLesson('${nextLevelName}', 0)">次のレベルへ →</button>`;
+    }
+  } else {
+    if (idx < FREE_COUNT - 1) {
+      nextBtn = `<button class="btn btn-secondary" onclick="selectLesson('${level}', ${idx+1})">次のレッスン →</button>`;
+    } else if (isLastFree) {
+      nextBtn = `<button class="btn btn-secondary" onclick="showSection('quiz')">📝 テストを受ける</button>`;
+    }
+  }
+
   document.getElementById('lessonContent').innerHTML = `
     ${nameBanner}
     <div class="lesson-meta">
       <span class="badge badge-lesson">LESSON ${String(idx+1).padStart(2,'0')}</span>
-      <span class="badge badge-beginner">初級編</span>
-      <span class="badge badge-free-tag">公開中</span>
+      <span class="badge badge-beginner">${level === 'beginner' ? '初級編' : level === 'intermediate' ? '中級編' : '上級編'}</span>
+      ${isDiscordMember ? '<span class="badge" style="background:rgba(88,101,242,.15);color:#5865f2">Discord限定</span>' : '<span class="badge badge-free-tag">公開中</span>'}
     </div>
     <h1 class="lesson-h1">${l.emoji} ${l.title}</h1>
     <div class="lesson-body">${l.content}</div>
@@ -3688,11 +3713,7 @@ function selectLesson(level, idx) {
       ${isDone
         ? '<button class="btn btn-secondary">✓ 完了済み</button>'
         : `<button class="btn btn-primary" id="completeBtn" onclick="completeLesson('${level}', ${idx})">✅ 理解した！次へ</button>`}
-      ${idx < FREE_COUNT - 1
-        ? `<button class="btn btn-secondary" onclick="selectLesson('${level}', ${idx+1})">次のレッスン →</button>`
-        : isLastFree
-        ? `<button class="btn btn-secondary" onclick="showSection('quiz')">📝 テストを受ける</button>`
-        : ''}
+      ${nextBtn}
       <button class="btn btn-secondary" onclick="showSection('chat')">🤖 AIに質問する</button>
     </div>
     <div class="share-bar">
@@ -3757,9 +3778,21 @@ function completeLesson(level, idx) {
   updateProgress();
   renderSidebar();
   updateLeaderboard();
-  const isLastFree = level === 'beginner' && idx === FREE_COUNT - 1;
+  const isLastFree = !isDiscordMember && level === 'beginner' && idx === FREE_COUNT - 1;
   if (isLastFree) {
     selectLesson(level, idx);
+  } else if (isDiscordMember) {
+    // Discordメンバーは全レッスン順に進める
+    const levels = ['beginner', 'intermediate', 'advanced'];
+    const nextIdx = idx + 1;
+    if (nextIdx < LESSONS[level].length) {
+      setTimeout(() => selectLesson(level, nextIdx), 300);
+    } else {
+      const nextLevelIdx = levels.indexOf(level) + 1;
+      if (nextLevelIdx < levels.length) {
+        setTimeout(() => selectLesson(levels[nextLevelIdx], 0), 300);
+      }
+    }
   } else if (idx < FREE_COUNT - 1) {
     setTimeout(() => selectLesson(level, idx + 1), 300);
   }
