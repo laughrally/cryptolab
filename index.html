@@ -131,6 +131,11 @@ aside {
 .screen { display: none; }
 .screen.active { display: block; animation: fadeUp .25s ease; }
 @keyframes fadeUp { from { opacity:0; transform:translateY(6px); } to { opacity:1; transform:translateY(0); } }
+/* 全画面のコンテンツを中央寄せ */
+#lessonContent, #chatArea, #quizArea, #dashContent, #lbContent, #certContent {
+  max-width: 860px;
+  margin: 0 auto;
+}
 
 /* LESSON CONTENT */
 .lesson-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 14px; flex-wrap: wrap; }
@@ -3902,7 +3907,7 @@ function renderChatScreen() {
   }
   // Discord認証済み → チャットUIを表示
   area.innerHTML = `
-    <div style="max-width:720px;display:flex;flex-direction:column;height:calc(100vh - 160px)">
+    <div style="display:flex;flex-direction:column;height:calc(100vh - 160px)">
       <div style="margin-bottom:16px">
         <div class="lesson-meta"><span class="badge badge-lesson">AI TUTOR</span></div>
         <h1 class="lesson-h1" style="margin-bottom:4px">🤖 Satoshi先生に質問する</h1>
