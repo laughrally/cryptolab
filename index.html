@@ -4244,11 +4244,16 @@ function renderQuizResult() {
 
 // ═══ DASHBOARD ═══
 function renderDashboard() {
-  const total = FREE_COUNT;
-  const done = Math.min(completedLessons.size, FREE_COUNT);
+  // Discord認証済みは全レッスン数、未認証は無料5本
+  const allLessons = [...LESSONS.beginner, ...LESSONS.intermediate, ...LESSONS.advanced];
+  const total = isDiscordMember ? allLessons.length : FREE_COUNT;
+  const done = isDiscordMember ? completedLessons.size : Math.min(completedLessons.size, FREE_COUNT);
   const pct = Math.round((done / total) * 100);
   const quizPassed = quizState.finished && !quizState.failed && quizState.score === quizState.questions.length;
   const scoreLabel = !quizState.finished ? '—' : quizPassed ? '合格🏆' : `${quizState.score}/${quizState.questions.length}問`;
+  // 進捗リスト：Discord認証済みは全レッスン、未認証は初級5本のみ
+  const progressLessons = isDiscordMember ? allLessons : LESSONS.beginner.slice(0, FREE_COUNT);
+  const sectionLabel = isDiscordMember ? '📚 全レッスン進捗' : '📚 初級編レッスン進捗（1〜5）';
   document.getElementById('dashContent').innerHTML = `
     <h1 class="lesson-h1" style="margin-bottom:8px">📊 学習進捗</h1>
     ${userName ? `<p style="color:var(--muted);font-size:14px;margin-bottom:20px">👤 <strong>${userName}</strong> さんの学習記録</p>` : `
@@ -4262,9 +4267,9 @@ function renderDashboard() {
       <div class="stat-card"><div class="stat-label">進捗率</div><div class="stat-val orange">${pct}<span style="font-size:16px">%</span></div></div>
       <div class="stat-card"><div class="stat-label">テスト結果</div><div class="stat-val" style="font-size:${quizPassed?'20px':'26px'};color:var(--green)">${scoreLabel}</div></div>
     </div>
-    <div class="section-h">📚 初級編レッスン進捗（1〜5）</div>
+    <div class="section-h">${sectionLabel}</div>
     <div class="prog-list">
-      ${LESSONS.beginner.slice(0, FREE_COUNT).map((l, i) => {
+      ${progressLessons.map((l) => {
         const d = completedLessons.has(l.id);
         const active = currentLesson && currentLesson.id === l.id;
         return `<div class="prog-item">
@@ -4279,7 +4284,7 @@ function renderDashboard() {
     </div>
     <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
       <button class="btn btn-secondary" onclick="showSection('leaderboard')" style="flex:1;min-width:140px">🏅 ランキング</button>
-      <a href="${DISCORD_URL}" target="_blank" class="btn btn-discord" style="flex:1;min-width:140px;text-align:center;text-decoration:none">🎮 中級・上級を解放</a>
+      ${!isDiscordMember ? `<a href="${DISCORD_URL}" target="_blank" class="btn btn-discord" style="flex:1;min-width:140px;text-align:center;text-decoration:none">🎮 中級・上級を解放</a>` : ''}
     </div>`;
 }
 
