@@ -509,6 +509,25 @@ aside {
   .cert-h1 { font-size: 16px; }
   .cert-footer { flex-direction: column; gap: 10px; align-items: center; }
   .cert-desc { font-size: 12px; }
+  .dash-grid { grid-template-columns: 1fr !important; }
+}
+
+/* レスポンシブ：全コンテンツエリアの中央寄せとパディング */
+@media (max-width: 768px) {
+  #lessonContent, #chatArea, #quizArea, #dashContent, #lbContent, #certContent {
+    max-width: 100%;
+    padding: 0;
+  }
+  /* AIチャットの高さ調整 */
+  #chatArea > div[style*="flex-direction:column"] {
+    height: calc(100vh - 200px) !important;
+  }
+}
+@media (min-width: 769px) {
+  #lessonContent, #chatArea, #quizArea, #dashContent, #lbContent, #certContent {
+    max-width: 860px;
+    margin: 0 auto;
+  }
 }
 
 /* ===== LANDING PAGE ===== */
@@ -4255,7 +4274,7 @@ function renderDashboard() {
   const done = isDiscordMember ? completedLessons.size : Math.min(completedLessons.size, FREE_COUNT);
   const pct = Math.round((done / total) * 100);
   const quizPassed = quizState.finished && !quizState.failed && quizState.score === quizState.questions.length;
-  const scoreLabel = !quizState.finished ? '—' : quizPassed ? '合格🏆' : `${quizState.score}/${quizState.questions.length}問`;
+  const scoreLabel = !quizState.finished ? '—' : quizPassed ? '合格🏆' : (quizState.score + '/' + quizState.questions.length + '問');
   // 進捗リスト：Discord認証済みは全レッスン、未認証は初級5本のみ
   const progressLessons = isDiscordMember ? allLessons : LESSONS.beginner.slice(0, FREE_COUNT);
   const sectionLabel = isDiscordMember ? '📚 全レッスン進捗' : '📚 初級編レッスン進捗（1〜5）';
