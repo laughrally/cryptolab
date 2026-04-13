@@ -3941,13 +3941,15 @@ async function sendChatMessage() {
   const typingId = appendChatBubble('ai', '...');
   try {
     const token = localStorage.getItem('crypto_discord_jwt');
+    // Workerの仕様: { messages: [{role, content}] } 形式で送信
+    const messages = chatHistory.slice(-20).map(h => ({ role: h.role, content: h.content }));
     const res = await fetch(WORKER_URL + '/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
-      body: JSON.stringify({ message: msg, history: chatHistory.slice(-10) })
+      body: JSON.stringify({ messages })
     });
     const data = await res.json();
-    const reply = data.reply || data.message || data.content || 'エラーが発生しました。もう一度お試しください。';
+    const reply = data.content || data.reply || data.message || 'エラーが発生しました。もう一度お試しください。';
     updateChatBubble(typingId, reply);
     chatHistory.push({ role: 'assistant', content: reply });
   } catch (e) {
