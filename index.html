@@ -4278,38 +4278,41 @@ function renderDashboard() {
   // 進捗リスト：Discord認証済みは全レッスン、未認証は初級5本のみ
   const progressLessons = isDiscordMember ? allLessons : LESSONS.beginner.slice(0, FREE_COUNT);
   const sectionLabel = isDiscordMember ? '📚 全レッスン進捗' : '📚 初級編レッスン進捗（1〜5）';
-  document.getElementById('dashContent').innerHTML = `
-    <h1 class="lesson-h1" style="margin-bottom:8px">📊 学習進捗</h1>
-    ${userName ? `<p style="color:var(--muted);font-size:14px;margin-bottom:20px">👤 <strong>${userName}</strong> さんの学習記録</p>` : `
-    <div class="name-banner" style="margin-bottom:20px">
-      <span class="name-banner-label">👤 ニックネームを登録：</span>
-      <input class="name-input" id="dashNameInput" placeholder="ニックネーム" maxlength="20">
-      <button class="name-save-btn" onclick="saveNameFromDash()">保存</button>
-    </div>`}
-    <div class="dash-grid" style="grid-template-columns:repeat(3,1fr)">
-      <div class="stat-card"><div class="stat-label">完了レッスン</div><div class="stat-val blue">${done}<span style="font-size:14px;color:var(--muted)">/${total}</span></div></div>
-      <div class="stat-card"><div class="stat-label">進捗率</div><div class="stat-val orange">${pct}<span style="font-size:16px">%</span></div></div>
-      <div class="stat-card"><div class="stat-label">テスト結果</div><div class="stat-val" style="font-size:${quizPassed?'20px':'26px'};color:var(--green)">${scoreLabel}</div></div>
-    </div>
-    <div class="section-h">${sectionLabel}</div>
-    <div class="prog-list">
-      ${progressLessons.map((l) => {
-        const d = completedLessons.has(l.id);
-        const active = currentLesson && currentLesson.id === l.id;
-        return `<div class="prog-item">
-          <span class="prog-icon">${l.emoji}</span>
-          <div class="prog-info">
-            <div class="prog-name">${l.title}</div>
-            <div class="prog-bar-wrap"><div class="prog-bar-fill ${d ? 'done' : active ? 'active' : ''}" style="width:${d ? 100 : active ? 40 : 0}%"></div></div>
-          </div>
-          <div class="prog-pct">${d ? '✅' : active ? '学習中' : '—'}</div>
-        </div>`;
-      }).join('')}
-    </div>
-    <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">
-      <button class="btn btn-secondary" onclick="showSection('leaderboard')" style="flex:1;min-width:140px">🏅 ランキング</button>
-      ${!isDiscordMember ? '<a href="' + DISCORD_URL + '" target="_blank" class="btn btn-discord" style="flex:1;min-width:140px;text-align:center;text-decoration:none">🎮 中級・上級を解放</a>' : ''}
-    </div>`;
+  const nameHtml = userName
+    ? '<p style="color:var(--muted);font-size:14px;margin-bottom:20px">👤 <strong>' + userName + '</strong> さんの学習記録</p>'
+    : '<div class="name-banner" style="margin-bottom:20px"><span class="name-banner-label">👤 ニックネームを登録：</span><input class="name-input" id="dashNameInput" placeholder="ニックネーム" maxlength="20"><button class="name-save-btn" onclick="saveNameFromDash()">保存</button></div>';
+  const progItemsHtml = progressLessons.map(function(l) {
+    const d = completedLessons.has(l.id);
+    const active = currentLesson && currentLesson.id === l.id;
+    const fillClass = d ? 'done' : (active ? 'active' : '');
+    const fillW = d ? 100 : (active ? 40 : 0);
+    const pctTxt = d ? '✅' : (active ? '学習中' : '—');
+    return '<div class="prog-item">'
+      + '<span class="prog-icon">' + l.emoji + '</span>'
+      + '<div class="prog-info">'
+      + '<div class="prog-name">' + l.title + '</div>'
+      + '<div class="prog-bar-wrap"><div class="prog-bar-fill ' + fillClass + '" style="width:' + fillW + '%"></div></div>'
+      + '</div>'
+      + '<div class="prog-pct">' + pctTxt + '</div>'
+      + '</div>';
+  }).join('');
+  const unlockBtn = !isDiscordMember
+    ? '<a href="' + DISCORD_URL + '" target="_blank" class="btn btn-discord" style="flex:1;min-width:140px;text-align:center;text-decoration:none">🎮 中級・上級を解放</a>'
+    : '';
+  document.getElementById('dashContent').innerHTML =
+    '<h1 class="lesson-h1" style="margin-bottom:8px">📊 学習進捗</h1>'
+    + nameHtml
+    + '<div class="dash-grid" style="grid-template-columns:repeat(3,1fr)">'
+    + '<div class="stat-card"><div class="stat-label">完了レッスン</div><div class="stat-val blue">' + done + '<span style="font-size:14px;color:var(--muted)">/' + total + '</span></div></div>'
+    + '<div class="stat-card"><div class="stat-label">進捗率</div><div class="stat-val orange">' + pct + '<span style="font-size:16px">%</span></div></div>'
+    + '<div class="stat-card"><div class="stat-label">テスト結果</div><div class="stat-val" style="font-size:' + (quizPassed ? '20px' : '26px') + ';color:var(--green)">' + scoreLabel + '</div></div>'
+    + '</div>'
+    + '<div class="section-h">' + sectionLabel + '</div>'
+    + '<div class="prog-list">' + progItemsHtml + '</div>'
+    + '<div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap">'
+    + '<button class="btn btn-secondary" onclick="showSection(\'leaderboard\')" style="flex:1;min-width:140px">🏅 ランキング</button>'
+    + unlockBtn
+    + '</div>';
 }
 
 function saveNameFromDash() {
