@@ -2026,7 +2026,7 @@ const LESSONS = {
         <p>Axie Infinityはピーク時に月300万人のアクティブユーザーを記録。しかし報酬のインフレが続き、トークン価格の下落→ユーザー離脱→さらに価格下落の悪循環に陥った。</p>
         <div class="box box-blue"><strong>次世代GameFiが目指す設計</strong><br>✅ ゲームとしての面白さが第一（稼ぎはボーナス）<br>✅ トークンの供給をゲームプレイと連動させる<br>✅ プレイヤーがゲームのオーナーになるDAO形式</div>
         <div class="box box-orange">「ゲームトークン」は最もボラティリティが高い部類のトークン。投資するなら全資産の1〜2%以内に限定すること。</div>` },
-    { id: 'i9', emoji: '🔐', title: 'セキュリティの実践——ハッキングから守る', locked: true, content: `<p>仮想通貨を保有・運用する上で、セキュリティは最優先事項だ。ハッキング・フィッシング——実際に起きた被害の手口を知ることが最強の防御になる。</p>
+    { id: 'i9', emoji: '🔐', title: 'セキュリティの実践', locked: true, content: `<p>仮想通貨を保有・運用する上で、セキュリティは最優先事項だ。ハッキング・フィッシング——実際に起きた被害の手口を知ることが最強の防御になる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiのセキュリティは「弱いところから攻められる」という鉄則がある。スマートコントラクト・ブリッジ・オラクル・フロントエンド——全ての層がターゲットになりうる。」</div></div></div>
         <h3>攻撃の層別分類</h3>
         <div class="box box-orange">
@@ -2213,91 +2213,83 @@ const LESSONS = {
           ✅ スマホに生体認証を設定する<br>
           ✅ 公共Wi-Fiでの操作は避ける
         </div>` },
-    { id: 'i23', emoji: '🏗️', title: 'Layer2の詳しい仕組み', locked: true, content: `<p>仮想通貨の先物取引（フューチャーズ）は現物を保有せずに価格変動で利益を狙える。ヘッジ・投機・アービトラージと多様な用途があるが、理解なしに使うと一瞬で証拠金がゼロになる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「先物は「将来の価格に今賭ける」ゲーム。レバレッジを使えば少額で大きなポジションを持てるが、逆に動けば一瞬で資金が消える。仕組みを100%理解してから使うこと。」</div></div></div>
-        <h3>パーペチュアル先物（無期限先物）</h3>
-        <p>期限のない先物取引。現物価格との乖離を防ぐためのファンディングレート（資金調達率）という仕組みがある。ロングが多いとロング保有者がショート保有者に支払いが発生する。</p>
+    { id: 'i23', emoji: '🏗️', title: 'Layer2の詳しい仕組み', locked: true, content: `<p>Layer2（L2）とは、イーサリアムなどのメインチェーン（Layer1）の上に構築された「第2層」のネットワークだ。メインチェーンのセキュリティを引き継ぎながら、処理をオフチェーンで行うことで手数料と速度の問題を解決する。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「Layer2はETHの「渋滞を迂回する高速道路」です。メインチェーンのセキュリティはそのままに、取引をまとめて処理することで手数料を大幅に削減できる。」</div></div></div>
+        <h3>Layer2の2大方式</h3>
         <div class="box box-blue">
-          <strong>ファンディングレートの読み方</strong><br>
-          FR高騰（ロング偏り）→相場過熱・天井の可能性<br>
-          FR大幅マイナス（ショート偏り）→相場悲観・底の可能性<br>
-          FR＝0付近→中立状態
+          <strong>Optimistic Rollup</strong>（Arbitrum・Optimism・Base）<br>
+          取引を「正しい」と仮定して処理し、約7日間の異議申し立て期間を設ける。EVM互換性が高く、既存のスマートコントラクトをそのまま移植しやすい。<br><br>
+          <strong>ZK Rollup</strong>（zkSync・StarkNet・Polygon zkEVM）<br>
+          ゼロ知識証明で取引の正当性を数学的に証明。即時確定が可能で安全性が高い。証明生成に計算コストがかかるが年々改善されている。
         </div>
-        <h3>レバレッジのリスク</h3>
+        <h3>主要L2の比較</h3>
+        <div class="box box-gray">
+          <strong>Arbitrum</strong>：DeFiの利用が多い最大規模のL2。Optimistic Rollup方式。<br>
+          <strong>Optimism</strong>：Coinbaseが運営するBaseの基盤。OP Stackという共通基盤を展開中。<br>
+          <strong>Base</strong>：Coinbaseが運営。使いやすいUIと低手数料で急成長。<br>
+          <strong>zkSync Era</strong>：ZK Rollup方式。アカウント抽象化に対応しウォレット体験が向上。
+        </div>
         <div class="box box-orange">
-          <strong>ロスカット（強制清算）</strong><br>
-          10倍レバレッジなら10%の逆方向の動きで全証拠金が失われる。「ほんの少し動いただけ」でロスカットになることも。<br><br>
-          <strong>カスケード清算</strong><br>
-          大量のロスカットが連鎖して価格が急落・急騰する現象。「急に価格が動いた」ように見える動きの多くはこれが原因。<br><br>
-          <strong>ファンディングコストの蓄積</strong><br>
-          FR高騰時にロングポジションを長期保有すると、ファンディングの支払いがコストになる。
+          <strong>L2使用時の注意点</strong><br>
+          ・L2からL1への引き出しにOptimistic系は約7日かかる（ブリッジを使えば即時だがリスクあり）<br>
+          ・L2ごとにエコシステムが異なるため、使いたいDeFiがどのL2にあるか確認が必要<br>
+          ・ガス代はETH本体の1/10〜1/100程度
+        </div>` },
+    { id: 'i24', emoji: '🎰', title: 'ミームコインの経済学', locked: true, content: `<p>ミームコインとはDoge・SHIBなど、ジョークやネットミームをモチーフにした仮想通貨だ。ファンダメンタルズはほぼ存在しないが、SNSの熱量と著名人の一言で数十〜数百倍に跳ね上がることがある。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ミームコインは「経済学」というより「群衆心理学」です。価値の根拠はコミュニティの熱量だけ。それが冷めた瞬間に99%下落する。遊ぶなら全額失っても平気な金額で。」</div></div></div>
+        <h3>ミームコインが暴騰する仕組み</h3>
+        <div class="box box-blue">
+          <strong>FOMO（取り残される恐怖）</strong>：SNSで「100倍になった」という投稿が広がり、乗り遅れを恐れた資金が殺到する。<br><br>
+          <strong>著名人効果</strong>：イーロン・マスクのツイート一つでDOGEが数百%動いた実績がある。<br><br>
+          <strong>流動性の薄さ</strong>：時価総額が小さいため少額の資金でも大きく動く。<br><br>
+          <strong>Pump.fun効果</strong>：Solana上でミームコインを誰でも数秒・無料で発行できるプラットフォーム。2024年に爆発的に普及。
         </div>
+        <h3>ミームコインの現実</h3>
+        <p>Pump.funで発行されるトークンの90%以上は数時間〜数日で価値がゼロになる。「ラグプル（開発者が流動性を引き出して逃げる）」が横行している。勝者は早期参入した少数派と、ラグプルを実行した開発者のみ。</p>
+        <div class="box box-orange">
+          <strong>ミームコインへの投資原則</strong><br>
+          ✅ 全額失っても後悔しない金額のみ<br>
+          ✅ 「まだ上がる」と思ったときが利確のタイミング<br>
+          ✅ ラグプルチェック必須（honeypot.is等）<br>
+          ❌ 「次の1000倍コイン」という宣伝文句は詐欺の典型
+        </div>` },
+    { id: 'i25', emoji: '🔐', title: 'DeFiのウォレット管理上級編', locked: true, content: `<p>DeFiを本格的に使いこなすには、ウォレット管理の上級知識が必要だ。複数ウォレットの使い分け・ハードウェアウォレットとのDeFi連携・承認（Approval）管理——これらを習得することで安全性が大幅に上がる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiの上級者は必ず「メインウォレット」と「バーナーウォレット」を使い分けている。新しいプロトコルを試すときはバーナーに少額だけ入れて試す。これが被害を最小化する鉄則。」</div></div></div>
+        <h3>ウォレットの使い分け戦略</h3>
+        <div class="box box-blue">
+          <strong>コールドウォレット（Ledger等）</strong>：長期保有資産の管理専用。DeFiには使わない。<br><br>
+          <strong>メインホットウォレット</strong>：使用実績のある信頼できるDeFiプロトコルのみで使用。<br><br>
+          <strong>バーナーウォレット</strong>：新しいプロトコル・NFTミント・エアドロップ請求専用。少額のみ。
+        </div>
+        <h3>トークン承認（Approval）管理</h3>
+        <p>DEXやDeFiプロトコルを使うと「このコントラクトにトークンの操作権限を与える」という承認トランザクションが発生する。これが無制限承認の場合、プロトコルがハッキングされると資産が全額盗まれるリスクがある。</p>
         <div class="box box-green">
-          <strong>先物入門者へのアドバイス</strong><br>
-          ✅ 最初はレバレッジ1〜2倍から<br>
-          ✅ 証拠金は「全額失っても平気」な金額のみ<br>
-          ✅ ロスカットラインを事前に計算して設定する<br>
-          ✅ 「今絶対上がる」という確信のときが最も危険
-        </div>` },
-    { id: 'i24', emoji: '🎰', title: 'ミームコインの経済学', locked: true, content: `<p>仮想通貨プロジェクトの「本当の価値」を評価するためのファンダメンタル分析の手法を学ぼう。ホワイトペーパー・チーム・トークノミクス・実際の利用数——何を確認すればいいのかを整理する。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「このコインは絶対上がる」という確信の前に、「なぜこのコインが必要なのか」を問いかける習慣を持つこと。問いに答えられないなら、それは信仰であって投資ではない。」</div></div></div>
-        <h3>評価すべき5つのポイント</h3>
-        <div class="box box-blue">
-          <strong>① ホワイトペーパーと技術</strong><br>
-          解決しようとしている問題が実在するか。技術的に実現可能か。競合との差別化は何か。<br><br>
-          <strong>② チームと実績</strong><br>
-          開発チームの身元が公開されているか（匿名は警戒）。過去に成功したプロジェクトの経験があるか。GitHubのコミット頻度は活発か。<br><br>
-          <strong>③ トークノミクス</strong><br>
-          チーム・投資家の配分比率は適切か（50%超は警戒）。ロックアップ期間は十分か。バーン機構があるか。<br><br>
-          <strong>④ 実際の利用状況</strong><br>
-          TVL・DAU（日次アクティブユーザー）・取引量などの実績数値。「将来の可能性」だけでなく「今使われているか」が重要。<br><br>
-          <strong>⑤ コミュニティと生態系</strong><br>
-          Discord・X（Twitter）のエンゲージメント。批判的な意見を許容する文化があるか。VC（ベンチャーキャピタル）バックの質。
+          ✅ Revoke.cash（revoke.cash）で不要な承認を定期的に取り消す<br>
+          ✅ 承認時は無制限ではなく必要額だけ承認する設定を使う<br>
+          ✅ 使わなくなったプロトコルへの承認は必ず取り消す
         </div>
         <div class="box box-orange">
-          <strong>ファンダメンタルが良くても価格が上がるとは限らない</strong><br>
-          市場のセンチメント・マクロ環境・トークンのロック解除スケジュールなど、ファンダメンタル以外の要素も価格に大きく影響する。ファンダメンタル分析は「何を買うか」の判断には有効だが、「いつ買うか」の判断には別の視点が必要。
+          <strong>ハードウェアウォレット×DeFi</strong><br>
+          LedgerをMetaMaskと接続してDeFiを使うことができる。署名のたびにLedger本体で確認するため安全性が高い。ただし画面の小ささでトランザクション内容を見落とすリスクもあるため注意。
         </div>` },
-    { id: 'i25', emoji: '🔐', title: 'DeFiのウォレット管理上級編', locked: true, content: `<p>NFTの技術は「デジタルアートの売買」だけにとどまらない。ゲーム・音楽・スポーツ・不動産など様々な分野に広がっている。本質的なユースケースと将来性を整理しよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「NFTの「高い絵が売れる」という側面ばかり注目されたが、本質は「デジタルデータの所有権証明」。この技術が本当に価値を発揮するのはアート以外の分野かもしれない。」</div></div></div>
-        <h3>NFTの多様なユースケース</h3>
+    { id: 'i26', emoji: '📊', title: 'オンチェーン分析ツールの実践', locked: true, content: `<p>オンチェーン分析ツールを実践的に使いこなすことで、「スマートマネーが今何をしているか」を把握できるようになる。主要ツールの使い方と読み方を整理しよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「オンチェーンデータは嘘をつかない。価格チャートは操作できても、実際のBTCの移動は隠せない。スマートマネーが何をしているかを見るのがオンチェーン分析の本質です。」</div></div></div>
+        <h3>主要ツールと使い方</h3>
         <div class="box box-blue">
-          <strong>ゲームアイテム</strong><br>
-          ゲーム内アイテムをNFT化することで、ゲームが終了してもアイテムを保持できる。複数のゲームで同じアイテムを使える世界が実現しつつある。<br><br>
-          <strong>音楽</strong><br>
-          アーティストがNFTで楽曲・アルバムを直接販売。中間業者（レコード会社・配信プラットフォーム）の取り分を削減できる。ロイヤリティの自動分配も可能。<br><br>
-          <strong>スポーツ</strong><br>
-          NBA Top Shot（バスケットボールのハイライト動画NFT）が爆発的に普及。チケットのNFT化で転売防止や特典付与が可能に。<br><br>
-          <strong>証明書・資格</strong><br>
-          SBT（ソウルバウンドトークン）として学歴・資格・職歴をオンチェーンに記録。改ざん不可能な「デジタル履歴書」として活用可能。
+          <strong>Glassnode（glassnode.com）</strong><br>
+          MVRV・SOPR・Exchange Netflow等の主要指標が揃う。無料プランでも主要指標を確認できる。BTCの長期分析に最適。<br><br>
+          <strong>Nansen（nansen.ai）</strong><br>
+          ウォレットにラベルを付けて「スマートマネー」の動きを追跡。どの機関が何を買っているかを可視化。DeFi分析に強い。<br><br>
+          <strong>Dune Analytics（dune.com）</strong><br>
+          SQLクエリで独自の分析が可能。DeFiのTVL・ユーザー数・取引量を自由に分析。無料で使える。<br><br>
+          <strong>CryptoQuant（cryptoquant.com）</strong><br>
+          取引所フロー・マイナーデータ・デリバティブデータが充実。取引所への大量流入（売り圧のサイン）をリアルタイムで確認できる。
         </div>
-        <h3>NFT投資の現実</h3>
+        <h3>実践：取引所フロー分析</h3>
         <div class="box box-orange">
-          ・NFTの価値はコミュニティの強さに大きく依存する<br>
-          ・バブル期に購入したNFTの多くは現在99%以上の価値を失っている<br>
-          ・「著名人が持っているから価値がある」は危険な思考<br>
-          ・ロイヤリティが廃止される動きがあり、クリエイターへの収益還元が不安定になっている
-        </div>` },
-    { id: 'i26', emoji: '📊', title: 'オンチェーン分析ツールの実践', locked: true, content: `<p>クロスチェーン技術はマルチチェーン時代の必須知識だ。ETH・SOL・BNB等の異なるブロックチェーン間でアセットや情報を移動させる仕組みを理解しよう。便利な反面、ブリッジはハッキングの標的になりやすい。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ブリッジはDeFiで最もリスクが高い部分の一つ。2022年だけでブリッジ関連のハッキングで数千億円が失われた。使う場合は実績のある大手ブリッジを、必要最小限の金額で使うこと。」</div></div></div>
-        <h3>ブリッジの仕組み</h3>
-        <p>チェーンAのトークンをチェーンBで使いたいとき、ブリッジがチェーンA側でトークンをロックし、チェーンB側で同等のラップドトークンを発行する。逆の操作で元のチェーンに戻せる。</p>
-        <div class="box box-blue">
-          <strong>主要なブリッジ</strong><br>
-          ・<strong>Stargate Finance</strong>：LayerZero技術を使ったマルチチェーンブリッジ<br>
-          ・<strong>Hop Protocol</strong>：ETHのL2間の高速転送に特化<br>
-          ・<strong>Portal Bridge（Wormhole）</strong>：多チェーン対応。2022年に約340億円のハッキング被害あり<br>
-          ・<strong>IBC（Cosmos）</strong>：Cosmosエコシステムのネイティブブリッジ。比較的安全
-        </div>
-        <h3>ブリッジのリスクと対策</h3>
-        <div class="box box-orange">
-          <strong>ブリッジが狙われる理由</strong><br>
-          チェーンをまたぐ処理の検証が複雑で、スマートコントラクトのバグが生まれやすい。また大量の資産が集中するためハッカーのターゲットになりやすい。<br><br>
-          <strong>安全な使い方</strong><br>
-          ✅ 実績のある大手ブリッジを使う<br>
-          ✅ 一度に大量を移動させずに少額でテスト<br>
-          ✅ 移動完了まで取引を追跡する<br>
-          ✅ ラップドトークンのデペッグリスクを理解する
+          <strong>取引所への大量流入</strong>→売りの準備→価格下落のサイン<br>
+          <strong>取引所からの大量流出</strong>→長期保有に移行→価格上昇のサイン<br><br>
+          ただし取引所の内部ウォレット間の移動が「大量売り」に見えるケースもある。単一指標だけで判断しないこと。
         </div>` },
     { id: 'i27', emoji: '💸', title: '仮想通貨の出金・換金方法', locked: true, content: `<p>「儲かったBTCをどうやって現金化するか」——意外と知られていない手順がある。スムーズに換金するための方法を整理し、税金トラブルを避けるための知識を身につけよう。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「換金のタイミングと税金は切り離せない。「いくら稼いだか」より「いくら手元に残るか」を考える習慣が、長期的な資産形成につながります。」</div></div></div>
