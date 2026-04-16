@@ -2806,27 +2806,23 @@ const LESSONS = {
         <div class="box box-orange">
           最も重要なのは「計画を守ること」。相場が急落したときに「もう少し下がるかも」と売り、急騰したときに「もっと上がるはず」と追加購入する——このパターンから脱するには、書いたルールを守ることしかない。
         </div>` },
-    { id: 'a11', emoji: '⚙️', title: 'スマートコントラクト監査の読み方', locked: true, content: `<p>スマートコントラクトの脆弱性パターンを知ることで、DeFiを使う前のリスク評価精度が格段に上がる。過去の大型ハッキングは同じパターンの繰り返しだ。歴史から学ぼう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「過去のハッキングの多くは同じパターンの繰り返し。新しいプロジェクトが古いバグを繰り返す——だから歴史を学ぶことが重要です。知識は防御になる。」</div></div></div>
+    { id: 'a11', emoji: '⚙️', title: 'スマートコントラクト監査の読み方', locked: true, content: `<p>スマートコントラクトの脆弱性パターンを知ることで、DeFiを使う前のリスク評価精度が格段に上がる。過去の大型ハッキングは同じパターンの繰り返しだ。監査レポートを読めるようになることが上級DeFiユーザーの必須スキル。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「監査済みだから安全とは限らない。監査は"既知の脆弱性パターンを確認する"作業であって、全てのバグを発見できる保証はない。監査の質と範囲を確認すること。」</div></div></div>
         <h3>主要な脆弱性パターン</h3>
         <div class="box box-orange">
-          <strong>再入攻撃（Reentrancy）</strong><br>
-          The DAO事件（2016年、約60億円）の原因。関数が外部コントラクトを呼ぶ際に再帰的に呼び出される脆弱性。残高を更新する前に送金処理を行うと悪用される。<br><br>
-          <strong>アクセスコントロールの欠如</strong><br>
-          管理者専用関数が誰でも呼べる状態。設計ミスで誰でも資金を引き出せる状態になるケース。<br><br>
-          <strong>オラクル操作</strong><br>
-          フラッシュローンと組み合わせてDEXの瞬間価格を操作し、誤った価格でプロトコルを動かす。<br><br>
-          <strong>フラッシュローン攻撃</strong><br>
-          担保なしで巨額を借り、同一トランザクション内でプロトコルを操作して利益を得る。
+          <strong>再入攻撃（Reentrancy）</strong><br>外部コントラクトへの呼び出し中に、呼び出し先が再び元のコントラクトを呼び出す攻撃。2016年のDAOハック（約60億円）の原因。Checks-Effects-Interactionsパターンで防御。<br><br>
+          <strong>整数オーバーフロー・アンダーフロー</strong><br>整数の上限・下限を超えた計算で意図しない値になる。Solidity 0.8以降はデフォルトでチェックされるようになった。<br><br>
+          <strong>フラッシュローン攻撃</strong><br>担保なしで大量の資金を1トランザクション内で借りてオラクルを操作し利益を得る。Euler Finance（約570億円）等で被害。<br><br>
+          <strong>アクセス制御の不備</strong><br>管理者権限を持つ関数が外部から呼べてしまう設計ミス。Ronin Bridge（約800億円）もアクセス制御の問題が根本原因。
         </div>
-        <h3>安全なプロトコルを選ぶチェックリスト</h3>
-        <div class="box box-green">
-          ✅ Trail of Bits・OpenZeppelin等の複数監査機関による監査済み<br>
-          ✅ バグバウンティプログラムが設置されている（ImmuneFi等）<br>
-          ✅ ローンチから6ヶ月以上経過・大きな問題が発生していない<br>
-          ✅ 緊急停止機能とタイムロックの実装<br>
-          ✅ コードがオープンソースで公開されている
-        </div>` },
+        <h3>監査レポートの読み方</h3>
+        <div class="box box-blue">
+          監査レポートには脆弱性が重大度別（Critical・High・Medium・Low・Informational）に記載される。<br><br>
+          ✅ Criticalが0件または修正済みか確認<br>
+          ✅ 監査機関の実績（Trail of Bits・OpenZeppelin・Certik等）を確認<br>
+          ✅ 監査後のコード変更がないか確認（監査後に修正した場合は再監査が必要）
+        </div>
+        <div class="box box-green">ImmuneFi（immunefi.com）でバグバウンティプログラムを確認できる。報奨金が高いほど「脆弱性を真剣に探してほしい」という意思表示になる。</div>` },
     { id: 'a12', emoji: '📐', title: 'オプション取引と仮想通貨デリバティブ', locked: true, content: `<p>オプション取引の上級概念、Greeks（グリークス）とIV（インプライドボラティリティ）を理解することで、ヘッジ戦略の精度が格段に上がる。まずデルタだけ理解すれば、基本的なヘッジができるようになる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「Greeksはオプションの「感度指標」。デルタだけ理解すれば、ヘッジとして使う基本的な判断ができます。全部完璧に覚えなくていい。まずデルタから。」</div></div></div>
         <h3>オプションのGreeks</h3>
@@ -2842,39 +2838,31 @@ const LESSONS = {
           <strong>実践的なヘッジの例</strong><br>
           10BTCを保有しているとき、BTCのプットオプションを購入することで暴落リスクをヘッジできる。例：$60,000のプットを購入すればBTCが$50,000に下落しても損失を限定できる。コストはプレミアム分のみ。ただしオプション「売り」は損失が理論上無限大になるリスクがある。初心者はまず「買い」のみで練習すること。
         </div>` },
-    { id: 'a13', emoji: '🤝', title: '機関投資家の仮想通貨戦略', locked: true, content: `<p>機関投資家の仮想通貨への参入は一時的なトレンドではなく、構造的な変化だ。ETFの登場以降、仮想通貨市場は「個人投資家中心」から「機関主導」に移行しつつある。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「2024年のBTC ETF承認は「ゲームチェンジャー」でした。年金基金や大学の寄付基金が、ポートフォリオの1〜2%をBTCに割り当てるだけで、兆円単位の資金が流入する計算になります。」</div></div></div>
-        <h3>BTC ETFが変えたもの</h3>
-        <p>2024年1月にブラックロック・フィデリティ等のスポットBTC ETFがアメリカで承認された。これにより証券口座でBTCに投資できるようになり、「仮想通貨ウォレット不要」でBTCへの投資が可能になった。ETF承認後の数ヶ月で数兆円の資金が流入した。</p>
+    { id: 'a13', emoji: '🤝', title: '機関投資家の仮想通貨戦略', locked: true, content: `<p>機関投資家の仮想通貨への参入は一時的なトレンドではなく、構造的な変化だ。ETFの登場以降、仮想通貨市場は「個人投資家中心」から「機関共存」へと変化し、価格形成のメカニズムが変わりつつある。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「機関投資家の参入は"価格の安定化"と"株との相関強化"という両面をもたらす。BTCが"デジタルゴールド"として独立した動きをするシナリオと、株式市場と連動するシナリオが拮抗している。」</div></div></div>
+        <h3>機関投資家が仮想通貨に参入した理由</h3>
         <div class="box box-blue">
-          <strong>主な機関投資家の動き</strong><br>
-          ブラックロック IBIT：世界最大のBTC ETF。数百億ドル規模の運用残高。<br>
-          マイクロストラテジー：社債発行でBTCを買い続ける企業戦略の先駆け。40万BTC超を保有。<br>
-          フィデリティ：BTC ETFと自社カストディサービスを展開。<br>
-          エルサルバドル政府：BTCを国家として保有する世界初の国家。
+          <strong>ポートフォリオの分散</strong><br>BTCは株・債券との相関が低い時期があり、分散効果が期待できる。年金基金が1〜2%をBTCに割り当てるだけで兆円単位の資金流入になる。<br><br>
+          <strong>インフレヘッジ</strong><br>2020〜2021年の量的緩和以降、「法定通貨の価値希薄化へのヘッジ」としてBTCを評価する機関が増加。<br><br>
+          <strong>ETFによるアクセスの簡易化</strong><br>2024年のBTC現物ETF承認で証券口座から投資できるようになり、コンプライアンス・カストディ問題が解消された。
         </div>
-        <h3>機関投資家参入の影響</h3>
-        <div class="box box-orange">
-          <strong>ポジティブ</strong>：流動性の向上・価格の安定化・信頼性の向上<br>
-          <strong>ネガティブ</strong>：株式市場との相関が高まる。FRBの利上げで株が下がれば、BTCも連動して下がりやすくなる。ETFの週次資金フローデータ（farside.co.uk等）を定期チェックして大きな流出が続いていないか確認する習慣を持とう。
-        </div>` },
-    { id: 'a14', emoji: '🌐', title: 'Web3アイデンティティとENS', locked: true, content: `<p>Web3アイデンティティは「デジタル社会での自分の証明」だ。ENS・ソウルバウンドトークン（SBT）・分散型IDなど、新しいアイデンティティの概念が生まれている。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「Web2では「Googleアカウント＝あなた」だった。Web3では「ウォレットアドレス＝あなた」になる。でも匿名の数字ではなく、あなたの実績や資格が刻まれたIDが必要になる。」</div></div></div>
-        <h3>ソウルバウンドトークン（SBT）とは</h3>
-        <p>ヴィタリック・ブテリンが提唱した「譲渡不可能なNFT」だ。資格証明・学歴・職歴・医療記録などをSBTとしてウォレットに付与することで、改ざん不可能な「デジタル履歴書」が実現できる。転売できないため投機対象にならない点が特徴。</p>
-        <div class="box box-blue">
-          <strong>Web3アイデンティティの用途</strong><br>
-          ✅ DAOでの投票権（一人一票を担保）<br>
-          ✅ DeFiでの無担保融資（信用スコアとして活用）<br>
-          ✅ オンチェーン学歴・資格証明<br>
-          ✅ zkKYC（身元証明をしつつプライバシーを保護）
-        </div>
-        <h3>ENSとUnstoppable Domainsの比較</h3>
+        <h3>主要機関投資家の動向</h3>
         <div class="box box-gray">
-          <strong>ENS</strong>：年間更新料が必要（約5ドル〜）。Ethereumベース。最も普及している。<br>
-          <strong>Unstoppable Domains</strong>：一度購入すれば更新不要。.cryptoや.nftなど複数のTLD。初期費用が高め。<br><br>
-          どちらを選ぶか：長期利用ならUnstoppable Domains、Ethereumエコシステム中心ならENS。どちらも「Web3での名前」として徐々に普及しつつある。
-        </div>` },
+          <strong>マイクロストラテジー（Strategy）</strong>：40万BTC超を保有。「BTC財務省戦略」を提唱し、多くの企業が追随。<br>
+          <strong>ブラックロック</strong>：IBIT（BTC ETF）が世界最速で資産100億ドル突破。ETH ETFも展開。<br>
+          <strong>フィデリティ</strong>：独自のカストディサービスと機関向けファンドを提供。<br>
+          <strong>ノルウェー政府年金基金</strong>：間接的にBTCを保有（BTC保有企業の株式経由）。
+        </div>
+        <div class="box box-orange">機関投資家の増加により、仮想通貨市場はFRBの金融政策・米国雇用統計・インフレ指標などのマクロ経済データに強く反応するようになった。これらのスケジュールを把握することが重要になっている。</div>` },
+    { id: 'a14', emoji: '🌐', title: 'Web3アイデンティティとENS', locked: true, content: `<p>Web3アイデンティティは「デジタル社会での自分の証明」だ。ENS（Ethereum Name Service）・ソウルバウンドトークン（SBT）・分散型IDなど、新しいアイデンティティの仕組みがWeb3の基盤になりつつある。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「Web2では"Googleのアカウント"が自分の証明になっているが、それはGoogleが消えれば無効になる。Web3アイデンティティは自分が所有するウォレットに紐付いた"検閲不能な証明"を目指している。」</div></div></div>
+        <h3>ENS（Ethereum Name Service）</h3>
+        <p>「0x1a2b...」のような長いウォレットアドレスを「seiya.eth」のような人間が読めるドメイン名に変換するサービス。年間更新費用を払うことで取得できる。OpenSeaでのNFT取引・DeFiでの送金先指定など幅広く使われている。</p>
+        <div class="box box-blue"><strong>ENSの主な用途</strong><br>・ウォレットアドレスの代替（「0x123...」→「seiya.eth」）<br>・分散型ウェブサイトのホスティング（IPFS連携）<br>・Web3プロフィールとしての活用<br>・ENS名はNFTとして取引可能</div>
+        <h3>SBT（Soulbound Token）</h3>
+        <p>イーサリアムの共同創設者ヴィタリク・ブテリンが提唱した「譲渡不可能なNFT」。学歴・職歴・DAO参加歴などを証明するトークンとして活用が期待されている。</p>
+        <div class="box box-gray"><strong>SBTの想定用途</strong><br>・学位・資格証明書<br>・DAO参加歴・投票履歴の証明<br>・医療記録・保険履歴<br>・オンチェーン信用スコア</div>
+        <div class="box box-orange">Web3アイデンティティはまだ黎明期。プライバシーの問題（全ての活動が公開される）と普及のハードル（ウォレット必須）が課題として残っている。</div>` },
     { id: 'a15', emoji: '⚡', title: 'フラッシュローン攻撃の詳細と防御', locked: true, content: `<p>フロントランニング・サンドイッチ攻撃・ラグプル——DeFiユーザーを直接狙う攻撃手法を理解して身を守ろう。知識があれば防げた被害が圧倒的に多い。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiを使っているとき、あなたの取引は「メモリプール」という公開の待合室に一時的に置かれる。そこを常に監視しているボットがいる。これがフロントランニングの恐怖。」</div></div></div>
         <h3>フロントランニングとサンドイッチ攻撃</h3>
@@ -2898,27 +2886,22 @@ const LESSONS = {
           ✅ 新しいトークンはhoneypot.is等でハニーポット確認<br>
           ✅ 流動性ロックの確認（Unicrypt等でLPトークンのロック状況を確認）
         </div>` },
-    { id: 'a16', emoji: '🏦', title: 'プロのポートフォリオ管理術', locked: true, content: `<p>プロのポートフォリオ管理は「何を買うか」より「どう管理するか」が本質だ。リスクパリティ・シャープレシオ・最大ドローダウンなど、機関投資家が使う管理指標を個人レベルで活用しよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「最大ドローダウンを知らずに投資するのは、ブレーキの性能を知らずに高速道路を走るようなものです。「最悪どこまで下がるか」を常に把握しておくこと。」</div></div></div>
-        <h3>主要な管理指標</h3>
+    { id: 'a16', emoji: '🏦', title: 'プロのポートフォリオ管理術', locked: true, content: `<p>プロのポートフォリオ管理は「何を買うか」より「どう管理するか」が本質だ。リスクパリティ・シャープレシオ・最大ドローダウンなど、機関投資家が使う指標と手法を個人投資に応用しよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「"どれが上がるか"を考える前に"どれだけ下がっても耐えられるか"を考える。それがプロのポートフォリオ管理の出発点。リスク管理なき投資は投機。」</div></div></div>
+        <h3>重要な管理指標</h3>
         <div class="box box-blue">
-          <strong>最大ドローダウン（MDD）</strong><br>
-          過去の最高値から最安値までの最大下落率。BTCの過去MDDは約-85%（2018年・2022年）。これを知った上で「-85%になっても保有し続けられるか」を投資前に問う。<br><br>
-          <strong>シャープレシオ</strong><br>
-          リターン÷リスク（ボラティリティ）。高いほど効率的な投資。<br><br>
-          <strong>ソルティノレシオ</strong><br>
-          下落リスクのみを考慮したシャープレシオの改良版。<br><br>
-          <strong>カルマーレシオ</strong><br>
-          年率リターン÷最大ドローダウン。下落リスク対比のリターンを示す。
+          <strong>シャープレシオ</strong><br>リターン÷リスク（標準偏差）で計算。「同じリターンならリスクが低い方が良い」という考え方。1以上が良好、2以上は優秀とされる。<br><br>
+          <strong>最大ドローダウン（MDD）</strong><br>ポートフォリオが直近の高値からどれだけ下落したかの最大値。-30%のMDDを許容できるかどうかを事前に確認しておく。<br><br>
+          <strong>相関係数</strong><br>銘柄間の値動きの連動性。相関が低い銘柄を組み合わせることで分散効果が高まる。BTC・ETH・LINK等は強く相関することが多い。
         </div>
-        <h3>実践的なリバランス戦略</h3>
-        <div class="box box-green">
-          ✅ 目標配分を事前に決める（例：BTC60%・ETH25%・アルト10%・USDC5%）<br>
-          ✅ 四半期ごとにポートフォリオを確認してリバランス<br>
-          ✅ 各銘柄が目標配分から±10%ずれたら即時リバランス<br>
-          ✅ リバランスの記録を残して定期的に振り返る<br>
-          ✅ リバランス時は「高値で売って安値で買う」逆張りが自動で実現される
-        </div>` },
+        <h3>個人投資家向けポートフォリオ構造</h3>
+        <div class="box box-gray">
+          <strong>コア（60〜70%）</strong>：BTC・ETH。長期保有・DCAで積み上げる。<br>
+          <strong>サテライト（20〜30%）</strong>：有望なアルトコイン。ファンダメンタル分析で選定。<br>
+          <strong>機会枠（0〜10%）</strong>：ミームコイン・新興プロジェクト。全損前提の金額のみ。
+        </div>
+        <div class="box box-green">✅ 定期リバランス（例：四半期ごと）でコア比率を維持する<br>✅ 利益が出た銘柄を一部利確してコアに戻す<br>✅ ポートフォリオ全体の損失が-20%に達したらポジションを見直す</div>
+        <div class="box box-orange">過去の高いリターンを見て「もっとリスクを取れた」と後悔するより、「睡眠を妨げない範囲のリスク」で継続できることが長期的な資産形成の鍵。</div>` },
     { id: 'a17', emoji: '🔩', title: 'イーサリアムのロードマップ', locked: true, content: `<p>ETHの技術的な進化を深く理解するには、個々のアップグレードではなく「なぜそのアップグレードが必要なのか」という設計思想を理解することが重要だ。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ETHの設計哲学は「今は非効率でも、長期的に正しいアーキテクチャを追求する」です。短期的なスケーリングのために分散性を犠牲にしない。この哲学がETHの強さでもあり、遅さの原因でもある。」</div></div></div>
         <h3>ブロックチェーントリレンマの解決</h3>
@@ -2936,145 +2919,115 @@ const LESSONS = {
         <div class="box box-orange">
           ETHのロードマップは野心的だが、実現時期はしばしば延期される。「いつ実現するか」ではなく「実現したらどう価値が変わるか」を理解した上で投資判断することが重要。
         </div>` },
-    { id: 'a18', emoji: '🌍', title: 'グローバルな仮想通貨規制の未来', locked: true, content: `<p>規制の未来を予測することは、仮想通貨投資の長期的な判断に直結する。各国の規制動向の最新情報と、業界がどう適応しようとしているかを整理しよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「規制が整備されるほど、「グレーゾーン」で生きてきたプロジェクトは淘汰される。でも同時に「ちゃんとしたプロジェクト」には追い風になる。規制は業界の選別装置です。」</div></div></div>
-        <h3>規制の方向性：グローバルトレンド</h3>
+    { id: 'a18', emoji: '🌍', title: 'グローバルな仮想通貨規制の未来', locked: true, content: `<p>規制の未来を予測することは、仮想通貨投資の長期的な判断に直結する。各国の規制動向の最新トレンドと、業界がどう適応しようとしているかを理解しよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「規制は仮想通貨の"敵"ではなく"成熟の証"になりつつある。明確な規制が整備されることで機関投資家が参入しやすくなり、市場が拡大する。ETF承認がその典型例。」</div></div></div>
+        <h3>主要国・地域の規制動向</h3>
         <div class="box box-blue">
-          <strong>KYC・AML強化</strong>：世界中でKnow Your Customer（本人確認）とAnti-Money Laundering（マネロン対策）が強化。匿名取引が難しくなっている。<br><br>
-          <strong>ステーブルコイン規制</strong>：USDTのような大規模ステーブルコインへの規制が強化。発行者への準備金要件・監査義務が課される方向。<br><br>
-          <strong>DeFi規制の難しさ</strong>：DeFiは「コードが自動で動く」ため、誰を規制対象とするかが難しい。フロントエンド運営者・ガバナンストークン保有者が標的になるリスクがある。
+          <strong>アメリカ</strong><br>2024年のBTC・ETH現物ETF承認が大きな転換点。SEC・CFTCの管轄争いが続くが、トランプ政権以降は親仮想通貨の姿勢が強まっている。FIT21法など包括的な規制整備が進行中。<br><br>
+          <strong>EU（MiCA）</strong><br>2024年に世界初の包括的仮想通貨規制「MiCA（Markets in Crypto-Assets）」が施行。ステーブルコイン発行・取引所運営に明確なルールが設定された。<br><br>
+          <strong>日本</strong><br>暗号資産交換業者登録制・旅行者ルール適用。税制（雑所得・最大55%）の改革が業界の最大の要望事項になっている。<br><br>
+          <strong>シンガポール・UAE</strong><br>プロ仮想通貨規制で世界からWeb3企業・投資家を誘致。アジア・中東のWeb3ハブとして機能している。
         </div>
-        <h3>規制に適応する業界の動き</h3>
+        <div class="box box-orange"><strong>規制リスクの見方</strong><br>新興国での禁止令・主要国での厳格化ニュースは短期的に価格を下落させる。ただし長期的には規制の明確化が市場拡大につながることが多い。「規制ニュース」に過剰反応しないことが重要。</div>` },
+    { id: 'a19', emoji: '🧬', title: 'DeFiプロトコルの経済設計（トークノミクス）', locked: true, content: `<p>トークノミクスは「プロジェクトの経済設計」だ。技術的に優れていても、トークンの需給バランスが崩れれば価格は下がる。DeFiプロトコルを評価する上で最重要な分析領域の一つ。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「トークノミクスの本質は"誰が売り、誰が買うか"の設計。インフレ率・ロック解除スケジュール・バーン（焼却）メカニズム——これらが価格に直接影響する。」</div></div></div>
+        <h3>評価すべきトークノミクスの要素</h3>
+        <div class="box box-blue">
+          <strong>発行総量と流通量</strong><br>総発行量（Max Supply）と現在の流通量（Circulating Supply）の差が大きいほど希薄化リスクが高い。FDV（完全希薄化後時価総額）と現在の時価総額の比を確認する。<br><br>
+          <strong>配分比率</strong><br>チーム・投資家・財団への配分が50%超は警戒。コミュニティ・エコシステムへの配分が多いほど健全。<br><br>
+          <strong>ベスティングスケジュール</strong><br>チーム・投資家のトークンがいつロック解除されるか。大量解除のタイミング（Cliff）に価格が下落することが多い。
+        </div>
+        <h3>需要創出メカニズム</h3>
+        <div class="box box-gray">
+          <strong>手数料バーン</strong>：ETHのEIP-1559のように手数料の一部をバーン（焼却）することでデフレ圧力を生む。<br>
+          <strong>ステーキング報酬</strong>：トークンを預けると報酬が得られる仕組みで売り圧を抑制する。<br>
+          <strong>ガバナンス権</strong>：プロトコルの意思決定権をトークン保有者に与えることで保有インセンティブを作る。
+        </div>
+        <div class="box box-orange">「年利500%のステーキング報酬」は持続不可能なインフレの証拠。新規トークンの発行で報酬を払っているだけなので、トークン価格が下落すれば実質リターンはゼロになる。</div>` },
+    { id: 'a20', emoji: '🚀', title: '仮想通貨投資の次のフロンティア', locked: true, content: `<p>仮想通貨投資の「次のフロンティア」を理解することは、市場の次の動向を先読みするための重要な準備だ。新しい分野ほどリスクとリターンが大きく、早期に正確な知識を持つことが優位性になる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「次のフロンティアは必ずしも"新しい技術"ではない。既存技術が"新しい用途"に応用されるとき——例えばRWAやDePINのように——が最も大きな機会になることが多い。」</div></div></div>
+        <h3>注目すべき次のフロンティア</h3>
+        <div class="box box-blue">
+          <strong>RWA（現実資産のトークン化）</strong><br>米国債・不動産・株式・コモディティをブロックチェーン上でトークン化する動き。BlackRockのBUIDLファンドが先行し、機関投資家の参入が加速中。市場規模は2030年までに16兆ドルに達するという予測もある。<br><br>
+          <strong>DePIN（分散型物理インフラ）</strong><br>Wi-Fi・GPU・センサーネットワークなどの物理インフラを分散型で構築する。Helium（通信）・Render（GPU）・GEODNET（GPS）などが実例。<br><br>
+          <strong>AI×仮想通貨</strong><br>AIエージェントが自律的にオンチェーン取引を行う。AIの学習データ・計算リソースの分散型マーケットプレイス。Bittensor・Akash等が先行。<br><br>
+          <strong>BTCエコシステムの拡張</strong><br>Ordinalsを皮切りにBTCのL2・DeFi・NFTが急速に発展。BTCのセキュリティを活用した新しいエコシステムが形成されつつある。
+        </div>
+        <div class="box box-orange">新しいフロンティアほど詐欺・ラグプルが多い。「革新的」に見えるプロジェクトへの投資は全資産の5%以内に収め、分散を徹底すること。</div>` },
+    { id: 'a21', emoji: '🔬', title: '量子コンピューターと仮想通貨のリスク', locked: true, content: `<p>量子コンピューターがBTCの暗号を解読する——これは現実の脅威か、誇張か？技術的な事実と業界の対応策を整理することで、長期保有者が持つべき視点を身につけよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「量子コンピューターの脅威は"今日明日の問題"ではない。ただし10〜20年単位では真剣に考えるべき課題。業界は既に量子耐性暗号への移行を準備している。」</div></div></div>
+        <h3>量子コンピューターとは何か</h3>
+        <p>量子力学の原理（重ね合わせ・量子もつれ）を使って、従来のコンピュータでは事実上解けない計算を高速処理できる次世代コンピュータ。特定の計算（素因数分解・離散対数問題）において従来比で指数関数的に速い。</p>
+        <div class="box box-blue"><strong>BTCへの具体的な脅威</strong><br>・<strong>楕円曲線暗号（ECDSA）</strong>：BTCの署名に使われる暗号。理論上、十分な量子コンピューターがあれば秘密鍵を逆算できる。<br>・<strong>SHA-256</strong>：マイニングに使われるハッシュ関数。量子コンピューターによる影響はECDSAより小さいとされる。</div>
+        <h3>業界の対応策</h3>
+        <div class="box box-gray">
+          <strong>量子耐性暗号（PQC）への移行</strong>：NISTが2024年に量子耐性暗号の標準を発表。BTCコミュニティも移行の議論が始まっている。<br><br>
+          <strong>ライトニングネットワーク</strong>：オフチェーン取引を増やすことで、オンチェーンの署名露出を減らす効果がある。<br><br>
+          <strong>使用済みアドレスの再利用禁止</strong>：公開鍵が公開されていないアドレスへの攻撃は困難。毎回新しいアドレスを使うことで量子リスクを大幅に軽減できる。
+        </div>
+        <div class="box box-orange">現在の量子コンピューター（数百〜数千量子ビット）でBTCを解読するには数百万量子ビットが必要とされている。現時点での脅威レベルは低いが、長期保有者は進展を注視すること。</div>` },
+    { id: 'a22', emoji: '📊', title: 'デリバティブデータで相場を読む', locked: true, content: `<p>デリバティブデータはオンチェーン分析と並ぶ強力な相場分析ツールだ。OI（未決済建玉）・ファンディングレート・清算データを組み合わせることで、市場参加者の心理と資金の流れが見えてくる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「デリバティブデータは"大口トレーダーの本音"を映す鏡。ファンディングレートがプラス極大なら過熱・逆張りのサイン。これを読めるようになると相場観が一段階上がる。」</div></div></div>
+        <h3>主要デリバティブ指標の読み方</h3>
+        <div class="box box-blue">
+          <strong>OI（Open Interest・未決済建玉）</strong><br>現在市場で開いているポジションの総額。OI増加＋価格上昇＝新規買いが入っている健全な上昇。OI増加＋価格下落＝新規売りが入っている下落トレンドの強化。<br><br>
+          <strong>ファンディングレート</strong><br>パーペチュアル先物で8時間ごとに発生するコスト。プラス＝買い持ちが多い（過熱気味）、マイナス＝売り持ちが多い（底打ちの可能性）。極端な数値は逆張りのシグナルになりやすい。<br><br>
+          <strong>清算データ（Liquidation）</strong><br>ロスカットされたポジションの規模と方向。大量のロング清算が起きた直後は買い場になることが多い（売り圧が一度に解消されるため）。
+        </div>
+        <h3>実践：Coinglass の使い方</h3>
+        <div class="box box-gray">
+          Coinglass（coinglass.com）で全主要取引所のOI・ファンディングレート・清算データをリアルタイムで確認できる。<br><br>
+          ✅ ファンディングレートが年率100%超 → 過熱・短期天井の可能性<br>
+          ✅ 大量ロング清算後 → 底打ちのシグナルとして注目<br>
+          ✅ OIが急増しながら価格が横ばい → どちらかに大きく動く前兆
+        </div>` },
+    { id: 'a23', emoji: '🏗️', title: 'ゼロからのDeFiプロトコル設計', locked: true, content: `<p>DeFiプロトコルの設計を理解することは、使う側としても「なぜこのプロトコルは安全なのか」「どこに弱点があるのか」を判断するために不可欠だ。設計者の視点を持つことで評価力が格段に上がる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「良いDeFiプロトコルは"最悪のシナリオを想定して設計されている"。ハッキングされたとき・オラクルが誤ったとき・流動性が枯渇したとき——それぞれの対処が設計に組み込まれているか確認すること。」</div></div></div>
+        <h3>DeFiプロトコルの核心設計要素</h3>
+        <div class="box box-blue">
+          <strong>AMM（自動マーケットメーカー）の設計</strong><br>x×y=kの不変式（Uniswap v2）からConcentrated Liquidity（Uniswap v3）まで進化。流動性効率と資本効率のトレードオフをどう設計するか。<br><br>
+          <strong>清算メカニズム</strong><br>担保比率を下回った場合の清算設計。Aaveの「ヘルスファクター」・MakerDAOの担保率管理など。清算インセンティブと市場への影響のバランスが重要。<br><br>
+          <strong>オラクル設計</strong><br>価格フィードの操作耐性。TWAPとスポット価格の組み合わせ・Chainlink等の分散型オラクルの活用・複数ソースの中央値採用。
+        </div>
+        <h3>評価フレームワーク</h3>
         <div class="box box-green">
-          ✅ コンプライアンス部門の強化（取引所・DeFiプロトコルともに）<br>
-          ✅ 規制当局との協力（「規制と戦う」より「規制の中で動く」へ）<br>
-          ✅ zkKYC（プライバシーを保ちながら本人確認）などの技術的解決策<br>
-          ✅ セルフカストディ（個人ウォレット）の価値が再評価される動き
-        </div>` },
-    { id: 'a19', emoji: '🧬', title: 'DeFiプロトコルの経済設計（トークノミクス）', locked: true, content: `<p>トークノミクスは「プロジェクトの経済設計」だ。技術的に優れていても、トークンの需給バランスが崩れれば価格は下がる。DeFiプロトコルの経済設計を深く読む力を身につけよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「ve（ベ）トークノミクス」はCurve Financeが生み出した革命的な設計。トークンをロックするほど投票権と報酬が増える仕組みで、長期ホルダーが有利になる。多くのプロトコルが採用している。」</div></div></div>
-        <h3>veトークノミクスの仕組み</h3>
-        <p>Curve Financeが考案した仕組み。CRVトークンを最大4年間ロックすることでveCRVを取得。veCRVを持つほど報酬の倍率が高くなり、手数料収入の分配も受けられる。長期保有者を優遇することで「売り圧」を抑制する巧みな設計だ。</p>
+          ✅ 緊急停止機能（Circuit Breaker）があるか<br>
+          ✅ タイムロック（変更に遅延を設ける）が実装されているか<br>
+          ✅ マルチシグ（複数署名）で管理者権限が管理されているか<br>
+          ✅ 段階的なTVL上限（最初は少額のみ許容）が設けられているか
+        </div>
+        <div class="box box-orange">新しいDeFiプロトコルは「革新的な設計」を謳うことが多いが、検証されていない設計ほどリスクが高い。「退屈なほど安全」なプロトコルが長期的に生き残る。</div>` },
+    { id: 'a24', emoji: '🌊', title: 'クロスチェーンの未来', locked: true, content: `<p>マルチチェーンの世界が進む中、チェーン間の流動性・通信の問題はまだ解決されていない。次世代のクロスチェーン技術を理解することで、Web3の将来像が見えてくる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「現在のブリッジは"チェーンをまたぐたびにリスクが増える"問題を抱えている。次世代クロスチェーンの目標は、チェーンをまたぐことを"意識しなくて済む"ユーザー体験の実現だ。」</div></div></div>
+        <h3>現在のクロスチェーン技術の課題</h3>
+        <div class="box box-orange">
+          <strong>セキュリティリスク</strong>：ブリッジにロックされた資産が攻撃の標的になる。2022年だけで約4,000億円が盗まれた。<br><br>
+          <strong>流動性の断片化</strong>：各チェーンに流動性が分散され、大きなスワップを行うと大きなスリッページが発生する。<br><br>
+          <strong>UXの複雑さ</strong>：チェーンをまたぐたびにガス代・待機時間・ウォレット切り替えが必要。
+        </div>
+        <h3>次世代クロスチェーン技術</h3>
         <div class="box box-blue">
-          <strong>トークンの価値捕捉（Value Capture）</strong><br>
-          プロトコルが収益を生んでも、トークン保有者に還元されなければトークン価値は上がらない。「フィースイッチ（手数料をトークン保有者に分配する仕組み）」の有無がトークンの本質的価値に直結する。UNIトークンはフィースイッチが長年議論されている代表例。
+          <strong>インテント型ブリッジ（Across・UniswapX）</strong><br>ユーザーが「何をしたいか」を指定するだけで、ソルバーが最適なルートで実行。高速かつ資産をブリッジコントラクトにロックしない設計。<br><br>
+          <strong>LayerZero</strong><br>チェーン間のメッセージングプロトコル。OracleとRelayerの組み合わせでセキュリティを担保。多くのDeFiプロトコルが採用。<br><br>
+          <strong>IBC（Cosmos）</strong><br>Cosmosエコシステム内のチェーン間通信標準。ネイティブな相互運用性を実現。ただしEVMチェーンとの互換性に限界がある。
         </div>
+        <div class="box box-green">長期的には「チェーンを意識しないWeb3」を実現するアカウント抽象化（ERC-4337）とクロスチェーン技術の統合が鍵になる。</div>` },
+    { id: 'a25', emoji: '📜', title: 'スマートコントラクトのセキュリティパターン', locked: true, content: `<p>過去の大型ハッキングを振り返ることで、DeFiのセキュリティ問題の本質が理解できる。同じパターンが繰り返される理由と、防御策を学ぼう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiのハッキングは"同じ脆弱性の繰り返し"が多い。新しいプロトコルが古い脆弱性パターンを踏んで被害を出す。歴史を知ることが最強の防御になる。」</div></div></div>
+        <h3>歴史的な大型ハッキング事例</h3>
         <div class="box box-orange">
-          <strong>注意すべきトークノミクスのパターン</strong><br>
-          ・チームや投資家への配分が50%以上（個人投資家が割を食う）<br>
-          ・ロックアップ期間が短い（1年以下）<br>
-          ・インフレ率が高すぎる（年率50%超）<br>
-          ・バーン機構がない（供給が増え続ける）<br>
-          ・FDV÷時価総額が10倍以上（将来の希薄化リスクが高い）
-        </div>` },
-    { id: 'a20', emoji: '🚀', title: '仮想通貨投資の次のフロンティア', locked: true, content: `<p>仮想通貨投資の「次のフロンティア」を理解することは、市場の次の動向を先読みするための重要な準備だ。新しい分野ほどリスクとリターンの両方が大きい。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「2020年のDeFiサマー、2021年のNFTブームを先読みした人は大きなリターンを得た。次の波を掴むには「技術が普及する前に理解しておく」必要がある。」</div></div></div>
-        <h3>注目の新分野</h3>
-        <div class="box box-blue">
-          <strong>RWA（現実資産トークン化）</strong><br>
-          国債・不動産・クレジット・コモディティをオンチェーン化。ブラックロック参入で機関投資家からの注目が急増。2030年までに10兆ドル市場との予測も。<br><br>
-          <strong>DePIN（分散型物理インフラ）</strong><br>
-          Helium（Wi-Fi）・Filecoin（ストレージ）・Render（GPU）など物理資源のシェアリングエコノミー×ブロックチェーン。<br><br>
-          <strong>AI×Crypto</strong><br>
-          AIエージェントがウォレットを持って自律的に取引・決済する世界。Bittensor・Fetch.aiなどが先行例。<br><br>
-          <strong>予測市場</strong><br>
-          Polymarketなど、現実世界の出来事に賭けるオンチェーン市場。2024年の米大統領選で大きく注目を集めた。
+          <strong>The DAO（2016年）：約60億円</strong><br>再入攻撃の古典的事例。ETHのハードフォーク（ETH/ETC分岐）のきっかけになった。<br><br>
+          <strong>Ronin Bridge（2022年）：約800億円</strong><br>Axie InfinityのサイドチェーンのブリッジがAPT41（北朝鮮系ハッカー）に攻撃された。バリデーターの秘密鍵5つのうち4つが同一組織に管理されていたという中央集権的な脆弱性。<br><br>
+          <strong>Wormhole（2022年）：約340億円</strong><br>シグネチャ検証のバグを突かれ、実際の担保なしにwETHが鋳造された。Jump Cryptoが全額補填。<br><br>
+          <strong>Euler Finance（2023年）：約570億円</strong><br>フラッシュローンを使ったドネーション攻撃。バグ発見から攻撃まで数ヶ月のラグがあった。攻撃者が後に資金の大半を返却。
         </div>
-        <div class="box box-orange">
-          <strong>新分野投資の原則</strong><br>
-          ✅ ポジションサイズは小さく（全資産の5%以下から）<br>
-          ✅ 技術を理解してから投資（「なんとなく面白そう」は危険）<br>
-          ✅ トークンロックアップ・リリーススケジュールを確認<br>
-          ✅ 「次のビッグウェーブ」と言われたら半分疑う
-        </div>` },
-    { id: 'a21', emoji: '🔬', title: '量子コンピューターと仮想通貨のリスク', locked: true, content: `<p>量子コンピューターがBTCの暗号を解読する——これは現実の脅威か、誇張か？技術的な事実と業界の対応策を整理することで、長期投資家として持つべき視点が明確になる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「量子コンピューターのリスクは「今すぐ」ではなく「10〜20年後」の話。でも業界はすでに対策を始めています。「いつかのリスク」として頭に入れておく程度でOK。」</div></div></div>
-        <h3>どの暗号が危険か</h3>
-        <div class="box box-orange">
-          <strong>危険にさらされる暗号</strong><br>
-          ECDSA（BTCとETHが使用する署名アルゴリズム）：量子コンピューターのShor's algorithmで原理上解読可能。ただし現在の量子コンピューターでは不可能。<br><br>
-          <strong>比較的安全</strong><br>
-          SHA-256（BTCのハッシュ関数）：量子耐性は高い。Grover's algorithmによる攻撃でも安全性が半減するだけで実用的には問題ない。
-        </div>
-        <h3>具体的なリスクと対策</h3>
-        <p>公開鍵が公開されているアドレス（一度でも送受信に使ったアドレス）が理論上のターゲット。逆に言えば、一度も使っていない「ステルスアドレス」は安全。BTCの長期保有者は新しいアドレスを定期的に使う習慣が量子コンピューター対策になる。</p>
+        <h3>共通する教訓</h3>
         <div class="box box-green">
-          <strong>業界の対応</strong><br>
-          NIST（米国国立標準技術研究所）が量子耐性暗号アルゴリズムを2024年に標準化。BTCもソフトフォークで量子耐性署名に移行できる設計。実際に必要になるのは2035年以降と多くの専門家が見ている。「今すぐ心配すること」より「業界が対応の準備を進めている」という事実を知っておくことが重要。
-        </div>` },
-    { id: 'a22', emoji: '📊', title: 'デリバティブデータで相場を読む', locked: true, content: `<p>デリバティブデータはオンチェーン分析と並ぶ強力な相場分析ツールだ。OI・ファンディングレート・清算データを組み合わせることで、市場のセンチメントと次の動きを読む精度が高まる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「大規模な清算が起きた後は「弱い手が振り落とされた状態」。天井や底のサインになることが多い。清算データを定点観測する習慣が相場の転換点を捉えるカギになります。」</div></div></div>
-        <h3>主要指標の読み方</h3>
-        <div class="box box-blue">
-          <strong>Open Interest（OI）</strong><br>
-          未決済のポジション総量。OI急増＋価格上昇＝レバレッジ過多のロングバブルの可能性。OI急減＝大量清算が発生した証拠。<br><br>
-          <strong>Funding Rate（FR）</strong><br>
-          正の値が大きい→ロング過多・相場過熱のサイン。マイナスが大きい→ショート過多・相場悲観のサイン。0.1%/8時間を超えたら過熱注意。<br><br>
-          <strong>Long/Short Ratio</strong><br>
-          ロングとショートの比率。極端にロングが多い時は逆張りのショート戦略が有効なことも。<br><br>
-          <strong>Liquidation Heatmap</strong><br>
-          どの価格帯に大量の清算注文が積まれているかを可視化。価格がそこに向かうと「清算狩り」が起きやすい。
-        </div>
-        <div class="box box-orange">
-          <strong>カスケード清算</strong><br>
-          ある価格で大量のロスカットが発生→さらに価格が動く→次の清算が発動——この連鎖が急落・急騰を引き起こす。Coinglass.comのLiquidation Heatmapで事前確認できる。
-        </div>` },
-    { id: 'a23', emoji: '🏗️', title: 'ゼロからのDeFiプロトコル設計', locked: true, content: `<p>DeFiプロトコルの設計を理解することは、使う側としても「なぜこのプロトコルは安全なのか」「どこに弱点があるのか」を判断するための重要な知識だ。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiの設計で最も重要なのは「攻撃者の目線で考える」こと。どうすれば不正に資金を引き出せるかを考えながら設計する——これがホワイトハットの発想です。」</div></div></div>
-        <h3>AMM（自動マーケットメーカー）の仕組み</h3>
-        <p>Uniswapが生み出したAMMは「x×y=k」という数式で常に価格を計算する。流動性プールに資金を預けると、すべての価格帯に均等に流動性が提供される。Uniswap v3では集中流動性（特定の価格帯にのみ流動性を提供）が可能になり、資本効率が大幅に向上した。</p>
-        <div class="box box-blue">
-          <strong>インパーマネントロス（IL）</strong><br>
-          流動性提供者が価格変動によって被る「機会損失」。BTCが2倍になった場合、ただ保有していた方がLP提供より利益が多かった、という現象。価格変動が大きいペアほどILが大きくなる。USDC/USDTのようなステーブルコインペアはILが最小。
-        </div>
-        <h3>プロトコル設計の基本原則</h3>
-        <div class="box box-green">
-          ✅ 最小権限の原則：スマコンに必要最低限の権限のみ付与<br>
-          ✅ 再入攻撃対策：Checks-Effects-Interactionsパターンの実装<br>
-          ✅ 緊急停止機能：ハッキング時にプロトコルを一時停止できる機能<br>
-          ✅ タイムロック：重要な変更に一定時間の遅延を設けてユーザーが対処できるようにする<br>
-          ✅ 複数の監査とバグバウンティプログラムの設置
-        </div>` },
-    { id: 'a24', emoji: '🌊', title: 'クロスチェーンの未来', locked: true, content: `<p>マルチチェーンの世界が進む中、チェーン間の流動性・通信の問題はまだ解決されていない。次世代のクロスチェーン技術を理解することで、業界の方向性が見えてくる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「現実はマルチチェーンになりつつある。でもブリッジのリスクがある限り資産は分断されたまま。「チェーンをまたぐのが怖い」という状態が解消されれば、DeFiはさらに爆発的に成長する。」</div></div></div>
-        <h3>現在のクロスチェーンの課題</h3>
-        <div class="box box-orange">
-          ・ブリッジハッキングによる年間数千億円の損失<br>
-          ・チェーン間の流動性の分断（同じトークンでもチェーンによって価格差がある）<br>
-          ・ユーザー体験の複雑さ<br>
-          ・ブリッジの種類による異なるセキュリティモデル
-        </div>
-        <h3>次世代ソリューション</h3>
-        <div class="box box-blue">
-          <strong>IBC（Inter-Blockchain Communication）</strong><br>
-          Cosmosエコシステムのチェーン間通信プロトコル。軽量クライアント証明を使った安全なクロスチェーン通信。100以上のチェーンが接続済み。<br><br>
-          <strong>Chainlink CCIP</strong><br>
-          クロスチェーンメッセージングとトークン転送の標準化を目指す。大手金融機関も採用を検討中。<br><br>
-          <strong>ZK Bridge</strong><br>
-          ゼロ知識証明を使った数学的に安全なブリッジ。信頼を最小化した最も安全なブリッジを目指す。<br><br>
-          <strong>Chain Abstraction</strong><br>
-          ユーザーがチェーンを意識せずに複数チェーンのアプリを使える世界。Near Protocol等が推進。
-        </div>` },
-    { id: 'a25', emoji: '📜', title: 'スマートコントラクトのセキュリティパターン', locked: true, content: `<p>過去の大型ハッキングを振り返ることで、DeFiのセキュリティ問題の本質が理解できる。歴史は繰り返す——同じパターンを知っておくだけで、危険なプロトコルを見抜く目が養われる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「大きなハッキングが起きるたびに業界は学ぶ。でも新しいプロジェクトがまた同じ間違いをする。なぜか？急いでローンチしてセキュリティを後回しにするからです。」</div></div></div>
-        <h3>歴史的な大型ハッキング</h3>
-        <div class="box box-orange">
-          <strong>The DAO（2016年、約60億円）</strong><br>
-          再入攻撃が原因。ETHのハードフォーク（ETH/ETC分裂）につながった歴史的事件。<br><br>
-          <strong>Poly Network（2021年、約700億円）</strong><br>
-          クロスチェーンプロトコルの設計バグ。ハッカーが後に資金を返却した珍しいケース。<br><br>
-          <strong>Ronin Network（2022年、約800億円）</strong><br>
-          Axie Infinityのサイドチェーン。バリデーターの秘密鍵が盗まれた社会工学的攻撃。北朝鮮系ハッカー集団の関与が指摘された。<br><br>
-          <strong>Wormhole（2022年、約340億円）</strong><br>
-          ブリッジのスマートコントラクトバグ。署名検証の脆弱性を悪用。
-        </div>
-        <div class="box box-green">
-          <strong>安全なDeFiプロトコルの条件</strong><br>
-          ✅ 複数の一流監査機関による監査済み<br>
-          ✅ バグバウンティプログラム設置（ImmuneFi等）<br>
-          ✅ ローンチから1年以上経過・大きな問題なし<br>
-          ✅ 緊急停止機能とタイムロックの実装<br>
-          ✅ コードのオープンソース公開
+          ✅ ブリッジは最小限の使用にとどめる<br>
+          ✅ 新しいプロトコルは少額で試す<br>
+          ✅ バリデーターの分散性を確認する<br>
+          ✅ 1つのプロトコルに全資産を集中させない<br>
+          ✅ ImmuneFiでバグバウンティの有無を確認する
         </div>` },
     { id: 'a26', emoji: '💰', title: '仮想通貨ファンドの運用実務', locked: true, content: `<p>プロの仮想通貨ファンドがどのように運用しているかを知ることで、個人投資家としての戦略の「引き出し」が増える。機関投資家の手法を個人レベルで応用する方法を学ぼう。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「プロのクウォントファンドがアービトラージで稼ぐのは、彼らが特別に賢いからではなく、インフラが圧倒的に優れているから。個人が同じ土俵で戦おうとするのは間違い。個人の優位性を探すべき。」</div></div></div>
@@ -3091,75 +3044,48 @@ const LESSONS = {
           <strong>FTX後のリスク管理の変化</strong><br>
           FTX崩壊後、機関投資家は取引所への資産集中リスクを強く意識するようになった。複数の取引所に分散・Fireblocks等のカストディサービス活用・MPC（マルチパーティ計算）ウォレットの採用が標準化しつつある。個人も同様に「一つの取引所に全資産を置かない」原則を守ることが重要。
         </div>` },
-    { id: 'a27', emoji: '🌍', title: '仮想通貨と人権・自由', locked: true, content: `<p>ビットコインは「技術的な発明」だけでなく、「政治的・哲学的な宣言」でもあった。その背景にある思想を理解することで、BTCの本質的な価値と長期的な重要性が見えてくる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「BTCは最初から「政府や銀行から自由になるための道具」として設計された。2008年の金融危機への怒りがBTCを生んだ。これを理解すると、なぜ多くの人が命がけで使うのかがわかる。」</div></div></div>
-        <h3>サイファーパンクの思想</h3>
-        <p>1990年代、「暗号技術で個人のプライバシーと自由を守ろう」という思想を持つグループ「サイファーパンク」が活動していた。「暗号は武器だ」「プライバシーは権利だ」という主張がBTCの設計思想に直接反映されている。ジェネシスブロックに刻まれた英紙の見出しは、既存金融システムへの宣戦布告だった。</p>
-        <div class="box box-blue">
-          <strong>実際に「自由の道具」として使われている例</strong><br>
-          アフガニスタン：タリバン政権下で女性がBTCで資産を守った<br>
-          ベラルーシ：デモ参加者への送金にBTCが使われた<br>
-          ナイジェリア：政府によるNGOの銀行口座凍結に対抗してBTCで寄付受付<br>
-          ウクライナ：侵攻後、国際支援の一部がBTC・USDCで届いた
+    { id: 'a27', emoji: '🌍', title: '仮想通貨と人権・自由', locked: true, content: `<p>ビットコインは「技術的な発明」だけでなく、「政治的・哲学的な宣言」でもあった。その背景にある思想を理解することで、BTCの長期的な価値命題が見えてくる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「サトシ・ナカモトがBTCを作ったのは2008年の金融危機の直後。"銀行に救済される必要のないピアツーピアの電子現金"というビジョンは、今も変わらずBTCのDNAに刻まれている。」</div></div></div>
+        <h3>ビットコイン誕生の思想的背景</h3>
+        <p>2008年のリーマンショック直後、銀行は公的資金（税金）で救済された。サトシ・ナカモトはビットコインのジェネシスブロック（最初のブロック）に「The Times 03/Jan/2009 Chancellor on brink of second bailout for banks（2009年1月3日、財務大臣が銀行への2度目の救済を検討）」というメッセージを刻んだ。</p>
+        <div class="box box-blue"><strong>ビットコインが体現する価値観</strong><br>・<strong>金融包摂</strong>：銀行口座を持てない世界の17億人にアクセスを提供<br>・<strong>検閲耐性</strong>：政府・銀行に資産を凍結・没収されない<br>・<strong>プライバシー</strong>：第三者なしに価値を移転できる<br>・<strong>希少性</strong>：誰も発行量を増やせない2,100万枚の上限</div>
+        <h3>実際の人権的活用事例</h3>
+        <div class="box box-gray">
+          <strong>ウクライナ避難民</strong>：2022年のロシア侵攻でBTCを携えて国境を越えた事例が多数報告された。<br>
+          <strong>アフガニスタン女性</strong>：タリバン政権下で銀行口座を持てなくなった女性がBTCで収入を受け取った。<br>
+          <strong>ナイジェリア</strong>：高インフレと通貨規制からの資産保全にBTC・USDCが活用されている。
         </div>
-        <div class="box box-orange">
-          この「検閲耐性」という特性は、平和な国に住む投資家には「単なる特徴の一つ」に見えるかもしれない。しかし世界の数十億人にとって、BTCは文字通り「命を守る技術」だ。この視点を持つことが長期投資の確信につながる。
-        </div>` },
-    { id: 'a28', emoji: '🔮', title: 'AIと仮想通貨の融合', locked: true, content: `<p>ChatGPT以降のAIブームが仮想通貨と交差する点が増えている。AI×Cryptoというカテゴリーはまだ黎明期だが、技術の融合がもたらす可能性は巨大だ。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「AIエージェントがウォレットを持って自律的に取引する——これはSFじゃなくて、今まさに実験が進んでいる話。AIとブロックチェーンの融合は「AIが自律的に稼ぐ」世界を作りつつある。」</div></div></div>
-        <h3>AI×Cryptoの主なユースケース</h3>
+        <div class="box box-orange">「BTCは投機的な資産だ」という見方と「BTCは人権のツールだ」という見方は矛盾しない。両方が同時に真実であり得る。</div>` },
+    { id: 'a28', emoji: '🔮', title: 'AIと仮想通貨の融合', locked: true, content: `<p>ChatGPT以降のAIブームが仮想通貨と交差する点が増えている。AI×Cryptoというカテゴリーはまだ黎明期だが、技術的な必然性と投機的な側面を分けて理解することが重要だ。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「AI×Cryptoの多くはまだ"コンセプト段階"。でもAIエージェントが自律的にオンチェーン取引を行う未来は技術的に見えている。どれが本物かを見極める目を持つこと。」</div></div></div>
+        <h3>AI×仮想通貨の主要カテゴリー</h3>
         <div class="box box-blue">
-          <strong>分散型AIコンピューティング</strong><br>
-          Render・Akashなどが余剰GPUリソースをトークンで売買。AIの学習・推論に必要な計算リソースを分散化。AIブームでGPU需要が急増し、これらのプロジェクトが注目を集めた。<br><br>
-          <strong>AIエージェント×ウォレット</strong><br>
-          AIが自律的にDeFi取引・送金・契約締結を行う。人間の指示なしにオンチェーンで動作する実験が進んでいる。<br><br>
-          <strong>Bittensor（TAO）</strong><br>
-          分散型AI学習ネットワーク。AIモデルの貢献度に応じてトークンを配布する仕組み。<br><br>
-          <strong>オンチェーンデータ分析</strong><br>
-          AIでウォレット行動を分析し、スマートマネーの動きを追跡。Nansenがこの分野のパイオニア。
+          <strong>分散型AI計算（Bittensor・Akash）</strong><br>AIの学習・推論に必要なGPUリソースを分散型で提供・調達するマーケットプレイス。中央集権的なクラウド（AWS・Azure）の代替を目指す。<br><br>
+          <strong>AIエージェント×DeFi</strong><br>AIが自律的にポートフォリオ管理・アービトラージ・流動性提供を行う。Virtuals Protocol・ai16zなどが実験的に展開中。<br><br>
+          <strong>データマーケットプレイス（Ocean Protocol）</strong><br>AIの学習データをトークン化して売買できる分散型プラットフォーム。データの所有権をユーザーに返す設計。<br><br>
+          <strong>プルーフ・オブ・ヒューマン（Worldcoin）</strong><br>AIが普及する世界で「この取引を行ったのは人間か」を証明するためのアイデンティティ技術。
         </div>
-        <div class="box box-orange">
-          <strong>AI×Cryptoへの投資注意点</strong><br>
-          「AI」「機械学習」という言葉を使っているだけで実態がないプロジェクトが多い。実際の利用率（APIコール数・ユーザー数）・技術的な差別化要因・チームの実績を確認してから判断すること。
-        </div>` },
-    { id: 'a29', emoji: '📈', title: 'BTCの長期価値モデル比較', locked: true, content: `<p>BTCの「適正価格」を測ろうとするモデルが複数存在する。それぞれの有効性と限界を理解することで、過熱・底値を判断する材料が増える。モデルは「1つの視点」として使うものだ。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「どのモデルも100%正確ではない。でも複数のモデルが同じ方向を指したとき、確信を持ちやすくなる。モデルは羅針盤であって、地図ではない。」</div></div></div>
-        <h3>主要モデルの比較</h3>
+        <div class="box box-orange">AI×Cryptoは最もナラティブが先行しやすいカテゴリー。「AIを使っている」というだけでトークン価格が急騰する事例が多い。実際の技術実装・ユーザー数・収益を確認すること。</div>` },
+    { id: 'a29', emoji: '📈', title: 'BTCの長期価値モデル比較', locked: true, content: `<p>BTCの「適正価格」を測ろうとするモデルが複数存在する。それぞれの有効性と限界を理解することで、過熱・底値を判断する材料にできる。「モデルは地図であり、地形そのものではない」ことを忘れずに。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「どのモデルも"過去のパターン"から導かれたもの。BTCが成熟するにつれ、過去のパターンが通用しなくなる可能性がある。モデルを信仰するのではなく、一つの参考データとして使うこと。」</div></div></div>
+        <h3>主要な価値評価モデル</h3>
         <div class="box box-blue">
-          <strong>S2F（Stock-to-Flow）</strong><br>
-          現在の供給量÷年間新規供給量で希少性を数値化。半減期後の上昇を説明できるが需要側を無視している批判がある。<br><br>
-          <strong>NVT（Network Value to Transactions）</strong><br>
-          時価総額÷取引量。株のPERに相当。NVTが高い＝過熱の可能性。低い＝割安の可能性。<br><br>
-          <strong>MVRV（Market Value to Realized Value）</strong><br>
-          現在の価格と全BTCの平均取得コストの比率。3.5以上＝過熱、1以下＝底値圏のサインとして使われることが多い。<br><br>
-          <strong>Rainbow Chart</strong><br>
-          対数回帰で長期価格帯を8段階に色分け。「非常に安い（青）」〜「売り時（赤）」まで視覚的にわかりやすい。
+          <strong>S2F（Stock-to-Flow）モデル</strong><br>現在の保有量（Stock）を年間生産量（Flow）で割った希少性指標。金・銀と同じフレームワークでBTCを評価。半減期後に価格が上昇する傾向を説明できるが、2022年以降の精度が低下している。<br><br>
+          <strong>NVT（Network Value to Transactions）</strong><br>株式のPERに相当する指標。時価総額÷オンチェーン取引量。NVTが高い＝価格が割高、低い＝割安の目安。<br><br>
+          <strong>MVRV（Market Value to Realized Value）</strong><br>現在の時価総額÷実現時価総額（各BTCが最後に動いたときの価格で計算した総価値）。MRVZスコアが高い＝天井圏、低い＝底値圏の目安として広く使われる。<br><br>
+          <strong>Rainbow Chart</strong><br>対数スケールでBTCの長期価格帯を色分けして表示。「最安値（青）」から「バブル（赤）」まで感覚的に現在地を把握できる。
         </div>
-        <div class="box box-orange">
-          <strong>全モデルの共通の限界</strong><br>
-          全モデルは過去データに基づく。ETF承認・国家参入・量子コンピューターなど新しい変数が入ると予測精度が下がる。「モデルを信じすぎること」自体がリスク。複数のモデルを組み合わせて判断することが重要。
-        </div>` },
-    { id: 'a30', emoji: '🚀', title: '仮想通貨業界でキャリアを作る', locked: true, content: `<p>仮想通貨の知識をキャリアに活かす方法は多岐にわたる。エンジニアだけでなく、マーケティング・法律・ファイナンス・コミュニティ管理など多様な職種の需要が急増している。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「仮想通貨業界のキャリアは「知識×英語×人脈」の掛け算です。技術者じゃなくても、「仮想通貨を理解しているマーケター」は非常に希少で重宝される。」</div></div></div>
-        <h3>需要のある職種</h3>
+        <div class="box box-orange">これらのモデルはあくまで参考値。ETF承認・機関投資家参入など市場構造の変化でモデルの有効性が変わることがある。複数モデルを組み合わせて使うこと。</div>` },
+    { id: 'a30', emoji: '🚀', title: '仮想通貨業界でキャリアを作る', locked: true, content: `<p>仮想通貨の知識をキャリアに活かす方法は多岐にわたる。エンジニアだけでなく、マーケティング・法律・ファイナンス・コミュニティ管理など様々な職種でWeb3の専門知識が求められている。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「Web3業界はまだ人材が圧倒的に不足している。"Solidity（スマートコントラクト言語）が書ける"だけで世界中の企業からオファーが来る時代。技術がなくても"Web3の知識×既存のスキル"で価値を出せる。」</div></div></div>
+        <h3>Web3キャリアの主要職種</h3>
         <div class="box box-blue">
-          <strong>技術系</strong><br>
-          Solidityエンジニア・セキュリティ監査・ZKPエンジニア・インフラエンジニア<br><br>
-          <strong>ビジネス系</strong><br>
-          BD（ビジネス開発）・プロダクトマネージャー・コミュニティマネージャー・マーケター<br><br>
-          <strong>金融系</strong><br>
-          クウォントアナリスト・リサーチアナリスト・ファンドマネージャー・トレーダー<br><br>
-          <strong>法律・コンプライアンス</strong><br>
-          規制対応・AML担当・法務・コンプライアンスオフィサー（非常に希少で高需要）
+          <strong>スマートコントラクトエンジニア</strong><br>Solidity・Rustを使ったスマートコントラクト開発。需要が高く報酬水準も高い。CryptoZombiesなどで学習できる。<br><br>
+          <strong>コミュニティマネージャー</strong><br>Discord・Telegram・Xでのコミュニティ運営。日本語話者は希少価値が高く、日本市場を狙うグローバルプロジェクトから需要がある。<br><br>
+          <strong>Web3マーケター</strong><br>ソーシャルメディア・インフルエンサー連携・NFTキャンペーン企画。従来のデジタルマーケティングのスキルが直接活かせる。<br><br>
+          <strong>仮想通貨法務・コンプライアンス</strong><br>規制整備が進む中で急激に需要が増加。法律の専門知識＋仮想通貨知識のコンボは希少。
         </div>
-        <h3>キャリアを作るための実践ステップ</h3>
-        <div class="box box-green">
-          ✅ ETHGlobal（ハッカソン）への参加でスキル証明とネットワーキング<br>
-          ✅ GitcoinでオープンソースプロジェクトにContributeしてトークン報酬を得る<br>
-          ✅ Bankless・The Defiantなどの英語メディアで最新情報をキャッチアップ<br>
-          ✅ DAOに参加してガバナンス活動で実績を作る<br>
-          ✅ Linkedinで「Web3」「Blockchain」のスキルを追加し、求人をチェック
-        </div>` },
+        <div class="box box-green">✅ まずはGitHub・Discordで貢献を始めてポートフォリオを作る<br>✅ ハッカソン（ETHGlobal等）への参加でネットワークを構築する<br>✅ Crypto Jobslist・Web3.career等の専門求人サイトを活用する</div>` },
     { id: 'a31', emoji: '🔭', title: 'MEV（最大抽出可能価値）の世界', locked: true, content: `<p>MEV（Maximal Extractable Value）はブロックチェーンの「見えない税金」だ。取引の順番を操作することで利益を抜き取る仕組みは、DeFiユーザー全員に影響している。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「あなたがDEXで大口の取引をすると、その前後にボットが割り込んで利益を抜く。これがMEV。ユーザーが知らないうちに「手数料のようなもの」を取られている。」</div></div></div>
         <h3>主なMEV手法</h3>
@@ -3180,92 +3106,75 @@ const LESSONS = {
         </div>
         <h3>MEVの社会的側面</h3>
         <p>Flashbotsなどの組織はMEVを「民主化」することを目指す。MEVを一部のボットに独占させるのではなく、バリデーターとユーザーに再分配する仕組み（PBS：Proposer-Builder Separation）の研究・実装が進んでいる。</p>` },
-    { id: 'a32', emoji: '🏛️', title: 'Bitcoinのライトニングネットワーク深掘り', locked: true, content: `<p>BTCをコーヒー1杯の支払いに使うには、処理速度と手数料の問題がある。ライトニングネットワークはそれを解決するBTCのL2ソリューションだ。現在も世界中で急速に成長している。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ライトニングは「2人の間に専用チャネルを開いて、そこで何千回も取引する」技術。最後にまとめてBTCブロックチェーンに記録する。BTCを実際の「決済通貨」にするための鍵。」</div></div></div>
-        <h3>ペイメントチャネルの仕組み</h3>
-        <p>AさんとBさんがチャネルを開く（BTCをロック）→チャネル内でBTCを高速・ほぼ無手数料で何度でも送り合う→チャネルを閉じるときだけオンチェーン手数料が発生。ルーティングにより直接チャネルを持たない相手にも送れる。</p>
-        <div class="box box-blue">
-          <strong>ライトニングの現状（2024〜2025年）</strong><br>
-          速度：1秒以内・手数料1円以下<br>
-          ノード数：世界中に数万のノード<br>
-          主要ウォレット：Phoenix Wallet・Breez・Strike・Muun<br>
-          活用事例：エルサルバドル（法定通貨決済）・Nostr（SNSチップ機能）
+    { id: 'a32', emoji: '🏛️', title: 'Bitcoinのライトニングネットワーク深掘り', locked: true, content: `<p>BTCをコーヒー1杯の支払いに使うには、処理速度と手数料の問題がある。ライトニングネットワーク（LN）はそれを解決するBTCのLayer2だ。仕組みと実態・限界を深く理解しよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ライトニングネットワークはBTCの"決済レイヤー"。ビザのような毎秒何万件の取引を処理できる可能性がある。ただし現在はまだ技術的に複雑で、一般普及には課題も多い。」</div></div></div>
+        <h3>ライトニングネットワークの仕組み</h3>
+        <p>2者間でオンチェーンに「ペイメントチャネル」を開設し、その中での取引はオフチェーンで行う。チャネルを閉じるときだけオンチェーンに最終状態を記録する。これにより中間の多数の取引でビットコインのブロックを消費しない。</p>
+        <div class="box box-blue"><strong>ライトニングの特徴</strong><br>・手数料：ほぼゼロ（サトシ単位）<br>・速度：ほぼ即時（数秒以内）<br>・スケーラビリティ：理論上無制限のTPS<br>・プライバシー：オンチェーンより高い（中間取引が非公開）</div>
+        <h3>実際の普及状況と課題</h3>
+        <div class="box box-gray">
+          <strong>普及事例</strong>：エルサルバドルの法定通貨化、Strike（送金アプリ）、CashApp（Square）がLN採用。<br><br>
+          <strong>課題</strong>：チャネルに資金をロックアップする必要がある、ルーティングの複雑さ、大額送金が難しい（チャネル容量の制限）、ノード運用に技術知識が必要。
         </div>
-        <h3>課題と解決策</h3>
-        <div class="box box-orange">
-          <strong>ルーティング問題</strong>：送金経路が見つからない場合がある→分割送金（MPP）で対応<br>
-          <strong>流動性問題</strong>：チャネルに十分な残高がないと送れない→LSP（Lightning Service Provider）が流動性を提供<br>
-          <strong>オンライン要件</strong>：受信するにはノードがオンラインである必要→モバイルウォレットが自動管理
-        </div>` },
+        <div class="box box-orange">LNの普及は「BTCが日常決済に使われる未来」の前提条件になる。現在は発展途上だが、技術改善が続いており長期的に注目すべき領域。</div>` },
     { id: 'a33', emoji: '📐', title: 'オンチェーン分析：クジラ追跡の実践', locked: true, content: `<p>クジラの動きはしばしば相場の先行指標になる。オンチェーンデータを使ってスマートマネーを追跡する実践的な方法を学ぼう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「クジラは追えるが、予測はできない。「動いた後」に気づくことが多い。でも「後から気づく」だけでも相場理解が大きく変わる。「誰かが大量に動かした」という事実が重要。」</div></div></div>
-        <h3>クジラ追跡ツール</h3>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ブロックチェーンは透明だ。全ての取引が公開されている。クジラがどのウォレットからどこに動かしたかを追跡することで、"次に何が起きるか"の手がかりが得られることがある。」</div></div></div>
+        <h3>クジラ追跡の基本ツール</h3>
         <div class="box box-blue">
-          <strong>Whale Alert</strong>（whale-alert.io）<br>
-          大口送金をリアルタイムで通知。100BTC以上の移動をアラートで受け取れる。Twitterでも自動投稿。<br><br>
-          <strong>Nansen</strong>（nansen.ai）<br>
-          ウォレットにラベルを付けて「スマートマネー」を追跡。どの機関・クジラが何を買っているかを可視化。<br><br>
-          <strong>Arkham Intelligence</strong><br>
-          アドレスの実体を推定・可視化。ウォレットの資金フローを追跡するグラフ表示が特徴。<br><br>
-          <strong>Glassnode Exchange Netflow</strong><br>
-          取引所への流入（売り圧）と流出（保有意欲）を追跡。
+          <strong>Whale Alert（whale-alert.io）</strong><br>大口送金をリアルタイムで通知するサービス。「1,000 BTC が Binance に移動」などのアラートを確認できる。取引所への大量流入は売り圧のサインになりやすい。<br><br>
+          <strong>Nansen（nansen.ai）</strong><br>ウォレットに「Smart Money」「VC Fund」などのラベルを付けて追跡。どの機関が何を買っているかを可視化。DeFiの資金フローに強い。<br><br>
+          <strong>Arkham Intelligence（arkhamintelligence.com）</strong><br>ウォレットのラベリングとエンティティ（取引所・ファンド等）の特定に特化。
         </div>
-        <h3>取引所フロー分析の実践</h3>
-        <div class="box box-orange">
-          <strong>取引所への大量流入</strong>：売りの準備→価格下落のサイン<br>
-          <strong>取引所からの大量流出</strong>：長期保有に移行→価格上昇のサイン<br><br>
-          <strong>注意</strong>：取引所の内部ウォレット間の移動が「大量売り」に見えることがある。実際の売り圧かどうかを確認するには複数のデータを組み合わせることが重要。単一の指標だけで判断しないこと。
+        <h3>実践：取引所フロー分析</h3>
+        <div class="box box-gray">
+          <strong>大量流入（取引所へ）</strong>→ 売りの準備 → 価格下落の前兆になることがある<br>
+          <strong>大量流出（取引所から）</strong>→ コールドウォレットへの移動 → 長期保有の意思 → 価格上昇の前兆になることがある
+        </div>
+        <div class="box box-orange">注意点：取引所の内部ウォレット間移動が「大量送金」に見えるケースがある。単一の指標だけで判断せず、複数の情報源を組み合わせること。クジラも「見せかけの動き（フェイク）」をすることがある。</div>` },
+    { id: 'a34', emoji: '🔐', title: 'ゼロ知識証明（ZKP）を理解する', locked: true, content: `<p>「秘密を明かさずに、秘密を知っていることを証明する」——ゼロ知識証明（ZKP）はWeb3のプライバシーとスケーラビリティの核心技術だ。理解することでZK Rollupの意味と重要性が深く把握できる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ZKPは"21世紀最重要の暗号技術"とも言われる。プライバシーを守りながら検証可能であるという矛盾を解決する魔法のような技術。スケーラビリティとプライバシーの両方を同時に解決できる。」</div></div></div>
+        <h3>ゼロ知識証明とは</h3>
+        <p>例：「この洞窟の秘密の扉の暗証番号を知っている」ことを、実際の番号を教えずに証明する方法。証明者（Prover）が検証者（Verifier）に対して、秘密情報の存在だけを数学的に証明する。</p>
+        <div class="box box-blue"><strong>ZKPの2大方式</strong><br>
+          <strong>zk-SNARK</strong>（Succinct Non-interactive ARguments of Knowledge）<br>証明サイズが小さく高速。ただし「トラステッドセットアップ」（信頼できる初期設定）が必要。Zcash・Groth16で使用。<br><br>
+          <strong>zk-STARK</strong>（Scalable Transparent ARguments of Knowledge）<br>トラステッドセットアップ不要。より透明性が高い。証明サイズがSNARKより大きい。StarkNetで使用。
+        </div>
+        <h3>ZKPの主な応用</h3>
+        <div class="box box-gray">
+          <strong>ZK Rollup</strong>：大量のトランザクションをオフチェーンで処理し、有効性証明のみをL1に記録。zkSync・StarkNet・Polygon zkEVMが実装。<br>
+          <strong>zkKYC</strong>：「18歳以上である」「日本居住者である」を個人情報を明かさずに証明。<br>
+          <strong>プライバシーコイン</strong>：Zcashが取引内容を隠しながら有効性を証明。
         </div>` },
-    { id: 'a34', emoji: '🔐', title: 'ゼロ知識証明（ZKP）を理解する', locked: true, content: `<p>「秘密を明かさずに、秘密を知っていることを証明する」——ゼロ知識証明はWeb3のプライバシーとスケーラビリティの核心技術だ。次の5年で最も重要な技術になる可能性がある。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「財布に100万円あることを証明せずに、100万円以上あることを証明する」——これがゼロ知識証明のイメージ。プライバシーを保ちながら信頼を証明できる革命的な技術です。」</div></div></div>
-        <h3>ZKPの仕組みイメージ</h3>
-        <p>証明者（Prover）と検証者（Verifier）がいる。証明者は「秘密の答え」を持っている。検証者は「答えが正しいかどうか」だけを確認でき、答え自体は知らない。暗号学的に「嘘をつくことが計算上不可能」になっている。</p>
-        <div class="box box-blue">
-          <strong>仮想通貨での応用</strong><br>
-          <strong>ZK Rollup</strong>（zkSync・StarkNet）：取引の正当性をZKPで証明→高速・安全なL2<br>
-          <strong>Zcash</strong>：送金額・送信者を隠すプライバシーコイン<br>
-          <strong>zkKYC</strong>：身元証明をしつつプライバシーを保護。本人確認情報を開示せずに「成人である」を証明できる。<br>
-          <strong>zkEVM</strong>：EVMとZKPを組み合わせてETH互換の高速L2を実現
+    { id: 'a35', emoji: '💹', title: 'リスクパリティ戦略と仮想通貨', locked: true, content: `<p>リスクパリティは「各資産のリスクを均等にする」ポートフォリオ理論だ。仮想通貨のような高ボラティリティ資産を含むポートフォリオに応用することで、リスク調整後リターンを最大化できる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「リスクパリティは"等金額"ではなく"等リスク"で配分する。ボラティリティが高い資産は少なく、低い資産は多く配分することで、特定の資産がポートフォリオ全体を支配しなくなる。」</div></div></div>
+        <h3>リスクパリティの基本概念</h3>
+        <p>従来の60/40ポートフォリオ（株60%・債券40%）は実は「リスクの90%が株式から来ている」ことが多い。リスクパリティは各資産のリスク（ボラティリティ）を均等にすることで、真の意味での分散を実現する。</p>
+        <div class="box box-blue"><strong>仮想通貨へのリスクパリティ適用例</strong><br>
+          BTC年率ボラティリティ：約60%<br>
+          ETH年率ボラティリティ：約80%<br>
+          S&P500年率ボラティリティ：約15%<br><br>
+          等リスク配分なら：BTC 10%・ETH 7%・株式40%・債券43%<br>
+          （ボラティリティが高い資産ほど配分を少なくする）
         </div>
+        <h3>実践的な応用</h3>
+        <div class="box box-gray">
+          <strong>定期リバランス</strong>：ボラティリティが変化するたびに配分を見直す（月次または四半期）。<br>
+          <strong>ボラティリティのクラスタリング</strong>：仮想通貨は高ボラティリティが連続する傾向があるため、急落時はポジションを縮小するルールを設ける。
+        </div>
+        <div class="box box-orange">リスクパリティはリターンを最大化するものではなく「リスクを管理しながら安定したリターンを得る」アプローチ。仮想通貨の高ボラティリティを活かしながら致命的な損失を防ぐために有効。</div>` },
+    { id: 'a36', emoji: '🌍', title: 'RWA（現実資産トークン化）の実践', locked: true, content: `<p>RWA（Real World Assets）のトークン化は、ブロックチェーンが「実際の経済」と融合する最も重要な流れの一つだ。米国債・不動産・プライベートクレジットがオンチェーンに載ることの意味を理解しよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「RWAはDeFiに"本物の利回り"をもたらす可能性がある。現実の資産から生まれる収益（米国債の利息・不動産の賃料）がスマートコントラクトを通じて分配される設計は、持続可能なDeFiの答えの一つだ。」</div></div></div>
+        <h3>主要なRWAカテゴリー</h3>
+        <div class="box box-blue">
+          <strong>トークン化された米国債</strong><br>BlackRockのBUIDLファンド・Ondoの USDY・OpenEdenのTBILLなど。米国債の利回り（年4〜5%）をステーブルコイン保有者に還元。2024年末時点で市場規模は数十億ドルに達している。<br><br>
+          <strong>トークン化された不動産</strong><br>RealT・Loftyなどが米国の不動産をNFT化。数百ドルから不動産に投資・賃料を受け取ることが可能になる。<br><br>
+          <strong>プライベートクレジット</strong><br>Mapleなどがオンチェーンで企業への貸付を実行。機関投資家向けの利回り商品をDeFiに持ち込む。
+        </div>
+        <h3>RWAの課題と展望</h3>
         <div class="box box-orange">
-          <strong>ZKPの課題</strong><br>
-          証明生成（Proof Generation）に大きな計算コストがかかる。ハードウェアの進化とアルゴリズムの改善で実用性が年々向上している。専用チップ（ZKアクセラレーター）の開発も進んでいる。今後5〜10年でZKPはインターネットインフラの一部になると多くの専門家が予測している。
-        </div>` },
-    { id: 'a35', emoji: '💹', title: 'リスクパリティ戦略と仮想通貨', locked: true, content: `<p>リスクパリティは「各資産のリスクを均等にする」ポートフォリオ理論だ。仮想通貨のような高ボラティリティ資産を含むポートフォリオ管理に応用することで、長期的なリスク調整後リターンを最大化できる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「均等に分散すれば安全」は間違い。ボラティリティが高い資産は少ない比率でもポートフォリオのリスクの大半を占める。リスクベースで配分することが重要です。」</div></div></div>
-        <h3>仮想通貨のボラティリティ問題</h3>
-        <p>BTC年間ボラティリティ：約60〜80%。S&P500は約15〜20%。つまりポートフォリオの5%をBTCに入れただけで、リスク寄与はS&P500の20%分と同等になることがある。「少額だから安全」という認識は間違いだ。</p>
-        <div class="box box-blue">
-          <strong>リスクパリティ的な配分例</strong><br>
-          BTC：全資産の1〜3%（リスク寄与は大きい）<br>
-          ETH：全資産の0.5〜1.5%<br>
-          株式インデックス：全資産の40〜60%<br>
-          債券・キャッシュ：全資産の30〜50%<br><br>
-          ※高いリターンを求めるなら仮想通貨比率を意識的に高めるリスクを取る判断もあり。
-        </div>
-        <div class="box box-green">
-          <strong>実践的なリスク管理の指標</strong><br>
-          ✅ 各資産のボラティリティを定期的に確認（3ヶ月・年次）<br>
-          ✅ ボラティリティが上がった資産は配分を減らしてリバランス<br>
-          ✅ 相関係数をチェック（BTCと株の相関が高まっている時期は分散効果が薄い）
-        </div>` },
-    { id: 'a36', emoji: '🌍', title: 'RWA（現実資産トークン化）の実践', locked: true, content: `<p>RWA（Real World Assets）のトークン化は、ブロックチェーンが「実際の経済」と融合する最も重要な流れの一つだ。国債・不動産・商品をオンチェーン化することで何が変わるのかを理解しよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ブラックロックがオンチェーン国債ファンドを立ち上げた時、DeFiコミュニティは震えました。TradFinanceがついに本格参入した瞬間だった。RWAは「DeFiが遊び場から本物の金融市場になる」転換点です。」</div></div></div>
-        <h3>主要なRWAプロジェクト</h3>
-        <div class="box box-blue">
-          <strong>Ondo Finance（OUSG）</strong><br>
-          米国債のトークン化。ブラックロックのMMFをオンチェーン化。年利4〜5%で購入可能。DeFiのステーブルな利回り源として注目。<br><br>
-          <strong>BlackRock BUIDL</strong><br>
-          ブラックロックのオンチェーン国債ファンド。機関投資家向け。Ethereumベース。<br><br>
-          <strong>RealT</strong><br>
-          米国不動産を小口化・トークン化。数十ドルから米国不動産に投資でき、家賃収入をUSDCで受け取れる。
-        </div>
-        <h3>RWAの課題</h3>
-        <div class="box box-orange">
-          <strong>オラクル問題</strong>：現実の資産価格をオンチェーンに正確に反映する方法。リアルタイム更新が難しい。<br>
-          <strong>法的な所有権</strong>：トークンが本当に現実の資産を保証するのか、法的な整備が必要。<br>
-          <strong>KYC要件</strong>：多くのRWAプロジェクトが規制上の理由でKYCを要求。DeFiの「誰でも参加可能」という特性と相反する。<br><br>
-          これらの課題が解決されるかどうかが、2030年に向けたRWA市場の拡大を左右する。
+          <strong>法的な課題</strong>：「現実の資産の所有権」をどのようにオンチェーンのトークンに対応付けるかは国・資産種別によって異なる。法的効力の問題が残る。<br><br>
+          <strong>オラクルリスク</strong>：現実の価格・賃料情報をオンチェーンに持ち込む際のオラクルの信頼性。<br><br>
+          <strong>流動性の問題</strong>：二次市場（RWAトークンの売買）がまだ薄く、換金性に限界がある。
         </div>` },
     { id: 'a37', emoji: '⚙️', title: 'DePIN（分散型物理インフラ）', locked: true, content: `<p>DePIN（Decentralized Physical Infrastructure Networks）は、物理的なインフラをブロックチェーンで分散化する新しい経済モデルだ。Wi-Fiから太陽光発電まで、幅広いインフラが対象になっている。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DePINは「Uberのドライバーモデル」をあらゆる物理インフラに拡張する試み。個人が遊休資源（Wi-Fi・ストレージ・GPU）を提供してトークンで報酬を得る。「所有してない人が使えるインフラ」を作る革命。」</div></div></div>
@@ -3284,41 +3193,37 @@ const LESSONS = {
           <strong>DePINの注意点</strong><br>
           トークン報酬が下がると参加者が離脱→サービス品質が下がるデスパイラルリスク。また実際のサービス品質がAWS・Googleなど中央集権型サービスに劣ることが多い。「使われる必然性」があるかを確認してから投資・参加すること。
         </div>` },
-    { id: 'a38', emoji: '🧠', title: '行動経済学と仮想通貨投資', locked: true, content: `<p>「なぜ人は高値で買って安値で売るのか」——行動経済学の知見を仮想通貨投資に適用することで、自分の判断バイアスを認識して感情的なミスを大幅に減らせる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「投資の失敗の9割は「知識不足」ではなく「感情コントロールの失敗」です。自分のバイアスを知ることが最大の武器になる。」</div></div></div>
-        <h3>仮想通貨投資でよく起きるバイアス</h3>
+    { id: 'a38', emoji: '🧠', title: '行動経済学と仮想通貨投資', locked: true, content: `<p>「なぜ人は高値で買って安値で売るのか」——行動経済学の知見を仮想通貨投資に適用することで、自分の判断バイアスを認識して感情的な失敗を減らすことができる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「人間の脳は"損失"を"利益"の2倍強く感じるように設計されている。これを知るだけで、底で売りたくなる衝動が少し理解しやすくなる。感情を消すのではなく、理解して管理すること。」</div></div></div>
+        <h3>仮想通貨投資に現れる主要バイアス</h3>
         <div class="box box-orange">
-          <strong>損失回避バイアス</strong><br>
-          利益の喜びより損失の痛みが約2倍強い。含み損を抱えたまま「いつか戻るはず」と持ち続ける原因。<br><br>
-          <strong>FOMO（取り残される恐怖）</strong><br>
-          高値で飛びつく最大の原因。SNSで「爆上がり！」という投稿が増えた時が最も危険。<br><br>
-          <strong>アンカリング</strong><br>
-          最初に見た価格に引きずられる。「ATHが$69,000だったから$30,000は安い」という誤った安心感。<br><br>
-          <strong>確証バイアス</strong><br>
-          自分が信じたいことを確認する情報だけを集める。「BTCは必ず上がる」を信じているとき、下落リスク情報を無視する。
+          <strong>損失回避バイアス</strong><br>利益の喜びより損失の痛みを約2倍強く感じる（プロスペクト理論）。含み損のポジションを損切りできず「塩漬け」になる原因。<br><br>
+          <strong>FOMO（取り残される恐怖）</strong><br>「皆が儲けているのに自分だけ乗れていない」という恐怖。高値圏での衝動買いの主因。<br><br>
+          <strong>確証バイアス</strong><br>「このコインは上がる」と信じたら、それを支持する情報だけを集め、反証を無視する傾向。<br><br>
+          <strong>アンカリング</strong><br>最初に見た価格（例：BTC=100万円）を基準点にして判断する。「高値から下がった」という判断が「割安」に見えることの原因。
         </div>
+        <h3>バイアスを克服する実践的手法</h3>
         <div class="box box-green">
-          <strong>バイアスを減らす実践的方法</strong><br>
-          ✅ 投資ルールを文書化して感情で変えない<br>
-          ✅ 反対意見（弱気論）を意識的に読む<br>
-          ✅ 大きな意思決定は24時間後に実行する（衝動買い防止）<br>
-          ✅ 「これを売ったとして、同じ価格で買い直すか？」と自問する
+          ✅ <strong>投資方針書を事前に作成</strong>：「BTCが○%下落したら買い増し」「○%上昇したら一部利確」などのルールを感情のない状態で決めておく。<br>
+          ✅ <strong>DCA（ドルコスト平均法）</strong>：タイミングを考える必要がなくなりFOMOを排除できる。<br>
+          ✅ <strong>チャートを見る頻度を減らす</strong>：毎日見るほど感情的判断をしやすくなる。<br>
+          ✅ <strong>投資日記をつける</strong>：判断の理由を記録することで後からバイアスを認識できる。
         </div>` },
-    { id: 'a39', emoji: '🌐', title: 'Web3ゲーム（GameFi）の経済設計', locked: true, content: `<p>「遊びながら稼ぐ」というPlay-to-Earnブームは来て去ったが、その失敗から学ぶことで次世代GameFiの可能性と正しい関わり方が見えてくる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「Axie Infinityの失敗は「稼ぐために遊ぶ人しかいなかった」こと。ゲームが面白くなければユーザーは報酬が下がった途端に去る。次世代GameFiの答えは「楽しいから遊ぶ→副産物として稼げる」設計。」</div></div></div>
-        <h3>第1世代GameFiの失敗分析</h3>
-        <p>2021年に爆発的にブームになったAxie Infinity。ピーク時には月300万人のアクティブユーザーを記録。しかし参入障壁（NFT購入費が数十万円）が高く、報酬のインフレが続いた。トークン価格の下落で稼ぎが減り→ユーザー離脱→さらに価格下落の悪循環に陥った。</p>
-        <div class="box box-blue">
-          <strong>次世代GameFiが目指す設計</strong><br>
-          ✅ ゲームとしての面白さが第一（稼ぎはボーナス）<br>
-          ✅ トークンの供給をゲームプレイと連動させる（インフレ防止）<br>
-          ✅ プレイヤーがゲームのオーナーになるDAO形式<br>
-          ✅ 大手ゲームスタジオ（Square Enix・Ubisoft等）のブロックチェーンゲーム参入
-        </div>
+    { id: 'a39', emoji: '🌐', title: 'Web3ゲーム（GameFi）の経済設計', locked: true, content: `<p>「遊びながら稼ぐ」というPlay-to-Earnブームは来て去ったが、その失敗から学ぶことで次世代GameFiの可能性と課題が明確になる。Web3ゲームが本当に機能するための経済設計とは何かを理解しよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「P2Eの失敗の本質は"ゲームではなく仕事だった"こと。楽しいから遊ぶ→副産物として稼げる、という設計でなければ持続しない。経済設計の問題であって、ブロックチェーンの問題ではない。」</div></div></div>
+        <h3>P2Eブーム崩壊の経済学的分析</h3>
         <div class="box box-orange">
-          <strong>注意点</strong><br>
-          「ゲームトークン」は最もボラティリティが高い部類のトークン。ゲームがヒットしても長続きするかは別問題。投資するなら全資産の1〜2%以内に限定し、「失っても平気」な金額のみ。
-        </div>` },
+          <strong>インフレスパイラル</strong><br>新規ユーザーが参入するたびにトークンが発行される。売り手（既存ユーザー）が買い手（新規ユーザー）を上回った瞬間にトークン価格が崩壊する「ポンジ構造」。<br><br>
+          <strong>ゲーム価値の欠如</strong><br>「稼ぐためだけに遊ぶ」ユーザーがほとんどのため、稼げなくなると即座に離脱。コアゲーマーが不在だった。<br><br>
+          <strong>NFTの過大評価</strong><br>ゲームアイテムNFTの価格がゲームプレイの実用価値と乖離。「投資対象」として購入されたNFTは崩壊とともに無価値化した。
+        </div>
+        <h3>次世代Web3ゲームが目指す設計</h3>
+        <div class="box box-blue">
+          <strong>Fun-First設計</strong>：ゲームとして単純に面白いことが前提。ブロックチェーン要素はオプション。<br>
+          <strong>持続可能なトークノミクス</strong>：トークンの発行量をゲーム内経済活動と連動させ、インフレを抑制。<br>
+          <strong>真のデジタル所有権</strong>：アイテムがゲーム外でも価値を持つ（他ゲームへの持ち込み・二次市場での売買）。
+        </div>
+        <div class="box box-green">✅ 注目プロジェクト：Immutable X・Pixels・Big Time・PixelmonなどNFTアイテムに実際のゲームプレイ価値がある設計を持つプロジェクトに注目。</div>` },
     { id: 'a40', emoji: '🏆', title: '仮想通貨投資の総括と次のステップ', locked: true, content: `<p>初級から上級まで学んできた知識を統合する。「何を知っていて、何を知らないか」を整理することで、これからの学習と投資の質が大きく変わる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「学び続けることが最大の投資です。仮想通貨市場は毎年別物になる。今日の常識が来年は非常識になることも珍しくない。知識の更新を止めた瞬間、アドバンテージが消える。」</div></div></div>
         <h3>上級投資家の思考フレームワーク</h3>
