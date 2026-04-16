@@ -3463,7 +3463,7 @@ const MINI_QUIZ = {
 };
 
 const DISCORD_LEVELS = ['intermediate', 'advanced'];
-let completedLessons = new Set();
+let completedLessons = new Set(JSON.parse(localStorage.getItem('crypto_completedLessons') || '[]'));
 let currentLesson = null;
 let quizState = { level: null, questions: [], idx: 0, score: 0, answered: false, started: false, finished: false, failed: false };
 
@@ -3637,6 +3637,7 @@ function nextMiniQuiz(lessonId, nextIdx) {
 function completeLesson(level, idx) {
   const l = LESSONS[level][idx];
   completedLessons.add(l.id);
+  localStorage.setItem('crypto_completedLessons', JSON.stringify([...completedLessons]));
   updateProgress();
   renderSidebar();
   updateLeaderboard();
