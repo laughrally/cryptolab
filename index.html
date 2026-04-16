@@ -2045,37 +2045,39 @@ const LESSONS = {
           <strong>Pixels（Ronin）</strong>：Axieのブランドを活かしたカジュアルゲーム。DAUが安定している希少な例。
         </div>
         <div class="box box-orange">「ゲームトークン」は最もボラティリティが高い部類。投資するなら全資産の1〜2%以内に限定すること。</div>` },
-    { id: 'i9', emoji: '🔐', title: 'セキュリティの実践', locked: true, content: `<p>仮想通貨を保有・運用する上で、セキュリティは最優先事項だ。ハッキング・フィッシング——実際に起きた被害の手口を知ることが最強の防御になる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiのセキュリティは「弱いところから攻められる」という鉄則がある。スマートコントラクト・ブリッジ・オラクル・フロントエンド——全ての層がターゲットになりうる。」</div></div></div>
-        <h3>攻撃の層別分類</h3>
+    { id: 'i9', emoji: '🔐', title: 'セキュリティの実践', locked: true, content: `<p>仮想通貨を保有・運用する上でセキュリティは最優先事項だ。ハッキング・フィッシング・フロントランニング——実際に起きた被害の手口を知ることが最強の防御になる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiのセキュリティは"弱いところから攻められる"鉄則がある。スマートコントラクト・ブリッジ・オラクル・フロントエンド——全ての層がターゲットになりうる。」</div></div></div>
+        <h3>攻撃の層別分類と実例</h3>
         <div class="box box-orange">
-          <strong>スマートコントラクト層</strong>：コードのバグを直接突く。再入攻撃など。<br><br>
-          <strong>ブリッジ層</strong>：Wormhole（約340億円）・Ronin（約800億円）など大型被害あり。<br><br>
-          <strong>オラクル層</strong>：価格フィードの操作。フラッシュローン攻撃と組み合わせた手口。<br><br>
-          <strong>フロントエンド層</strong>：公式サイトのDNSハイジャック。正規URLでも偽サイトに飛ばされる。
+          <strong>スマートコントラクト層</strong><br>コードのバグを直接突く。再入攻撃でDAOから約60億円が流出した2016年の事件が有名。<br><br>
+          <strong>ブリッジ層</strong><br>Wormhole（約340億円）・Ronin（約800億円）など、ブリッジは歴史上最も多くの被害が出ている層。<br><br>
+          <strong>オラクル層</strong><br>価格フィードを一時的に操作するフラッシュローン攻撃。数秒の攻撃で数十億円を抜く手口。<br><br>
+          <strong>フロントエンド層</strong><br>公式サイトのDNSハイジャック。正規URLでも偽サイトに飛ばされ、ウォレット接続で資産を盗まれる。
         </div>
-        <h3>自分を守るための実践</h3>
+        <h3>個人ユーザーが実践すべき防御</h3>
         <div class="box box-green">
-          ✅ ブックマークから公式サイトにアクセスする<br>
-          ✅ 新しいプロトコルには最初少額で試す<br>
-          ✅ 使わないプロトコルへのApprovalは定期的に取り消す（Revoke.cash）<br>
-          ✅ 大額はコールドウォレットで管理する
+          ✅ ブックマークから公式サイトにアクセスする（検索結果の広告は偽サイトが多い）<br>
+          ✅ 新しいプロトコルは最初必ず少額でテストする<br>
+          ✅ 使わないプロトコルへのApprovalを定期的に取り消す（Revoke.cash）<br>
+          ✅ 大額資産はコールドウォレット（Ledger等）で管理する<br>
+          ✅ シードフレーズはデジタルデバイスに保存しない（写真・クラウド厳禁）
         </div>` },
-    { id: 'i10', emoji: '💸', title: '仮想通貨の税金・確定申告入門', locked: true, content: `<p>仮想通貨で利益が出たら確定申告が必要だ。知らなかったでは済まない税務の基本を整理しよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「税金は「後から考える」ものじゃない。取引前に税コストを計算してから実行するのがプロの習慣。」</div></div></div>
-        <h3>課税される取引と課税タイミング</h3>
+    { id: 'i10', emoji: '💸', title: '仮想通貨の税金・確定申告入門', locked: true, content: `<p>仮想通貨で利益が出たら確定申告が必要だ。「知らなかった」では済まない税務の基本を整理しよう。正しく理解すれば合法的な節税も可能になる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「税金は"後から考える"ものじゃない。取引前に税コストを計算してから実行するのがプロの習慣。年末の損益通算を意識するだけで手取りが大きく変わる。」</div></div></div>
+        <h3>課税される取引・されない取引</h3>
         <div class="box box-blue">
-          課税される：仮想通貨→円への換金・仮想通貨同士の交換・仮想通貨での商品購入・マイニング報酬・ステーキング報酬・エアドロップ受取<br><br>
-          課税されない：日本円で仮想通貨を購入するだけ・自分のウォレット間の移動・保有したまま（含み益は課税なし）
+          <strong>課税される</strong>：仮想通貨→円への換金／仮想通貨同士の交換（BTC→ETHも課税）／仮想通貨での商品購入／マイニング・ステーキング報酬／エアドロップ受取<br><br>
+          <strong>課税されない</strong>：日本円で仮想通貨を購入するだけ／自分のウォレット間の移動／保有したまま（含み益は課税なし）
         </div>
-        <h3>税率と節税戦略</h3>
-        <p>仮想通貨の利益は「雑所得」として累進課税（5〜45%＋住民税10%）が適用される。</p>
+        <h3>税率と計算方法</h3>
+        <p>仮想通貨の利益は「雑所得」として他の収入と合算され、累進課税（5〜45%）＋住民税10%が適用される。年間利益が大きいほど税率が高くなる点に注意。</p>
         <div class="box box-green">
-          <strong>① 損益通算</strong>：年内に含み損のある銘柄を売却して利益と相殺。12月が勝負。<br>
-          <strong>② 年をまたいだ利益調整</strong>：年収が高い年は利確を翌年に延ばすと税率が下がる場合がある。<br>
-          <strong>③ 法人化の検討</strong>：年間利益が500万円を超えるなら法人税率が有利になる場合がある。
+          <strong>合法的な節税策</strong><br>
+          ① <strong>損益通算</strong>：年内に含み損のある銘柄を売却して利益と相殺。12月が勝負。<br>
+          ② <strong>利益の年度分散</strong>：年収が高い年は利確を翌年に延ばすと税率が下がる場合がある。<br>
+          ③ <strong>法人化の検討</strong>：年間利益が500万円超なら法人税率が有利になる可能性がある。
         </div>
-        <div class="box box-orange">税務計算ツール（Koinly・Cryptact等）への取引所CSVのインポートが最も効率的。大きな利益が出た年は仮想通貨に詳しい税理士への相談を推奨。</div>` },
+        <div class="box box-orange">税務計算ツール（Koinly・Cryptact・GTN等）への取引所CSVインポートが最も効率的。大きな利益が出た年は仮想通貨に詳しい税理士への相談を強く推奨する。</div>` },
     { id: 'i11', emoji: '🔢', title: 'オーダーブック（板）の読み方', locked: true, content: `<p>オーダーブック（板）とは、取引所に出ている買い注文と売り注文の一覧表だ。板を読めるようになると「どこに大きな売り圧があるか」「どこで反発しやすいか」が視覚的に掴めるようになる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「板を読むのは"市場参加者の意思を読む"こと。大きな売り板（壁）があれば価格がそこで止まりやすい。その壁が消えた瞬間に価格が動く——これを先読みするのが板読みの本質。」</div></div></div>
         <h3>板の基本構造</h3>
@@ -2117,28 +2119,41 @@ const LESSONS = {
           ✅ タイムロック（緊急変更に遅延を設ける仕組み）の実装<br>
           ✅ TVLが安定して高い
         </div>` },
-    { id: 'i14', emoji: '🔄', title: 'ブリッジとクロスチェーン取引', locked: true, content: `<p>クロスチェーン技術はマルチチェーン時代の必須知識だ。異なるブロックチェーン間でアセットを移動させる仕組みを理解しよう。ブリッジはハッキングの標的になりやすい。</p>
+    { id: 'i14', emoji: '🔄', title: 'ブリッジとクロスチェーン取引', locked: true, content: `<p>クロスチェーン技術はマルチチェーン時代の必須知識だ。異なるブロックチェーン間でアセットを移動させる仕組みを理解しよう。ブリッジはDeFiで最もハッキングが多い領域の一つ。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ブリッジはDeFiで最もリスクが高い部分の一つ。2022年だけで数千億円が失われた。実績のある大手ブリッジを、必要最小限の金額で使うこと。」</div></div></div>
         <h3>ブリッジの仕組み</h3>
-        <p>チェーンA側でトークンをロックし、チェーンB側で同等のラップドトークンを発行する。逆の操作で元のチェーンに戻せる。</p>
-        <div class="box box-blue"><strong>主要なブリッジ</strong><br>・Stargate Finance：LayerZero技術を使ったマルチチェーンブリッジ<br>・Hop Protocol：ETHのL2間の高速転送に特化<br>・Portal Bridge（Wormhole）：2022年に約340億円のハッキング被害あり<br>・IBC（Cosmos）：比較的安全</div>
-        <div class="box box-orange">✅ 実績のある大手ブリッジを使う<br>✅ 一度に大量を移動させずに少額でテスト<br>✅ ラップドトークンのデペッグリスクを理解する</div>` },
+        <p>チェーンA側でトークンをロックし、チェーンB側で同等のラップドトークンを発行する。逆の操作で元のチェーンに戻せる。この「ロックされた資産の集中」がハッキングの標的になりやすい理由だ。</p>
+        <div class="box box-blue"><strong>主要なブリッジと特徴</strong><br>・<strong>Stargate Finance</strong>：LayerZero技術を使ったマルチチェーンブリッジ。流動性が豊富。<br>・<strong>Hop Protocol</strong>：ETHのL2間の高速転送に特化。<br>・<strong>Across Protocol</strong>：インテント型ブリッジ。高速かつコスト効率が良い。<br>・<strong>Portal Bridge（Wormhole）</strong>：2022年に約340億円のハッキング被害あり。現在は再建済み。</div>
+        <h3>ネイティブブリッジ vs サードパーティブリッジ</h3>
+        <div class="box box-gray">
+          <strong>ネイティブブリッジ</strong>（公式L2ブリッジ）：セキュリティが高いが引き出しに最大7日かかる（Optimistic系）<br>
+          <strong>サードパーティブリッジ</strong>：即時引き出しが可能だがスマートコントラクトリスクが追加される
+        </div>
+        <div class="box box-orange">✅ 実績のある大手ブリッジを使う<br>✅ 一度に大量を移動させずに少額でテスト<br>✅ ラップドトークン（wBTC等）のデペッグリスクを理解する<br>✅ ブリッジ後は正しいトークンが届いているか必ず確認する</div>` },
     { id: 'i15', emoji: '📊', title: 'BollingerBandとMACD入門', locked: true, content: `<p>ボリンジャーバンドとMACDは、テクニカル分析の中でも特に広く使われる2大指標だ。2つを組み合わせることで相場の「過熱」と「転換」をより精度高く判断できる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「ボリバン収縮＋MACDゴールデンクロス」は強い上昇サインとされることが多い。2つが同じシグナルを出したときに確信度が高まる。」</div></div></div>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「"ボリバン収縮＋MACDゴールデンクロス"は強い上昇サインとされることが多い。2つが同じシグナルを出したときに確信度が高まる——これが複数指標を組み合わせる理由。」</div></div></div>
         <h3>ボリンジャーバンドの読み方</h3>
         <div class="box box-blue">
           中心線（20日移動平均）・上部バンド（+標準偏差×2）・下部バンド（-標準偏差×2）で構成。<br><br>
-          ・バンド幅が狭くなる（スクイーズ）→大きな値動きの前兆<br>
-          ・価格が上部バンドに触れる→買われすぎ<br>
-          ・価格が下部バンドに触れる→売られすぎ<br>
-          ・バンドウォーク→強いトレンドの証拠
+          ・<strong>スクイーズ</strong>（バンド幅が収縮）→ 大きな値動きの前兆<br>
+          ・<strong>バンドウォーク</strong>（価格がバンドに沿って動く）→ 強いトレンドの証拠<br>
+          ・<strong>上部バンドタッチ</strong>→ 短期的な買われすぎ<br>
+          ・<strong>下部バンドタッチ</strong>→ 短期的な売られすぎ
         </div>
         <h3>MACDの読み方</h3>
         <div class="box box-blue">
-          MACDライン（12日EMA－26日EMA）とシグナルライン（9日EMA）で構成。<br><br>
-          ・ゴールデンクロス→買いシグナル<br>
-          ・デッドクロス→売りシグナル<br>
-          ・ダイバージェンス→トレンド転換の予兆
+          MACDライン（12日EMA－26日EMA）とシグナルライン（9日EMA）で構成。ヒストグラムで両者の差を視覚化。<br><br>
+          ・<strong>ゴールデンクロス</strong>（MACDがシグナルを上抜け）→ 買いシグナル<br>
+          ・<strong>デッドクロス</strong>（MACDがシグナルを下抜け）→ 売りシグナル<br>
+          ・<strong>ダイバージェンス</strong>（価格とMACDが逆方向）→ トレンド転換の予兆
+        </div>
+        <h3>2指標の組み合わせ実践</h3>
+        <div class="box box-green">
+          最も信頼性が高いパターン：<br>
+          ① ボリバンがスクイーズ中（大きな動きの準備）<br>
+          ② MACDがゴールデンクロス直前<br>
+          ③ 価格がサポートラインに乗っている<br>
+          → この3つが揃ったときにエントリーを検討する
         </div>
         <div class="box box-orange">いずれも遅行指標。突発的なニュースでシグナルが崩れることがある。単独で売買判断をしないこと。</div>` },
     { id: 'i16', emoji: '🎲', title: 'レバレッジ取引の仕組みとリスク', locked: true, content: `<p>レバレッジ取引は少ない資金で大きな利益を狙えるが、逆方向に動けば一瞬で全損する。初心者が最も多く資産を失うのがこのレバレッジ取引だ。仕組みを完全に理解してから使うこと。</p>
@@ -2149,22 +2164,22 @@ const LESSONS = {
         <h3>パーペチュアル先物とファンディングレート</h3>
         <p>仮想通貨取引所の先物は多くが「パーペチュアル（無期限）」形式。8時間ごとにファンディングレート（資金調達率）が発生し、買い持ちが多い相場では買い側がコストを払い続ける。長期のレバレッジ保有はコストが積み上がり不利になる。</p>
         <div class="box box-green"><strong>安全なレバレッジ利用のルール</strong><br>✅ 全資産の5〜10%以内の証拠金のみ使う<br>✅ 最初は2〜3倍以内に限定する<br>✅ ロスカットラインを事前に計算して把握する<br>✅ ストップロス（損切り注文）を必ず設定する</div>` },
-    { id: 'i17', emoji: '🌍', title: '仮想通貨と地政学リスク', locked: true, content: `<p>仮想通貨の価格は金融政策・戦争・制裁・経済崩壊など、一見関係なさそうな世界の出来事と深く連動している。地政学リスクを無視した投資判断は、予期せぬ損失につながる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ロシアのウクライナ侵攻時、制裁を逃れる手段としてBTC取引量が両国で急増した。これが現実に起きている。仮想通貨は地政学的事件の「逃げ道」として使われ始めている。」</div></div></div>
-        <h3>制裁とBTC</h3>
-        <p>SWIFTから排除された国・個人がBTCやUSDTで国際決済を試みる事例が増えている。アメリカは制裁対象へのBTC送金を禁止しているが、ブロックチェーン上では技術的に防ぎにくい。この「検閲耐性」こそがBTCの本質的な価値の一つだ。</p>
-        <h3>ハイパーインフレとBTC</h3>
+    { id: 'i17', emoji: '🌍', title: '仮想通貨と地政学リスク', locked: true, content: `<p>仮想通貨の価格は金融政策・戦争・制裁・経済崩壊など、一見関係なさそうな世界の出来事と深く連動している。地政学リスクを無視した投資判断は危険だ。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「"BTCは地政学的に中立な資産"という見方と、"リスクオン資産として株と連動する"という見方が共存している。どちらが正しいかは状況によって変わる。」</div></div></div>
+        <h3>仮想通貨に影響する地政学的イベント</h3>
         <div class="box box-blue">
-          <strong>アルゼンチン</strong>：年率100%超のインフレが続き、国民がペソをBTCやUSDTに換える動きが急増。P2P取引量が世界トップクラスに。<br><br>
-          <strong>トルコ</strong>：通貨リラの暴落でUSDT需要が爆発。取引所の取引量が急増した。<br><br>
-          <strong>ベネズエラ</strong>：法定通貨ボリバルの崩壊でBTC・USDTが事実上の流通通貨になっているエリアも。
+          <strong>米国の金融政策（FRB）</strong><br>利上げ→ドル高・リスク資産売り→BTC下落の傾向。利下げ→流動性拡大→BTC上昇の傾向。2022年の急激な利上げでBTCは-75%下落した。<br><br>
+          <strong>戦争・紛争</strong><br>2022年ロシアのウクライナ侵攻直後、BTCは一時急落した後に「制裁回避の手段」として注目され反発。避難民の資産保全手段としても使われた。<br><br>
+          <strong>規制の動向</strong><br>中国のマイニング禁止（2021年）でBTCは約50%下落。一方でETF承認・規制の明確化は価格上昇の触媒になる。<br><br>
+          <strong>ドル・インフレ</strong><br>米国の財政赤字拡大・ドルの信頼性低下への懸念がBTCの「インフレヘッジ」需要を高める。
         </div>
-        <h3>地政学リスクと相場の関係</h3>
-        <p>有事の際、BTCは「リスク資産として売られる」場合と「法定通貨の代替として買われる」場合の両パターンがある。近年はリスク資産として株と同方向に動く傾向が強まっている。一方でドルが信頼を失うような事態になれば、BTCが「デジタルゴールド」として買われる展開も考えられる。</p>
-        <div class="box box-orange">
-          <strong>⚠️ 地政学リスクの投資への影響</strong><br>
-          有事はポジション縮小の理由になりうる。しかし「〇〇が戦争を始めた、BTCを売れ」という短絡的な行動も禁物。過去の急落は多くの場合、数週間〜数ヶ月で回復している。パニック売りより、事前のリスク管理の方が重要。
-        </div>` },
+        <h3>「デジタルゴールド」vs「リスク資産」</h3>
+        <div class="box box-gray">
+          <strong>デジタルゴールド論</strong>：有事に安全資産として買われる<br>
+          <strong>リスク資産論</strong>：株式市場と連動し、リスクオフ時に売られる<br><br>
+          現実は「状況によって両方」。機関投資家が増えたことで株との相関が高まっている一方、長期視点では分散投資の対象として認識されつつある。
+        </div>
+        <div class="box box-orange">地政学リスクは予測不可能。ポジションサイズを適切に管理し、1つのイベントで退場しないリスク管理が重要。</div>` },
     { id: 'i18', emoji: '⚡', title: 'Solanaエコシステムを深掘りする', locked: true, content: `<p>SolanaはEthereum最大のライバルとして成長してきたレイヤー1ブロックチェーンだ。2024〜2025年にかけてミームコインブームを牽引し、エコシステムの全体像を深掘りしよう。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「SolanaはFTX破綻で一度死にかけたのに、見事に復活した。開発者コミュニティの強さとPump.funなどのキラーアプリの存在がエコシステムの厚みを作った。」</div></div></div>
         <h3>Solanaの技術的特徴</h3>
@@ -2226,21 +2241,23 @@ const LESSONS = {
           ❌ コミュニティが批判を禁止・削除する
         </div>
         <div class="box box-green">✅ アルトコイン投資は全資産の20〜30%以内に抑え、残りはBTC/ETHのコアポジションにする「コア＋サテライト戦略」が長期的に安定しやすい。</div>` },
-    { id: 'i22', emoji: '📱', title: 'モバイルウォレットの使い方', locked: true, content: `<p>モバイルウォレットはスマートフォンで仮想通貨を管理・送受信できるアプリだ。利便性が高い反面、スマホ紛失・盗難・マルウェアなどのリスクもある。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「モバイルウォレットは「持ち歩く財布」。日常使いには便利だが、大金は入れない。現金財布に全財産を入れて街を歩かないのと同じ感覚を持つこと。」</div></div></div>
-        <h3>主要なモバイルウォレット</h3>
+    { id: 'i22', emoji: '📱', title: 'モバイルウォレットの使い方', locked: true, content: `<p>モバイルウォレットはスマートフォンで仮想通貨を管理・送受信できるアプリだ。利便性が高い反面、スマホ紛失・盗難・マルウェアなどのリスクもある。「持ち歩く財布」として適切な金額だけ入れることが鉄則。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「モバイルウォレットは"持ち歩く財布"。日常使いには便利だが、大金は入れない。現金財布に全財産を入れて街を歩かないのと同じ感覚を持つこと。」</div></div></div>
+        <h3>主要なモバイルウォレット比較</h3>
         <div class="box box-blue">
-          <strong>MetaMask（iOS/Android）</strong>：ETH系の標準ウォレット。DeFi・NFT利用に必須。<br><br>
-          <strong>Phantom（iOS/Android）</strong>：Solana系の主要ウォレット。SOL・SPLトークンの管理に最適。<br><br>
-          <strong>Trust Wallet</strong>：Binanceが買収したマルチチェーン対応ウォレット。70種以上のブロックチェーンに対応。<br><br>
-          <strong>Rainbow Wallet</strong>：ETH特化のスタイリッシュなウォレット。NFT表示機能が充実。
+          <strong>MetaMask（iOS/Android）</strong><br>ETH系の標準ウォレット。DeFi・NFT利用に必須。内蔵ブラウザでdAppsに直接アクセスできる。<br><br>
+          <strong>Phantom（iOS/Android）</strong><br>Solana系の主要ウォレット。SOL・SPLトークンの管理に最適。ETH・Bitcoinにも対応済み。<br><br>
+          <strong>Trust Wallet</strong><br>Binanceが買収したマルチチェーン対応ウォレット。100種以上のブロックチェーンに対応。初心者向けのUIが使いやすい。<br><br>
+          <strong>Rainbow Wallet</strong><br>ETH特化のスタイリッシュなウォレット。NFT表示機能が充実。デザインに定評がある。
         </div>
+        <h3>モバイルウォレットの安全な使い方</h3>
         <div class="box box-green">
           ✅ シードフレーズは紙に書いてスマホには保存しない<br>
-          ✅ 大額はハードウェアウォレット（Ledger等）で管理<br>
-          ✅ 公式ストア以外からアプリをインストールしない<br>
-          ✅ スマホに生体認証を設定する<br>
-          ✅ 公共Wi-Fiでの操作は避ける
+          ✅ 大額はハードウェアウォレット（Ledger等）で管理する<br>
+          ✅ 公式ストア（App Store・Google Play）以外からインストールしない<br>
+          ✅ スマホに生体認証＋PINを設定する<br>
+          ✅ 公共Wi-Fiでの操作は避ける<br>
+          ✅ 見知らぬサイトやNFTエアドロップに安易に署名しない
         </div>` },
     { id: 'i23', emoji: '🏗️', title: 'Layer2の詳しい仕組み', locked: true, content: `<p>Layer2（L2）とは、イーサリアムなどのメインチェーン（Layer1）の上に構築された「第2層」のネットワークだ。メインチェーンのセキュリティを引き継ぎながら、処理をオフチェーンで行うことで手数料と速度の問題を解決する。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「Layer2はETHの「渋滞を迂回する高速道路」です。メインチェーンのセキュリティはそのままに、取引をまとめて処理することで手数料を大幅に削減できる。」</div></div></div>
@@ -2264,14 +2281,14 @@ const LESSONS = {
           ・L2ごとにエコシステムが異なるため、使いたいDeFiがどのL2にあるか確認が必要<br>
           ・ガス代はETH本体の1/10〜1/100程度
         </div>` },
-    { id: 'i24', emoji: '🎰', title: 'ミームコインの経済学', locked: true, content: `<p>ミームコインとはDoge・SHIBなど、ジョークやネットミームをモチーフにした仮想通貨だ。ファンダメンタルズはほぼ存在しないが、SNSの熱量と著名人の一言で数十〜数百倍に跳ね上がることがある。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ミームコインは「経済学」というより「群衆心理学」です。価値の根拠はコミュニティの熱量だけ。それが冷めた瞬間に99%下落する。遊ぶなら全額失っても平気な金額で。」</div></div></div>
+    { id: 'i24', emoji: '🎰', title: 'ミームコインの経済学', locked: true, content: `<p>ミームコインとはDoge・SHIBなど、ジョークやネットミームをモチーフにした仮想通貨だ。ファンダメンタルズはほぼ存在しないが、SNSの熱量と著名人の一言で数十〜数百倍に跳ね上がることがある。その経済学的メカニズムを理解しよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ミームコインは"経済学"というより"群衆心理学"です。価値の根拠はコミュニティの熱量だけ。それが冷めた瞬間に99%下落する。遊ぶなら全額失っても平気な金額で。」</div></div></div>
         <h3>ミームコインが暴騰する仕組み</h3>
         <div class="box box-blue">
-          <strong>FOMO（取り残される恐怖）</strong>：SNSで「100倍になった」という投稿が広がり、乗り遅れを恐れた資金が殺到する。<br><br>
+          <strong>FOMO（取り残される恐怖）</strong>：「100倍になった」という投稿が広がり、乗り遅れを恐れた資金が殺到する。<br><br>
           <strong>著名人効果</strong>：イーロン・マスクのツイート一つでDOGEが数百%動いた実績がある。<br><br>
           <strong>流動性の薄さ</strong>：時価総額が小さいため少額の資金でも大きく動く。<br><br>
-          <strong>Pump.fun効果</strong>：Solana上でミームコインを誰でも数秒・無料で発行できるプラットフォーム。2024年に爆発的に普及。
+          <strong>Pump.fun効果</strong>：Solana上でミームコインを誰でも数秒・無料で発行できるプラットフォーム。2024年に爆発的に普及し、日に数千のトークンが生まれている。
         </div>
         <h3>ミームコインの現実</h3>
         <p>Pump.funで発行されるトークンの90%以上は数時間〜数日で価値がゼロになる。「ラグプル（開発者が流動性を引き出して逃げる）」が横行している。勝者は早期参入した少数派と、ラグプルを実行した開発者のみ。</p>
@@ -2279,7 +2296,8 @@ const LESSONS = {
           <strong>ミームコインへの投資原則</strong><br>
           ✅ 全額失っても後悔しない金額のみ<br>
           ✅ 「まだ上がる」と思ったときが利確のタイミング<br>
-          ✅ ラグプルチェック必須（honeypot.is等）<br>
+          ✅ ハニーポットチェック必須（honeypot.is等）<br>
+          ✅ 流動性ロックの確認（Rugcheckで確認可能）<br>
           ❌ 「次の1000倍コイン」という宣伝文句は詐欺の典型
         </div>` },
     { id: 'i25', emoji: '🔐', title: 'DeFiのウォレット管理上級編', locked: true, content: `<p>DeFiを本格的に使いこなすには、ウォレット管理の上級知識が必要だ。複数ウォレットの使い分け・ハードウェアウォレットとのDeFi連携・承認（Approval）管理——これらを習得することで安全性が大幅に上がる。</p>
@@ -2320,46 +2338,37 @@ const LESSONS = {
           <strong>取引所からの大量流出</strong>→長期保有に移行→価格上昇のサイン<br><br>
           ただし取引所の内部ウォレット間の移動が「大量売り」に見えるケースもある。単一指標だけで判断しないこと。
         </div>` },
-    { id: 'i27', emoji: '💸', title: '仮想通貨の出金・換金方法', locked: true, content: `<p>「儲かったBTCをどうやって現金化するか」——意外と知られていない手順がある。スムーズに換金するための方法を整理し、税金トラブルを避けるための知識を身につけよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「換金のタイミングと税金は切り離せない。「いくら稼いだか」より「いくら手元に残るか」を考える習慣が、長期的な資産形成につながります。」</div></div></div>
+    { id: 'i27', emoji: '💸', title: '仮想通貨の出金・換金方法', locked: true, content: `<p>「儲かったBTCをどうやって現金化するか」——意外と知られていない手順がある。スムーズに換金するための方法を整理し、税金トラブルを防ぐ記録管理も押さえておこう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「換金は"売った瞬間"に課税イベントが発生する。大きな利益を出した年は、換金前に税金コストを計算しておくこと。知らずに使い切って納税できなくなるのが最悪のパターン。」</div></div></div>
         <h3>換金の基本フロー</h3>
         <div class="box box-blue">
-          <strong>① 取引所で売却</strong><br>
-          BTC・ETH等を日本円に換える。指値注文（価格を指定）または成行注文（即時売却）を選ぶ。大口の場合は成行だとスリッページ（不利な価格）が発生しやすいので指値推奨。<br><br>
-          <strong>② 出金申請</strong><br>
-          取引所の「出金」メニューから登録済み銀行口座へ振り込み申請。GMOコインは出金手数料無料。Coincheckは有料。<br><br>
-          <strong>③ 入金確認</strong><br>
-          通常1〜3営業日で着金。大口（数百万円以上）は本人確認が必要な場合もある。
+          <strong>① 取引所へ送金</strong><br>DeFiウォレット等に保有している場合、まず国内取引所（bitFlyer・coincheck・GMOコイン等）に送金する。<br><br>
+          <strong>② 日本円に換金</strong><br>取引所で仮想通貨→日本円に売却する。成行注文 or 指値注文を選べる。<br><br>
+          <strong>③ 銀行口座に出金</strong><br>取引所から登録済みの銀行口座に振り込む。通常1〜3営業日で着金。本人確認（KYC）が完了していることが前提。
         </div>
-        <h3>税金を考えた換金戦略</h3>
-        <p>仮想通貨の利益は「雑所得」として累進課税される。年収が高いほど税率も高くなる。年末に損益を確認し、利益が出過ぎている場合は含み損のある銘柄を売却して損益通算する「節税換金」が有効だ。</p>
+        <h3>大額換金時の注意点</h3>
         <div class="box box-orange">
-          <strong>⚠️ 換金時の注意点</strong><br>
-          ・利益を全部使い込まない（税金分を必ず残す）<br>
-          ・「申告しなくてもバレない」は通用しない（取引所は税務署への情報提供義務あり）<br>
-          ・年をまたいで利益を分散させると税率を下げられる場合がある<br>
-          ・利益が年間500万円を超えるなら法人化の検討も
-        </div>` },
-    { id: 'i28', emoji: '🔬', title: 'ステーブルコインの仕組みを深掘り', locked: true, content: `<p>USDT・USDC・DAI——同じ「ステーブルコイン」でも仕組みは全く異なる。どこにお金を預けているのか、どんなリスクがあるのかを理解してこそ、安全に使いこなせる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ステーブルコインは「崩れた時に最も怖い」コインです。安定しているから油断して大金を入れがちだが、TerraUSDの崩壊を忘れずに。安定の根拠を必ず確認すること。」</div></div></div>
-        <h3>3種類の仕組み比較</h3>
-        <div class="box box-blue">
-          <strong>法定通貨担保型（USDT・USDC）</strong><br>
-          銀行にドルを預けてトークンを発行。最もシンプルで安全性が高い。発行者への信頼が前提。USDCはサークル社が毎月監査報告を公開しており透明性が高い。<br><br>
-          <strong>暗号資産担保型（DAI）</strong><br>
-          ETHなどを担保にアルゴリズムで価値を維持。分散型だが複雑。担保の価値が暴落すると清算される。<br><br>
-          <strong>アルゴリズム型（UST等・高リスク）</strong><br>
-          担保なしでアルゴリズムのみで1ドルを維持しようとする。2022年TerraUSD崩壊で6兆円以上が消滅した。
+          <strong>税金の準備</strong>：換金した年の確定申告（翌年2〜3月）に備え、利益の20〜55%を税金用に別口座に確保しておく。<br><br>
+          <strong>銀行への説明</strong>：数百万円〜数千万円の入金は銀行から問い合わせが来る場合がある。取引履歴・税申告書を保存しておく。<br><br>
+          <strong>分割換金</strong>：一度に大量売却すると価格を動かす（スリッページ）可能性がある。大額は分割して売却する。
         </div>
-        <h3>ステーブルコインのデペッグとは</h3>
-        <p>ステーブルコインが1ドルのペッグ（連動）を外れること。TerraUSDは一時0.1ドルまで暴落した。法定通貨担保型でも取り付け騒ぎが起きれば一時的にデペッグする可能性がある。シリコンバレー銀行破綻時にUSDCが一時0.87ドルに下落したのが好例。</p>
+        <div class="box box-green">✅ 取引履歴はCSVでダウンロードして保存<br>✅ 税務計算ツール（Cryptact・Koinly等）に連携しておく<br>✅ 年をまたいだ利確タイミングを意識して税負担を調整する</div>` },
+    { id: 'i28', emoji: '🔬', title: 'ステーブルコインの仕組みを深掘り', locked: true, content: `<p>USDT・USDC・DAI——同じ「ステーブルコイン」でも仕組みは全く異なる。どこにお金を預けているのか、どんなリスクがあるのかを理解した上で使おう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「USDT・USDCは"ドルへの信頼"を借りたコイン。発行体が崩壊すればデペッグする。2023年のSVB破綻でUSDCが一時$0.87まで下落したのは記憶に新しい。」</div></div></div>
+        <h3>ステーブルコインの3類型</h3>
+        <div class="box box-blue">
+          <strong>① 法定通貨担保型（USDT・USDC）</strong><br>発行体が実際のドルや米国債を担保に発行する。最も安定しているが発行体リスクがある。USDTはTeatherが発行（透明性への批判あり）、USDCはCircleが発行（監査済み）。<br><br>
+          <strong>② 仮想通貨担保型（DAI・sUSD）</strong><br>ETHなどの仮想通貨を過剰担保に発行する。分散型で透明性が高いが、担保価格の急落でデペッグリスクがある。<br><br>
+          <strong>③ アルゴリズム型（TerraUSD→崩壊）</strong><br>担保なしにアルゴリズムで価格を維持しようとする。2022年のTerraUSD崩壊で約50兆円が消滅し、この設計の危険性が証明された。
+        </div>
+        <h3>ステーブルコインの実用的な使い方</h3>
         <div class="box box-green">
-          <strong>安全な使い方</strong><br>
-          ✅ 長期保有：USDC（監査済み・透明性高）<br>
-          ✅ DeFiでの担保：DAI（分散型で検閲耐性あり）<br>
-          ✅ 取引・送金：USDT（流動性が最大）<br>
-          ✅ 大額は複数のステーブルコインに分散
-        </div>` },
+          ✅ 相場の暴落時に一時的に資産を退避させる「避難先」として使う<br>
+          ✅ DeFiのレンディングでUSDT/USDCを預けて利息を得る（年利3〜8%程度）<br>
+          ✅ 海外送金のコスト削減（銀行送金より速くて安い）<br>
+          ✅ 取引所間の資産移動の中継として使う
+        </div>
+        <div class="box box-orange">大額をステーブルコインで長期保有する場合、発行体リスクを分散するためUSDT・USDC・DAIに分けて保有することを推奨する。</div>` },
     { id: 'i29', emoji: '🎓', title: '仮想通貨の学習ロードマップ', locked: true, content: `<p>「何から学べばいいかわからない」——この悩みへの答えを体系的に整理した。自分が今どの段階にいるかを確認し、次に何をすべきかを明確にしよう。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「学習は「知識→体験→振り返り」のサイクルです。本だけ読んでも実力はつかない。小さな金額で実際に動かしてみることが一番の近道。失敗も全部学習です。」</div></div></div>
         <h3>フェーズ別学習ロードマップ</h3>
@@ -2384,42 +2393,30 @@ const LESSONS = {
           <strong>❌ 注意が必要な情報源</strong><br>
           匿名の「〇〇コイン爆上がり予告」SNS投稿・「必ず儲かる」系YouTube・有料の情報商材
         </div>` },
-    { id: 'i30', emoji: '🌏', title: 'アジアの仮想通貨事情', locked: true, content: `<p>仮想通貨市場はアジアが大きなシェアを持つ。韓国・中国・香港・シンガポールのそれぞれの動向を知ることで、相場を読む視点が広がる。「アジア時間」は相場の転換点になることが多い。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「キムチプレミアム」という言葉を知ってますか？韓国の取引所でBTCが世界より数%高く取引される現象。これが起きているとき相場は過熱していることが多い。」</div></div></div>
-        <h3>各国の状況</h3>
+    { id: 'i30', emoji: '🌏', title: 'アジアの仮想通貨事情', locked: true, content: `<p>仮想通貨市場はアジアが大きなシェアを持つ。韓国・中国・香港・シンガポールのそれぞれの動向を知ることで、相場を読む視点が広がる。「アジア時間」の値動きを知ることは実践的な投資に直結する。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「韓国の"キムチプレミアム"（韓国の取引所価格が世界より高い）は有名だが、アジア各国で規制・税制・文化が全く異なる。アジアの動向を読むと相場の先行指標になることがある。」</div></div></div>
+        <h3>主要アジア各国の仮想通貨事情</h3>
         <div class="box box-blue">
-          <strong>🇰🇷 韓国</strong><br>
-          世界有数の取引量。個人投資家の熱量が高く、「キムチプレミアム（韓国の価格が世界より高い状態）」が相場過熱の指標になる。規制は整備されつつある。<br><br>
-          <strong>🇨🇳 中国</strong><br>
-          本土での取引は禁止だが、香港は逆に規制整備を進め取引所を合法化。中国系資本の影響は依然として大きい。<br><br>
-          <strong>🇸🇬 シンガポール</strong><br>
-          アジアの仮想通貨ハブ。多くの取引所・ファンドが拠点を置く。規制整備が進んでいる。<br><br>
-          <strong>🇯🇵 日本</strong><br>
-          規制が整備されている分、新サービスの導入が他国より遅い傾向。ただしその分安全性は高い。
+          <strong>日本</strong><br>仮想通貨交換業者登録制・雑所得課税（最大55%）。税率の高さがプロトレーダーの法人化・海外移住を促している。FSAの厳格な審査で上場できる銘柄が制限されている。<br><br>
+          <strong>韓国</strong><br>「キムチプレミアム」が有名。活発な個人投資家文化。アルトコインの流動性が高く、新興コインの価格発見の場になることが多い。<br><br>
+          <strong>シンガポール</strong><br>アジアのWeb3・仮想通貨ハブ。規制が整備され多くの取引所・ファンドが拠点を置く。MAS（金融管理局）が積極的にライセンス制度を整備している。<br><br>
+          <strong>香港</strong><br>2023年以降、規制整備を進めリテール投資家向けのBTC・ETH現物ETFを承認。中国本土の資金が流入する窓口として注目されている。
         </div>
-        <h3>アジア相場の読み方</h3>
-        <p>アジア時間（東京・香港・シンガポール）は取引量が増える時間帯。韓国の取引量急増は相場加熱のサイン、中国の規制ニュースは即座に価格に影響する傾向がある。</p>
-        <div class="box box-orange">
-          <strong>⚠️ 「中国禁止」ニュースの扱い方</strong><br>
-          中国のBTC禁止報道は過去に何度もあり、そのたびに価格は急落→数ヶ月で回復を繰り返してきた。「中国禁止」ニュースでパニック売りするのは、この歴史的パターンを無視した行動だ。
-        </div>` },
-    { id: 'i31', emoji: '🔭', title: '将来のDeFiトレンド予測', locked: true, content: `<p>DeFiは2020年の「DeFiサマー」で爆発し、その後試行錯誤を繰り返してきた。次のフェーズで何が起きるかを整理しよう。「持続可能性」が最大のテーマになっている。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFi2.0は「持続可能性」がテーマ。高利回りで人を集めてすぐ崩壊するモデルから、実際の収益を生むプロトコルへの転換が進んでいます。プロトコル収益がトークン保有者に還元されるかどうかが重要。」</div></div></div>
-        <h3>DeFiの進化の方向性</h3>
+        <div class="box box-orange">中国本土では仮想通貨取引が禁止されているが、P2P取引や香港・シンガポール経由の迂回取引は続いている。中国関連の規制ニュースはBTC価格に大きな影響を与えることがある。</div>` },
+    { id: 'i31', emoji: '🔭', title: '将来のDeFiトレンド予測', locked: true, content: `<p>DeFiは2020年の「DeFiサマー」で爆発し、その後試行錯誤を繰り返してきた。次のフェーズで何が起きるかを整理しよう。「持続可能なDeFi」の設計思想が問われている。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiの次のフェーズは"機関投資家が使えるDeFi"と"リアルな経済とつながるDeFi"の二方向が軸になる。どちらも規制との共存が前提条件になる。」</div></div></div>
+        <h3>DeFiの現在地と課題</h3>
         <div class="box box-blue">
-          <strong>プロトコル収益の重視</strong>：実際の取引手数料収入でトークン保有者に還元するモデルへ。「フィースイッチ」の導入が議論されるプロトコルが増えている。<br><br>
-          <strong>RWAの統合</strong>：国債等の安定資産をDeFiに取り込み持続可能な利回りを提供。Aaveへの国債担保の導入等が進む。<br><br>
-          <strong>Account Abstraction</strong>：ウォレットの使いやすさ向上でWeb2レベルのUXを実現。シードフレーズ不要のウォレットが普及しつつある。<br><br>
-          <strong>クロスチェーン流動性の統合</strong>：チェーンをまたいだ流動性の一元管理。Chain Abstractionとも呼ばれる。
+          <strong>達成されたこと</strong><br>・DEX（Uniswap等）が中央集権型取引所の出来高を部分的に超える日も<br>・レンディング市場（Aave等）の安定稼働<br>・L2上でのガス代大幅削減<br><br>
+          <strong>まだ解決されていない課題</strong><br>・UXの複雑さ（一般ユーザーへの普及障壁）<br>・スマートコントラクトリスク<br>・規制の不確実性
         </div>
-        <h3>まだ解決されていない課題</h3>
-        <div class="box box-orange">
-          ・フロントエンドへの依存（スマコンは分散型でもUIは中央集権的）<br>
-          ・ガバナンスの低参加率（投票権の大半が大口保有者に集中）<br>
-          ・MEVによる一般ユーザーへの不公平な搾取<br>
-          ・規制の不確実性（DeFiの「誰が責任者か」問題）<br><br>
-          これらが解決されるかどうかがDeFiの真の普及を決める。
-        </div>` },
+        <h3>注目すべき次世代DeFiトレンド</h3>
+        <div class="box box-gray">
+          <strong>RWA（現実資産のトークン化）</strong>：米国債・不動産・株式をDeFiに取り込む動き。BlackRockのBUIDLファンドが先行。<br><br>
+          <strong>AI×DeFi</strong>：AIエージェントが自律的にDeFiプロトコルを運用する実験が始まっている。<br><br>
+          <strong>インテント型DeFi</strong>：ユーザーが「何をしたいか」を指定するだけで最適なルートを自動実行。UniswapX・Acrossが先行。
+        </div>
+        <div class="box box-orange">DeFiは「プロが使うツール」から「誰でも使えるインフラ」へと進化中。ただしその過渡期には多くのリスクが残存する。新しいプロトコルへの参加は慎重に。</div>` },
     { id: 'i32', emoji: '📈', title: 'フューチャーズ（先物）取引の基礎', locked: true, content: `<p>先物取引はBTCを実際に保有せずに価格変動を取引できる。ヘッジ・投機・アービトラージと多様な用途がある。特にパーペチュアル先物（無期限先物）の仕組みをしっかり理解しよう。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「先物は「将来の価格に今賭ける」ゲーム。理解せずに使うと一瞬で証拠金がゼロになる。仕組みを完全に理解してから使うこと。「ちょっとやってみよう」が最も危険な状態。」</div></div></div>
         <h3>パーペチュアル先物の仕組み</h3>
@@ -2445,39 +2442,30 @@ const LESSONS = {
           ✅ レバレッジは最初は2〜3倍以内に抑える<br>
           ✅ ファンディングコストのコストを事前に計算する
         </div>` },
-    { id: 'i33', emoji: '🌿', title: 'ESGと仮想通貨', locked: true, content: `<p>環境・社会・ガバナンス（ESG）の観点から仮想通貨を評価する動きが機関投資家を中心に広がっている。投資判断においてESGを無視できない時代になってきた。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「テスラがBTCの決済受け入れを停止した理由の一つが「マイニングの環境負荷」でした。機関投資家の間でESGは投資基準として無視できなくなっています。」</div></div></div>
-        <h3>BTCのマイニングと環境問題</h3>
-        <p>BTCのProof of Work（PoW）マイニングは大量の電力を消費する。年間消費電力はアルゼンチン1カ国相当という試算もある。一方で、マイニングに使われる再生可能エネルギーの比率は50〜60%との報告もあり、一概に「環境に悪い」とは言い切れない側面もある。</p>
-        <h3>BTCとPoSチェーンの環境比較</h3>
+    { id: 'i33', emoji: '🌿', title: 'ESGと仮想通貨', locked: true, content: `<p>環境・社会・ガバナンス（ESG）の観点から仮想通貨を評価する動きが機関投資家を中心に広がっている。投資判断においてESGを無視できない時代になっている。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「BTCのPoWマイニングは"電力の無駄遣い"という批判と、"再生可能エネルギーの余剰電力を活用している"という反論が続いている。どちらも一面の真実を持っている。」</div></div></div>
+        <h3>環境（E）：マイニングと電力問題</h3>
         <div class="box box-blue">
-          <strong>BTC（PoW）</strong>：高い電力消費。ただし再エネ利用率が上昇中。<br>
-          <strong>ETH（PoS移行後）</strong>：2022年The Mergeで電力消費を99.9%削減。環境負荷が激減。<br>
-          <strong>SOL・ADA等（PoS）</strong>：元々PoSのため電力消費は少ない。
+          <strong>BTCのPoWマイニング</strong><br>年間消費電力はスイス一国分に相当するとも言われる。一方でテキサス州などでは余剰の再エネ電力を活用するマイナーが増加。電力の「調整弁」としての役割が注目されている。<br><br>
+          <strong>ETHのPoSへの移行（The Merge・2022年）</strong><br>電力消費を約99.95%削減。機関投資家のESG要件を満たしやすくなった。
         </div>
-        <h3>カーボンクレジットのトークン化</h3>
-        <p>Toucan Protocol・KlimaDAOなどが、カーボンオフセット（CO2排出量の相殺証書）をブロックチェーン上でトークン化する取り組みを進めている。企業がCO2排出量を相殺するためのクレジット取引を透明化・効率化する動きだ。</p>
-        <div class="box box-green">
-          <strong>ESGと投資判断</strong><br>
-          ESGスコアが低いプロジェクトは、機関投資家のポートフォリオから除外されるリスクがある。長期投資を考えるなら、PoSチェーン上のプロジェクトはESG面での優位性があると言える。
-        </div>` },
-    { id: 'i34', emoji: '🎯', title: 'アービトラージ戦略の実践', locked: true, content: `<p>同じ資産が複数の場所で違う価格で売られているとき、安く買って高く売る——アービトラージは理論上リスクゼロの利益機会だ。しかし現実には、同じことを考えているボットが世界中にいる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「アービトラージは「リスクなしで稼げる」はずなのに難しい。なぜか？同じことを考えているボットが世界中にいて、価格差を0.01秒で埋めてしまうからです。」</div></div></div>
-        <h3>主なアービトラージ手法</h3>
+        <h3>社会（S）・ガバナンス（G）の観点</h3>
+        <div class="box box-gray">
+          <strong>社会的価値</strong>：銀行口座を持てない人々（Unbanked）への金融サービス提供。インフレの激しい国々での資産保全手段。<br><br>
+          <strong>ガバナンスの課題</strong>：創業チームや大口保有者（クジラ）に権力が集中しやすい。DAOのトークン投票でも「お金で議決権を買える」という批判がある。
+        </div>
+        <div class="box box-orange">ESG投資家にとってBTCのPoWは依然として障壁だが、ETHやSolana（PoS）はESGスコアが高くなりやすい。機関投資家の参入にはESGへの対応が重要な選択基準になっている。</div>` },
+    { id: 'i34', emoji: '🎯', title: 'アービトラージ戦略の実践', locked: true, content: `<p>同じ資産が複数の場所で違う価格で売られているとき、安く買って高く売る——アービトラージは理論上リスクゼロの利益機会だ。しかし現実には様々な摩擦が存在する。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「手動でのアービトラージはほぼ不可能。価格差を見つけた瞬間には既にボットが刈り取っている。個人が勝てる領域を見極めることが重要。」</div></div></div>
+        <h3>アービトラージの主な種類</h3>
         <div class="box box-blue">
-          <strong>取引所間アービトラージ</strong><br>
-          A取引所で安く買い、B取引所で高く売る。問題は送金時間と手数料。BTCの送金に30分かかる間に価格差が消えることが多い。<br><br>
-          <strong>三角アービトラージ</strong><br>
-          BTC→ETH→SOL→BTCと複数通貨を経由して価格の歪みを取る。DEX上での瞬時の実行が必要。<br><br>
-          <strong>DEX-CEXアービトラージ</strong><br>
-          分散型取引所（DEX）と中央集権型取引所（CEX）の価格差を利用。高速ボットが最速で刈り取る。
+          <strong>取引所間アービトラージ</strong><br>A取引所で安いBTCを買い、B取引所で高く売る。送金時間・手数料・価格変動リスクがある。現在はボットが支配しており個人には難しい。<br><br>
+          <strong>ファンディングレートアービトラージ</strong><br>現物でBTCを買い、先物でショートを建てる。価格変動リスクをゼロにしながらファンディングレート（年利5〜30%程度）を受け取る。比較的個人でも実践しやすい。<br><br>
+          <strong>統計的アービトラージ</strong><br>相関の高い銘柄ペアの価格差が広がったときにトレードする。高度な分析が必要。<br><br>
+          <strong>DEX×CEXアービトラージ</strong><br>DEXとCEXの価格差を利用。MEVボットが最も活発に動いている領域。
         </div>
-        <h3>個人に残された機会</h3>
-        <p>大型のアービトラージは高速ボットに支配されている。個人に残された機会は「情報の非対称性」を利用するもの——新興DEX・新しいチェーン上の価格差など、ボットがまだカバーしていない領域だ。ただしそういった場所にはラグプルリスクも高い。</p>
-        <div class="box box-orange">
-          <strong>⚠️ 注意</strong><br>
-          「ノーリスクのアービトラージ」を謳う商品・サービスはほぼ詐欺か誇大広告。本当のアービトラージには実行リスク・価格変動リスク・スリッページが常に伴う。
-        </div>` },
+        <div class="box box-green"><strong>個人が実践しやすいアービトラージ</strong><br>✅ ファンディングレートアービトラージ（現物Long + 先物Short）<br>✅ 異なる取引所間のステーブルコインイールド差<br>✅ DEXの流動性プールへの流動性提供（手数料収入）</div>
+        <div class="box box-orange">アービトラージにもリスクは存在する。取引所のシステム障害・送金遅延・スリッページ・スマートコントラクトリスク等を必ず考慮すること。</div>` },
     { id: 'i35', emoji: '🔑', title: 'マルチシグウォレットの使い方', locked: true, content: `<p>「1つの秘密鍵を失ったら全財産消失」——このリスクを解決するのがマルチシグだ。法人や大口個人投資家の標準的なセキュリティ手法で、一人でも安全に大額を管理できる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「マルチシグは「複数の鍵で開く金庫」。3つの鍵のうち2つが揃わないと開かない（2-of-3マルチシグ）。1つ盗まれても安全、1つ失くしても残り2つで復元できる。」</div></div></div>
         <h3>マルチシグの仕組み</h3>
@@ -2499,27 +2487,20 @@ const LESSONS = {
           ✅ 法人での仮想通貨管理には必須<br>
           ✅ 100万円以上の資産には強く推奨
         </div>` },
-    { id: 'i36', emoji: '📊', title: '仮想通貨ポートフォリオの税金最適化', locked: true, content: `<p>投資判断と同時に「税金コスト」を考えることで、同じリターンでも手取りが大きく変わる。合法的な節税の考え方を整理しよう。知識があるかないかで、数十万円の差が生まれることもある。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「税金は「後から考える」ものじゃない。取引前に税コストを計算してから実行するのがプロの習慣。「利益が出た！」と喜ぶ前に「税引き後いくらか」を考えましょう。」</div></div></div>
-        <h3>仮想通貨の税金の基本</h3>
+    { id: 'i36', emoji: '📊', title: '仮想通貨ポートフォリオの税金最適化', locked: true, content: `<p>投資判断と同時に「税金コスト」を考えることで、同じリターンでも手取りが大きく変わる。合法的な節税の考え方を整理しよう。知識があるかどうかで数百万円単位の差が生まれる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「税金の最適化は"節税"ではなく"正しい申告"の話。知らないと過剰に払うし、知らないと脱税になる。どちらも防ぐために学ぶことが重要。」</div></div></div>
+        <h3>ポートフォリオ税務の基本戦略</h3>
         <div class="box box-blue">
-          仮想通貨の利益は「雑所得」として他の所得と合算され、累進課税（5〜45%＋住民税10%）が適用される。<br><br>
-          課税タイミング：売却時・交換時・決済時・マイニング報酬受取時など<br>
-          課税されないケース：購入・ウォレット間移動・HODLしているだけ
+          <strong>① 損益通算の徹底</strong><br>年内（12月31日まで）に含み損のある銘柄を売却して利益と相殺する。「損出し」とも呼ばれる。翌日に買い戻しても問題ない（株式と異なり仮想通貨には翌日買い戻し禁止ルールがない）。<br><br>
+          <strong>② 取得単価の管理</strong><br>同一銘柄を複数回購入した場合の取得単価は「総平均法」または「移動平均法」で計算。どちらが有利かはケースによる。<br><br>
+          <strong>③ 利確タイミングの年度調整</strong><br>年収が高い年は税率が高いため、利確を翌年に延ばすことで税率を下げられる場合がある。
         </div>
-        <h3>節税の基本戦略</h3>
-        <div class="box box-green">
-          <strong>① 損益通算の活用</strong><br>
-          含み損のある銘柄を年内に売却して利益と相殺。12月が勝負。<br><br>
-          <strong>② 年をまたいだ利益調整</strong><br>
-          年収が高い年は利確を翌年に延ばすと税率が下がる場合がある。<br><br>
-          <strong>③ 法人化の検討</strong><br>
-          年間利益が500万円を超えるなら、法人税率（約23〜34%）の方が有利になる場合がある。
+        <h3>大口保有者の節税手法</h3>
+        <div class="box box-gray">
+          <strong>法人化</strong>：年間利益500万円超なら法人税率（実効23〜34%）が個人の最高税率（55%）より有利になる可能性がある。<br><br>
+          <strong>海外移住</strong>：シンガポール・UAEなど仮想通貨に非課税の国への移住。ただし実態を伴わない「形式的移住」は問題になる。
         </div>
-        <div class="box box-orange">
-          <strong>⚠️ 注意点</strong><br>
-          仮想通貨の損失は雑所得内でのみ通算可能（株の利益とは相殺できない）。また年をまたいで損失を繰り越すこともできない。利益が大きい年は税理士への相談を強く推奨。
-        </div>` },
+        <div class="box box-orange">税務リスクを抱えたまま大きな利益を得ると、申告漏れで加算税・延滞税が発生する。大きな利益が出た年は必ず税理士に相談すること。</div>` },
     { id: 'i37', emoji: '🌐', title: '分散型ガバナンスの実践', locked: true, content: `<p>DAOのガバナンストークンを持つことは「プロジェクトの意思決定に参加する権利」を持つことだ。ガバナンスへの参加は投資として有利になることもあるが、現実の複雑さも知っておく必要がある。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DAOのガバナンスに本気で参加している人は全体の5%以下。でもその5%が方向性を決める。知識と時間がある人が有利な世界です。ガバナンスを「投票権の行使」だけでなく「情報優位」として活用する視点を持ちましょう。」</div></div></div>
         <h3>ガバナンス参加の流れ</h3>
