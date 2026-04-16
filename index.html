@@ -1953,318 +1953,181 @@ const LESSONS = {
         </div>` },
   ],
   intermediate: [
-    { id: 'i1', emoji: '📊', title: 'チャートの読み方・テクニカル分析入門', locked: true, content: `<p>仮想通貨市場には独自のサイクルがある。株式市場と連動しながらも、BTCの半減期を中心とした「4年サイクル」が相場を動かしてきた。このサイクルを理解することで、「今がどのフェーズか」を把握する目が養われる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「相場のサイクルを知っていると、暴落時に「また来た」と冷静でいられる。知らないと「終わった」と思ってしまう。この差が長期的な投資成績に大きく影響します。」</div></div></div>
-        <h3>仮想通貨市場の4年サイクル</h3>
-        <div class="box box-blue">
-          <strong>蓄積期</strong>（ベア底〜半減期前）<br>
-          価格低迷・メディアが「終わった」と報じる。長期保有者が静かに積み上げる時期。恐怖指数が極端に低い。<br><br>
-          <strong>上昇期</strong>（半減期後〜ブル中盤）<br>
-          供給減少が効いて価格が上昇し始める。まだ一般的な話題にはなっていない。<br><br>
-          <strong>過熱期</strong>（ブル相場のピーク）<br>
-          「誰でも仮想通貨で儲けている」という雰囲気。メディア露出が急増。この時期に参入した多くの人が後悔する。<br><br>
-          <strong>崩壊期</strong>（ベア相場）<br>
-          -70〜85%の大幅下落。「詐欺だった」という声が再び高まる。
-        </div>
-        <h3>サイクルを活用した戦略</h3>
-        <p>完璧に底と天井を当てることは不可能だが、「過熱期に追加購入しない」「恐怖が最大のときに積み増す」というルールだけでも長期成績が大きく変わる。MVRV・ファンディングレート・Fear & Greed Indexなどのオンチェーン指標がフェーズ判断に役立つ。</p>
-        <div class="box box-orange">
-          <strong>ETF承認後のサイクル変化</strong><br>
-          2024年のBTC ETF承認以降、機関投資家が参入したことで従来の4年サイクルが変化する可能性がある。機関投資家は個人と異なる判断軸で動くため、過去のパターンが通用しない局面が増えることも想定しておくこと。
-        </div>` },
-    { id: 'i2', emoji: '💱', title: 'DeFi（分散型金融）で稼ぐ仕組み', locked: true, content: `<p>テクニカル分析はチャートのパターンから将来の価格動向を予測しようとする手法だ。完璧に予測できるわけではないが、多くのトレーダーが同じ指標を見て動くことで「自己成就予言」的に機能することがある。基礎指標を理解してから実践に移ろう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「テクニカル分析は「多数派がどう動くか」を読む道具。指標それ自体に予測力があるというより、「多くの人がそこで動く」という自己成就的な側面が強い。だから主要な指標を知っておくことは意味がある。」</div></div></div>
+    { id: 'i1', emoji: '📊', title: 'チャートの読み方・テクニカル分析入門', locked: true, content: `<p>テクニカル分析とは、過去の価格・出来高のデータからチャートのパターンを読み取り、将来の価格動向を予測しようとする手法だ。完璧に予測できるわけではないが、多くのトレーダーが同じ指標を見て動くことで「自己成就予言」的に機能することがある。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「テクニカル分析は「多数派がどう動くか」を読む道具。主要な指標を知っておくことは意味がある。」</div></div></div>
         <h3>主要テクニカル指標</h3>
         <div class="box box-blue">
-          <strong>RSI（相対力指数）</strong><br>
-          0〜100の値。70以上＝買われすぎ（売りシグナル）、30以下＝売られすぎ（買いシグナル）として使われる。ただしBTC強気相場では80以上を長期維持することも多く、鵜呑みにしすぎると判断を誤る。<br><br>
-          <strong>MACD（移動平均収束拡散法）</strong><br>
-          短期と長期の移動平均の差を可視化。MACDラインがシグナルラインを上抜け＝買いシグナル、下抜け＝売りシグナルとして使われる。<br><br>
-          <strong>ボリンジャーバンド</strong><br>
-          移動平均線を中心に、価格の標準偏差を加えたバンドを表示。バンド幅が狭くなる（スクイーズ）と大きな値動きの前兆とされる。価格がバンドの外に出ると「過熱」のサイン。<br><br>
-          <strong>出来高（Volume）</strong><br>
-          価格変動が出来高増加を伴っているかを確認。出来高を伴わない価格上昇は「だまし」である可能性が高い。
+          <strong>RSI（相対力指数）</strong><br>70以上＝買われすぎ、30以下＝売られすぎ。BTC強気相場では80以上を長期維持することも多い。<br><br>
+          <strong>MACD</strong><br>短期と長期の移動平均の差を可視化。上抜け＝買いシグナル、下抜け＝売りシグナル。<br><br>
+          <strong>ボリンジャーバンド</strong><br>バンド幅が狭くなる（スクイーズ）と大きな値動きの前兆。<br><br>
+          <strong>出来高（Volume）</strong><br>出来高を伴わない価格上昇は「だまし」の可能性が高い。
         </div>
         <h3>サポートとレジスタンス</h3>
-        <p>「サポートライン」は価格が下落したときに反発しやすい水準（床）。「レジスタンスライン」は価格が上昇したときに跳ね返されやすい水準（天井）。この2つを意識するだけで、エントリーと利確のタイミングの精度が上がる。過去に何度も止まった価格帯は重要な節目になる。</p>
-        <div class="box box-orange">
-          <strong>テクニカル分析の限界</strong><br>
-          突発的なニュース（規制・ハッキング・ETF承認等）でテクニカルは一瞬で崩れる。また仮想通貨市場は株式市場より規模が小さく、大口（クジラ）の売買でパターンが崩れやすい。ファンダメンタルズ（基本的な価値）との組み合わせが重要。
-        </div>` },
-    { id: 'i3', emoji: '🖼️', title: 'NFTの本質と市場の見方', locked: true, content: `<p>DeFi（分散型金融）とは、銀行・証券会社などの仲介者なしに、スマートコントラクトで自動的に動く金融サービスの総称だ。貸す・借りる・取引する・利息を得る——これらが世界中から誰でもアクセスできる形で提供されている。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiは「銀行口座なしに銀行のサービスを使える」世界を実現しようとしている。ただし「コードがルール」の世界なので、バグやハッキングのリスクも現実的に存在する。便利さとリスクは表裏一体。」</div></div></div>
+        <p>サポートライン（反発しやすい床）とレジスタンスライン（跳ね返されやすい天井）を意識するだけで、エントリーと利確のタイミングの精度が上がる。</p>
+        <div class="box box-orange"><strong>テクニカル分析の限界</strong><br>突発的なニュースでテクニカルは一瞬で崩れる。ファンダメンタルズとの組み合わせが重要。</div>` },
+    { id: 'i2', emoji: '💱', title: 'DeFi（分散型金融）で稼ぐ仕組み', locked: true, content: `<p>DeFi（分散型金融）とは、銀行などの仲介者なしに、スマートコントラクトで自動的に動く金融サービスの総称だ。貸す・借りる・取引する・利息を得る——これらが世界中から誰でもアクセスできる形で提供されている。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiは「銀行口座なしに銀行のサービスを使える」世界を実現しようとしている。便利さとリスクは表裏一体。」</div></div></div>
         <h3>DeFiの主要サービス</h3>
         <div class="box box-blue">
-          <strong>DEX（分散型取引所）</strong><br>
-          Uniswap・Curveなど。ウォレットを接続するだけで取引所なしにトークンを交換できる。AMM（自動マーケットメーカー）という仕組みで流動性を確保している。<br><br>
-          <strong>レンディング（貸し借り）</strong><br>
-          AaveやCompoundに仮想通貨を預けると利息が得られる。担保を入れて別の仮想通貨を借りることもできる。金利はリアルタイムで変動する。<br><br>
-          <strong>Yield Farming（イールドファーミング）</strong><br>
-          複数のDeFiプロトコルを組み合わせて利回りを最大化する手法。高利回りの裏にはスマートコントラクトリスク・インパーマネントロスなどのリスクがある。
+          <strong>DEX（分散型取引所）</strong><br>Uniswap・Curveなど。ウォレット接続だけでトークンを交換できる。<br><br>
+          <strong>レンディング</strong><br>AaveやCompoundに預けると利息が得られる。担保を入れて借りることも可能。<br><br>
+          <strong>Yield Farming</strong><br>複数プロトコルを組み合わせて利回りを最大化する手法。
         </div>
-        <h3>TVL（Total Value Locked）とは</h3>
-        <p>DeFiプロトコルに預けられている資産総額。TVLが高いほど「使われているプロトコル」であることを示す。DeFiLlama（defillama.com）でリアルタイムのTVLランキングが確認できる。</p>
-        <h3>DeFiのリスク</h3>
-        <div class="box box-orange">
-          ・スマートコントラクトのバグによる資金喪失（過去に年間数千億円のハッキング被害）<br>
-          ・インパーマネントロス（流動性提供時の機会損失）<br>
-          ・ラグプル（開発者が流動性を引き出して逃げる詐欺）<br>
-          ・規制リスク（DeFiへの規制強化が世界的に進んでいる）<br><br>
-          使う前に必ず「その資金が全部なくなっても大丈夫か」を自問すること。
-        </div>` },
-    { id: 'i4', emoji: '📉', title: '相場サイクルとビットコイン半減期', locked: true, content: `<p>「草コイン」「ゴミコイン」とも呼ばれるアルトコインへの投資は、適切なリサーチなしに行うと資産を一瞬で失うリスクがある。一方で正しく見極めれば大きなリターンを狙える。プロジェクト評価の方法論を身につけよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「アルトコインに投資するなら「このプロジェクトがなぜ必要か」を10秒で説明できること。説明できないなら投機。投機は悪くないが、「投機だ」と自覚した上でやること。」</div></div></div>
-        <h3>評価フレームワーク</h3>
-        <div class="box box-blue">
-          <strong>Problem（問題）</strong>：解決しようとしている問題が実在するか。「これがなければ困る人」が存在するか。<br><br>
-          <strong>Solution（解決策）</strong>：その問題をブロックチェーンで解決する必然性があるか。中央集権型のサービスの方が優れていないか。<br><br>
-          <strong>Team（チーム）</strong>：開発者の身元が公開されているか。過去の実績はあるか。GitHubのコミット頻度は活発か。<br><br>
-          <strong>Tokenomics（トークノミクス）</strong>：発行上限・チームへの配分・ロックアップ期間・バーン機構を確認。FDV（完全希薄化時価総額）が現在の時価総額の10倍以上なら希薄化リスクに注意。<br><br>
-          <strong>Traction（実績）</strong>：TVL・DAU・取引量など実際に使われているか。「将来の可能性」だけでなく「今の数値」を見る。
-        </div>
-        <h3>危険なプロジェクトのサイン</h3>
-        <div class="box box-orange">
-          ❌ 開発者が全員匿名・身元不明<br>
-          ❌ ホワイトペーパーが他プロジェクトのコピー<br>
-          ❌ チームの配分が50%超・ロックアップなし<br>
-          ❌ 監査なし・バグバウンティなし<br>
-          ❌ 「次のBTC/ETH」という根拠のない比較<br>
-          ❌ 有名人の名前を無断使用したマーケティング
-        </div>` },
-    { id: 'i5', emoji: '🏦', title: 'レンディング・ステーキングで増やす', locked: true, content: `<p>レバレッジ取引は「少ない資金で大きな利益を狙える」ツールだが、逆に動けば一瞬で全損する。初心者が最も多く資産を失うのがこのレバレッジ取引だ。仕組みを完全に理解してから使おう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「レバレッジ取引で一番最初に覚えることは「何%動いたらロスカットされるか」の計算。これができない人は絶対に使ってはいけない。感情で動く前に数字を計算する習慣が命を救う。」</div></div></div>
-        <h3>レバレッジの仕組み</h3>
-        <p>10万円の証拠金で10倍レバレッジをかけると100万円分のポジションを持てる。BTCが10%上昇すれば10万円の利益（100%リターン）。しかしBTCが10%下落すれば証拠金の10万円が全て消える（ロスカット）。</p>
-        <div class="box box-blue">
-          <strong>ロスカット計算式</strong><br>
-          ロスカットライン ＝ 証拠金 ÷ レバレッジ倍率<br>
-          例：10倍レバレッジ → 10%の逆方向で全損<br>
-          例：5倍レバレッジ → 20%の逆方向で全損<br>
-          例：3倍レバレッジ → 33%の逆方向で全損<br><br>
-          仮想通貨は1日で20〜30%動くことがある。3倍でも危険な理由がわかる。
-        </div>
-        <h3>ファンディングレートのコスト</h3>
-        <p>パーペチュアル先物（無期限先物）では8時間ごとにファンディング費用がかかる。ロングが多い相場では、ロング保有者がショート保有者に支払う。年換算で30〜100%のコストになることもある。長期保有目的でのレバレッジは非効率。</p>
-        <div class="box box-orange">
-          <strong>レバレッジ取引の鉄則</strong><br>
-          ✅ 全資産の5〜10%以内の資金のみ使う<br>
-          ✅ 最初は2〜3倍以内から始める<br>
-          ✅ ロスカットラインを事前に計算して把握する<br>
-          ✅ 「絶対上がる」という確信があるときが最も危険だと心得る<br>
-          ✅ 損失が出てもロスカットを受け入れて次の機会を待つ
-        </div>` },
-    { id: 'i6', emoji: '⚡', title: 'ソラナ・レイヤー2・新興チェーン', locked: true, content: `<p>NFTとメタバースは2021〜2022年に爆発的に注目されたが、その後急速に冷却した。それでも技術自体は進化を続けており、次の本格普及に向けた動きが起きている。バブルの教訓と本質的な可能性を整理しよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「NFTバブルで一番の教訓は「コミュニティと実用性がないNFTは価値がない」こと。逆に言えば、本当に使われるNFT・本当に人が集まるメタバースは生き残っている。見極めが全て。」</div></div></div>
-        <h3>NFTバブルの実態</h3>
-        <p>2021年のNFTバブルでは、ピクセルアート1枚が数億円で取引された。しかし2023年には取引量がピーク比で95%以上減少。多くのコレクションがほぼ無価値になった。原因はシンプルだ——「希少性があるから価値がある」というロジックは、需要がなければ成立しない。</p>
-        <h3>生き残っているNFT・メタバースの特徴</h3>
-        <div class="box box-green">
-          ✅ 実際のコミュニティ活動がある（イベント・コラボ・特典）<br>
-          ✅ ゲームやサービスとの統合（実際に「使える」）<br>
-          ✅ ブランドとのコラボ（Nike・Adidas・LVMHなど大手参入）<br>
-          ✅ チケット・証明書など実用的なユースケース<br>
-          ✅ Decentraland・The Sandboxなど継続的に開発が続くメタバース
-        </div>
-        <h3>メタバースの現実</h3>
-        <p>Metaが数兆円を投じたVRメタバースは普及に苦しんでいる。一方でRoblox・Fortniteなどのゲームプラットフォームは「事実上のメタバース」として数億人のユーザーを持つ。「ブロックチェーン×メタバース」の組み合わせが真に力を発揮するのはVRデバイスの普及と共にと見られている。</p>
-        <div class="box box-orange">
-          <strong>NFT・メタバースへの投資注意点</strong><br>
-          コレクションの価値はコミュニティの熱量と比例する。プロジェクトが更新を止めた瞬間に価値が急落するリスクがある。投資するなら「全額失っても後悔しない金額」のみ。
-        </div>` },
-    { id: 'i7', emoji: '📈', title: 'ビットコインETFと機関投資家', locked: true, content: `<p>NFT（Non-Fungible Token＝非代替性トークン）はデジタルデータに「本物の証明書」を付けた技術だ。ブームは落ち着いたが、技術の本質と今後の可能性を正しく理解することが重要だ。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「NFTはバブルだった」という見方は正しい。でも「デジタル所有権」という概念自体は残る。アートのバブルが弾けても「所有権の記録」としての不動産登記は消えないのと同じです。」</div></div></div>
+        <h3>TVL（Total Value Locked）</h3>
+        <p>DeFiプロトコルに預けられている資産総額。TVLが高いほど「使われているプロトコル」であることを示す。</p>
+        <div class="box box-orange">・スマートコントラクトのバグによる資金喪失<br>・インパーマネントロス<br>・ラグプル<br>・規制リスク</div>` },
+    { id: 'i3', emoji: '🖼️', title: 'NFTの本質と市場の見方', locked: true, content: `<p>NFT（Non-Fungible Token）はデジタルデータに「本物の証明書」を付けた技術だ。ブームは落ち着いたが、技術の本質を正しく理解することが重要だ。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「NFTはバブルだった」という見方は正しい。でも「デジタル所有権」という概念自体は残る。」</div></div></div>
         <h3>NFTの仕組み</h3>
-        <p>ブロックチェーン上に「このデジタルデータはこのウォレットが所有している」という記録を刻む技術。コピーは誰でもできるが「本物の所有者」はブロックチェーンが証明する。絵画の実物とその印刷物の違いに近い概念だ。</p>
-        <div class="box box-blue">
-          <strong>NFTの主な用途</strong><br>
-          ・デジタルアート：CryptoPunks・Bored Ape Yacht Clubが有名。ピーク時に数億円の取引も。<br>
-          ・ゲームアイテム：ゲーム内アイテムをNFT化して本当に「自分のもの」にする。<br>
-          ・チケット：コンサートチケットをNFTにして転売・偽造を防止。<br>
-          ・証明書：学歴・資格をNFT（SBT）として発行。改ざん不可能な証明書。<br>
-          ・不動産：RWA（現実資産のトークン化）として不動産をNFT化する動きも。
-        </div>
+        <p>ブロックチェーン上に「このデジタルデータはこのウォレットが所有している」という記録を刻む技術。コピーは誰でもできるが「本物の所有者」はブロックチェーンが証明する。</p>
+        <div class="box box-blue"><strong>NFTの主な用途</strong><br>・デジタルアート（CryptoPunks等）<br>・ゲームアイテム<br>・チケット（転売・偽造防止）<br>・証明書（SBT）</div>
         <h3>NFTバブルの教訓</h3>
-        <p>2021〜2022年のNFTブームでは、多くの画像が「アート」として数千万円〜数億円で取引された。しかしそのほとんどは現在ほぼ無価値になっている。「デジタルデータに希少性を持たせる技術」は本物だが、「希少性があるから価値がある」というロジックは成立しないことが証明された。</p>
-        <div class="box box-orange">
-          <strong>NFT投資の注意点</strong><br>
-          ・コレクション（プロジェクト）の価値はコミュニティの強さに依存する<br>
-          ・著作権はNFTを買っただけでは移転しないことが多い（要確認）<br>
-          ・「著名人が宣伝しているから安全」は誤り——ステマが横行していた<br>
-          ・流動性が低く、売りたいときに売れないリスクがある
-        </div>` },
-    { id: 'i8', emoji: '🎮', title: 'GameFi・Play to Earnの世界', locked: true, content: `<p>DeFiで実際に稼ぐ方法は複数あるが、それぞれのリスクプロファイルが全く異なる。「高い利回り＝高いリスク」を理解した上で、自分に合った方法を選ぼう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiで年利100%以上の案件を見たとき、「何が原資か」を必ず確認すること。プロトコル収益から出ているなら本物。新規トークンを印刷して配っているだけなら、早晩価値が下がる。」</div></div></div>
-        <h3>DeFiの主な収益手法</h3>
+        <p>2021〜2022年のブームで多くの画像が数千万円〜数億円で取引されたが、現在はほぼ無価値のものがほとんど。「希少性があるから価値がある」は需要なしには成立しない。</p>
+        <div class="box box-orange">・コレクションの価値はコミュニティの強さに依存<br>・著作権はNFTを買っただけでは移転しないことが多い<br>・流動性が低く売りたいときに売れないリスク</div>` },
+    { id: 'i4', emoji: '📉', title: '相場サイクルとビットコイン半減期', locked: true, content: `<p>仮想通貨市場にはBTCの半減期を中心とした「4年サイクル」がある。このサイクルを理解することで、「今がどのフェーズか」を把握する目が養われる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「相場のサイクルを知っていると、暴落時に「また来た」と冷静でいられる。この差が長期的な投資成績に大きく影響します。」</div></div></div>
+        <h3>仮想通貨市場の4年サイクル</h3>
         <div class="box box-blue">
-          <strong>レンディング（最もシンプル）</strong><br>
-          AaveやCompoundに資産を預けて利息を得る。BTCやETHを担保に別のトークンを借りることも可能。年利1〜8%程度。スマートコントラクトリスクはあるが比較的低リスク。<br><br>
-          <strong>流動性提供（LP）</strong><br>
-          Uniswapなどのプールに2種類のトークンを同量預けて、取引手数料を受け取る。インパーマネントロスのリスクがある。安定したペア（USDC/USDT等）ほどILが少ない。<br><br>
-          <strong>イールドファーミング</strong><br>
-          複数のDeFiプロトコルを組み合わせて利回りを最大化。高利回りの裏にはスマートコントラクトリスク・ILリスクが重なる。上級者向け。<br><br>
-          <strong>ステーキング報酬</strong><br>
-          PoSチェーンでのバリデーター報酬やLidoなどのリキッドステーキング。ETHは年3〜4%程度。
+          <strong>蓄積期</strong>（ベア底〜半減期前）：価格低迷・長期保有者が静かに積み上げる時期。<br><br>
+          <strong>上昇期</strong>（半減期後〜ブル中盤）：供給減少が効いて価格が上昇し始める。<br><br>
+          <strong>過熱期</strong>（ブル相場のピーク）：「誰でも儲けている」雰囲気。この時期に参入した多くの人が後悔する。<br><br>
+          <strong>崩壊期</strong>（ベア相場）：-70〜85%の大幅下落。
         </div>
-        <h3>利回りの持続可能性チェック</h3>
-        <div class="box box-orange">
-          年利50%以上はほぼ持続不可能。新規トークン発行によるインフレ報酬か、プロトコルへの資金集めのための一時的な高利回りであることが多い。「今の利回り」より「利回りの源泉」を確認すること。
-        </div>` },
-    { id: 'i9', emoji: '🔐', title: 'セキュリティの実践——ハッキングから守る', locked: true, content: `<p>Solana・Avalanche・Polkadotなど、ETHの競合として生まれた「ETHキラー」と呼ばれるチェーンを比較分析しよう。それぞれの設計思想・強み・弱みを理解することで、どのエコシステムに参加するかを判断できるようになる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ETHキラーは何十も生まれたが、ETHを「殺した」ものはまだない。でも各チェーンにはETHにない強みがある。「競争」というより「用途による棲み分け」が現実に近い。」</div></div></div>
+        <h3>半減期の仕組み</h3>
+        <p>BTCのマイニング報酬は約4年ごとに半分になる。2024年に1.5625BTCになった。供給が減ることで需給バランスが崩れ、過去には大きな価格上昇が続いてきた。</p>
+        <div class="box box-orange"><strong>ETF承認後のサイクル変化</strong><br>2024年のBTC ETF承認以降、機関投資家が参入したことで従来の4年サイクルが変化する可能性がある。過去のパターンが通用しない局面も想定しておくこと。</div>` },
+    { id: 'i5', emoji: '🏦', title: 'レンディング・ステーキングで増やす', locked: true, content: `<p>レンディングとステーキングは「保有しているだけで稼ぐ」DeFiの代表的な手法だ。仕組みとリスクを正しく理解してから使おう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「年利30%というDeFiの利回りは、インフレ（新規トークン発行）によるものがほとんど。本当の価値を生んでいるのかを確認すること。」</div></div></div>
+        <h3>ステーキングの仕組み</h3>
+        <p>PoSチェーンではコインをネットワークに「預ける」ことで取引の検証者になり、報酬を得られる。Lido（リキッドステーキング）を使えば少額からでも参加できる。年利3〜5%程度が相場。</p>
+        <div class="box box-blue"><strong>ステーキングの種類</strong><br>・バリデーターステーキング（ETH：32ETH以上必要）<br>・取引所ステーキング（少額からOK）<br>・リキッドステーキング（Lido・Rocket Pool）</div>
+        <h3>レンディングの仕組み</h3>
+        <p>AaveやCompoundなどに資産を預けて利息を得る。担保を入れて別の仮想通貨を借りることもできる。</p>
+        <div class="box box-orange"><strong>リスク</strong><br>スマートコントラクトリスク・インパーマネントロス・トークンインフレに注意。高すぎる利回り（年利50%超）は詐欺または持続不可能なモデルと疑うこと。</div>` },
+    { id: 'i6', emoji: '⚡', title: 'ソラナ・レイヤー2・新興チェーン', locked: true, content: `<p>Solana・Avalanche・Polkadotなど「ETHキラー」と呼ばれるチェーンを比較しよう。それぞれの強み・弱みを理解することで、どのエコシステムに参加するかを判断できるようになる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ETHキラーは何十も生まれたが、ETHを「殺した」ものはまだない。「競争」というより「用途による棲み分け」が現実に近い。」</div></div></div>
         <h3>主要チェーン比較</h3>
         <div class="box box-blue">
-          <strong>Solana（SOL）</strong><br>
-          処理速度：65,000TPS（ETHの数千倍）、手数料：0.00025ドル程度<br>
-          強み：高速・安価・ミームコイン・NFTで人気<br>
-          弱み：過去に複数回のネットワーク停止、中央集権性への批判<br><br>
-          <strong>Avalanche（AVAX）</strong><br>
-          サブネット技術で独自チェーンを構築可能<br>
-          強み：カスタマイズ性・大手企業との提携実績<br>
-          弱み：エコシステムの成長がETH・SOLに比べ遅い<br><br>
-          <strong>Polkadot（DOT）</strong><br>
-          パラチェーンと呼ばれる独立したブロックチェーンを接続するハブ<br>
-          強み：相互運用性・モジュラー設計<br>
-          弱み：複雑すぎる設計・開発者の獲得で苦戦
+          <strong>Solana（SOL）</strong><br>65,000TPS・手数料$0.00025程度。高速・安価・ミームコイン・NFTで人気。過去に複数回のネットワーク停止あり。<br><br>
+          <strong>Avalanche（AVAX）</strong><br>サブネット技術で独自チェーンを構築可能。大手企業との提携実績あり。<br><br>
+          <strong>Polkadot（DOT）</strong><br>パラチェーンを接続するハブ。相互運用性・モジュラー設計が強み。
         </div>
         <h3>ETH L2 vs 独立チェーン</h3>
-        <p>Arbitrum・Optimism・Base（ETHのL2）はETHのセキュリティを引き継ぎながら高速・低コストを実現。独立チェーン（SOL・AVAX等）は独自のセキュリティモデルを持つ。長期的にはETHのL2エコシステムが最も資金と開発者を集めている。</p>` },
-    { id: 'i10', emoji: '💸', title: '仮想通貨の税金・確定申告入門', locked: true, content: `<p>DeFiのセキュリティを理解することは、「安全に使う」ためだけでなく「どのプロジェクトが本物か」を見抜く力を養う上でも重要だ。実際のハッキング事例から学ぼう。</p>
+        <p>Arbitrum・Optimism・Base（ETHのL2）はETHのセキュリティを引き継ぎながら高速・低コストを実現。長期的にはETHのL2エコシステムが最も資金と開発者を集めている。</p>` },
+    { id: 'i7', emoji: '📈', title: 'ビットコインETFと機関投資家', locked: true, content: `<p>2024年1月にアメリカでスポットBTC ETFが承認された。ブラックロック・フィデリティなど世界最大級の資産運用会社が参入し、仮想通貨市場は「機関主導」へ構造的に変化しつつある。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「2024年のBTC ETF承認は「ゲームチェンジャー」でした。年金基金がポートフォリオの1〜2%をBTCに割り当てるだけで、兆円単位の資金が流入する計算になります。」</div></div></div>
+        <h3>BTC ETFが変えたもの</h3>
+        <p>証券口座でBTCに投資できるようになり、「仮想通貨ウォレット不要」でBTCへの投資が可能になった。ETF承認後の数ヶ月で数兆円の資金が流入した。</p>
+        <div class="box box-blue"><strong>主な機関投資家の動き</strong><br>ブラックロック IBIT：世界最大のBTC ETF。<br>マイクロストラテジー：40万BTC超を保有。<br>フィデリティ：BTC ETFと自社カストディサービスを展開。</div>
+        <div class="box box-orange"><strong>ポジティブ</strong>：流動性の向上・価格の安定化<br><strong>ネガティブ</strong>：株式市場との相関が高まる。FRBの利上げで株が下がればBTCも連動して下がりやすくなる。</div>` },
+    { id: 'i8', emoji: '🎮', title: 'GameFi・Play to Earnの世界', locked: true, content: `<p>Play to Earn（P2E）・GameFiは2021年に爆発的にブームになった。多くのプロジェクトが崩壊した失敗の歴史と、次世代GameFiの可能性を理解しておこう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「Axie Infinityの失敗は「稼ぐために遊ぶ人しかいなかった」こと。次世代GameFiの答えは「楽しいから遊ぶ→副産物として稼げる」設計。」</div></div></div>
+        <h3>第1世代GameFiの失敗分析</h3>
+        <p>Axie Infinityはピーク時に月300万人のアクティブユーザーを記録。しかし報酬のインフレが続き、トークン価格の下落→ユーザー離脱→さらに価格下落の悪循環に陥った。</p>
+        <div class="box box-blue"><strong>次世代GameFiが目指す設計</strong><br>✅ ゲームとしての面白さが第一（稼ぎはボーナス）<br>✅ トークンの供給をゲームプレイと連動させる<br>✅ プレイヤーがゲームのオーナーになるDAO形式</div>
+        <div class="box box-orange">「ゲームトークン」は最もボラティリティが高い部類のトークン。投資するなら全資産の1〜2%以内に限定すること。</div>` },
+    { id: 'i9', emoji: '🔐', title: 'セキュリティの実践——ハッキングから守る', locked: true, content: `<p>仮想通貨を保有・運用する上で、セキュリティは最優先事項だ。ハッキング・フィッシング——実際に起きた被害の手口を知ることが最強の防御になる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiのセキュリティは「弱いところから攻められる」という鉄則がある。スマートコントラクト・ブリッジ・オラクル・フロントエンド——全ての層がターゲットになりうる。」</div></div></div>
         <h3>攻撃の層別分類</h3>
         <div class="box box-orange">
-          <strong>スマートコントラクト層</strong>：コードのバグを直接突く。再入攻撃・整数オーバーフロー・アクセス制御の欠如など。<br><br>
-          <strong>ブリッジ層</strong>：チェーン間の資産移動を狙う。2022年は特に多発。Wormhole（約340億円）・Ronin（約800億円）など。<br><br>
-          <strong>オラクル層</strong>：価格フィードの操作。フラッシュローンと組み合わせた価格操作攻撃。<br><br>
-          <strong>フロントエンド層</strong>：公式サイトのDNSハイジャック。正規のURLを開いても偽サイトに飛ばされる。
+          <strong>スマートコントラクト層</strong>：コードのバグを直接突く。再入攻撃など。<br><br>
+          <strong>ブリッジ層</strong>：Wormhole（約340億円）・Ronin（約800億円）など大型被害あり。<br><br>
+          <strong>オラクル層</strong>：価格フィードの操作。フラッシュローン攻撃と組み合わせた手口。<br><br>
+          <strong>フロントエンド層</strong>：公式サイトのDNSハイジャック。正規URLでも偽サイトに飛ばされる。
         </div>
         <h3>自分を守るための実践</h3>
         <div class="box box-green">
-          ✅ ブックマークから公式サイトにアクセスする（Google検索は偽広告が混じる）<br>
+          ✅ ブックマークから公式サイトにアクセスする<br>
           ✅ 新しいプロトコルには最初少額で試す<br>
-          ✅ 使わないプロトコルへのトークン承認（Approval）は定期的に取り消す（Revoke.cash）<br>
-          ✅ 大額はコールドウォレットで管理し、DeFiには必要な分だけ移動する<br>
-          ✅ ハードウェアウォレットでトランザクション内容を確認してから承認する
+          ✅ 使わないプロトコルへのApprovalは定期的に取り消す（Revoke.cash）<br>
+          ✅ 大額はコールドウォレットで管理する
         </div>` },
-    { id: 'i11', emoji: '🔢', title: 'オーダーブック（板）の読み方', locked: true, content: `<p>DeFiのリスクは「ハッキングだけ」ではない。スマートコントラクトのバグ・流動性リスク・オラクル問題・ラグプルなど、複数のリスクを理解してこそ安全にDeFiを使いこなせる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiで資産を失う方法は一つじゃない。ハッキング・バグ・ラグプル・インパーマネントロス・規制——全部のリスクを知った上で、使う金額を決める。知識が最大の防御です。」</div></div></div>
+    { id: 'i10', emoji: '💸', title: '仮想通貨の税金・確定申告入門', locked: true, content: `<p>仮想通貨で利益が出たら確定申告が必要だ。知らなかったでは済まない税務の基本を整理しよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「税金は「後から考える」ものじゃない。取引前に税コストを計算してから実行するのがプロの習慣。」</div></div></div>
+        <h3>課税される取引と課税タイミング</h3>
+        <div class="box box-blue">
+          課税される：仮想通貨→円への換金・仮想通貨同士の交換・仮想通貨での商品購入・マイニング報酬・ステーキング報酬・エアドロップ受取<br><br>
+          課税されない：日本円で仮想通貨を購入するだけ・自分のウォレット間の移動・保有したまま（含み益は課税なし）
+        </div>
+        <h3>税率と節税戦略</h3>
+        <p>仮想通貨の利益は「雑所得」として累進課税（5〜45%＋住民税10%）が適用される。</p>
+        <div class="box box-green">
+          <strong>① 損益通算</strong>：年内に含み損のある銘柄を売却して利益と相殺。12月が勝負。<br>
+          <strong>② 年をまたいだ利益調整</strong>：年収が高い年は利確を翌年に延ばすと税率が下がる場合がある。<br>
+          <strong>③ 法人化の検討</strong>：年間利益が500万円を超えるなら法人税率が有利になる場合がある。
+        </div>
+        <div class="box box-orange">税務計算ツール（Koinly・Cryptact等）への取引所CSVのインポートが最も効率的。大きな利益が出た年は仮想通貨に詳しい税理士への相談を推奨。</div>` },
+    { id: 'i11', emoji: '🔢', title: 'オーダーブック（板）の読み方', locked: true, content: `<p>オーダーブック（板）とは、取引所に出ている買い注文と売り注文の一覧だ。板を読めるようになると、「どこに大きな売り圧があるか」が視覚的に掴める。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「板を読むのは「市場参加者の意思を読む」ことです。大きな売り板（壁）があれば価格がそこで止まりやすい。その壁が消えた瞬間に価格が動く。」</div></div></div>
+        <h3>板の基本構造</h3>
+        <div class="box box-blue">
+          <strong>Ask（売り板）</strong>：現在の価格より上に並ぶ売り注文。<br>
+          <strong>Bid（買い板）</strong>：現在の価格より下に並ぶ買い注文。<br>
+          <strong>スプレッド</strong>：最良売りと最良買いの差。流動性が高いほど狭い。<br>
+          <strong>板の厚み</strong>：特定価格帯の注文量。厚い板はサポート・レジスタンスの目安になる。
+        </div>
+        <h3>板読みの実践</h3>
+        <p>大口注文（ウォール）は価格の壁になる。ただしクジラが意図的に大きな板を見せて後で消す「スプーフィング」もあるため、鵜呑みにしすぎないこと。</p>
+        <div class="box box-orange"><strong>板取引のメリット</strong><br>販売所形式より板取引のほうが手数料が安い。指値注文を使うことで思った価格で約定させやすくなる。</div>` },
+    { id: 'i12', emoji: '📡', title: 'ファンダメンタル分析入門', locked: true, content: `<p>ファンダメンタル分析とは、プロジェクトの「本質的な価値」を評価する手法だ。価格チャートではなく、技術・チーム・トークノミクス・実際の利用状況から投資判断する。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「このコインは絶対上がる」という確信の前に、「なぜこのコインが必要なのか」を問いかける習慣を持つこと。問いに答えられないなら、それは信仰であって投資ではない。」</div></div></div>
+        <h3>評価すべき5つのポイント</h3>
+        <div class="box box-blue">
+          <strong>① ホワイトペーパーと技術</strong>：解決しようとしている問題が実在するか。<br><br>
+          <strong>② チームと実績</strong>：開発チームの身元が公開されているか。GitHubのコミット頻度は活発か。<br><br>
+          <strong>③ トークノミクス</strong>：チーム・投資家の配分比率は適切か（50%超は警戒）。ロックアップ期間は十分か。<br><br>
+          <strong>④ 実際の利用状況</strong>：TVL・DAU・取引量などの実績数値。「今使われているか」が重要。<br><br>
+          <strong>⑤ コミュニティと生態系</strong>：Discordのエンゲージメント。批判的な意見を許容する文化があるか。
+        </div>
+        <div class="box box-orange">ファンダメンタルが良くても価格が上がるとは限らない。市場のセンチメント・マクロ環境・トークンのロック解除スケジュールも価格に大きく影響する。</div>` },
+    { id: 'i13', emoji: '💰', title: 'DeFiのリスク管理と安全な使い方', locked: true, content: `<p>DeFiのリスクはハッキングだけではない。スマートコントラクトのバグ・流動性リスク・オラクル問題・ラグプルなど、複数のリスクを理解してこそ安全にDeFiを使いこなせる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「DeFiで資産を失う方法は一つじゃない。全部のリスクを知った上で、使う金額を決める。知識が最大の防御です。」</div></div></div>
         <h3>主要リスク一覧</h3>
         <div class="box box-orange">
-          <strong>スマートコントラクトリスク</strong><br>
-          コードにバグがあると資金が失われる。監査済みでも100%安全ではない。過去の大型ハッキング（Wormhole・Ronin・Poly Network）はいずれもスマートコントラクトの欠陥を突かれた。<br><br>
-          <strong>インパーマネントロス（IL）</strong><br>
-          流動性プールに資金を提供したとき、価格変動によって「ただ保有していた場合より損をする」現象。価格変動が激しいペアほどILが大きくなる。<br><br>
-          <strong>オラクルリスク</strong><br>
-          DeFiは「現実の価格」をオラクル（外部データフィード）から取得する。オラクルが操作されると、プロトコルが誤った価格で動いてしまう。フラッシュローン攻撃の多くはオラクルを悪用したもの。<br><br>
-          <strong>ラグプル</strong><br>
-          新しいDeFiプロジェクトに資金を集めた後、開発者が流動性を引き出して消える詐欺。Pump.funで生まれたミームコインに特に多い。
+          <strong>スマートコントラクトリスク</strong>：コードにバグがあると資金が失われる。監査済みでも100%安全ではない。<br><br>
+          <strong>インパーマネントロス（IL）</strong>：流動性プールに資金を提供したとき、価格変動によって「ただ保有していた場合より損をする」現象。<br><br>
+          <strong>オラクルリスク</strong>：オラクルが操作されると誤った価格でプロトコルが動いてしまう。<br><br>
+          <strong>ラグプル</strong>：新しいDeFiプロジェクトに資金を集めた後、開発者が流動性を引き出して消える詐欺。
         </div>
         <h3>安全なDeFiプロトコルの見分け方</h3>
         <div class="box box-green">
           ✅ 複数の一流監査機関（Trail of Bits・OpenZeppelin等）による監査済み<br>
           ✅ バグバウンティプログラムが設置されている（ImmuneFi等）<br>
           ✅ ローンチから1年以上経過・大きな問題なし<br>
-          ✅ TVLが高く、多くのユーザーが使っている<br>
           ✅ 緊急停止機能とタイムロックの実装
         </div>` },
-    { id: 'i12', emoji: '📡', title: 'ファンダメンタル分析入門', locked: true, content: `<p>仮想通貨で利益が出たら確定申告が必要だ。知らなかったでは済まない税務の基本を整理しよう。適切な記録管理と節税知識は、投資成績と同じくらい重要だ。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「税金は「後から考える」ものじゃない。取引前に税コストを計算してから実行するのがプロの習慣。「利益が出た！」と喜ぶ前に「税引き後いくらか」を考えましょう。」</div></div></div>
-        <h3>課税される取引と課税タイミング</h3>
+    { id: 'i14', emoji: '🔄', title: 'ブリッジとクロスチェーン取引', locked: true, content: `<p>クロスチェーン技術はマルチチェーン時代の必須知識だ。異なるブロックチェーン間でアセットを移動させる仕組みを理解しよう。ブリッジはハッキングの標的になりやすい。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ブリッジはDeFiで最もリスクが高い部分の一つ。2022年だけで数千億円が失われた。実績のある大手ブリッジを、必要最小限の金額で使うこと。」</div></div></div>
+        <h3>ブリッジの仕組み</h3>
+        <p>チェーンA側でトークンをロックし、チェーンB側で同等のラップドトークンを発行する。逆の操作で元のチェーンに戻せる。</p>
+        <div class="box box-blue"><strong>主要なブリッジ</strong><br>・Stargate Finance：LayerZero技術を使ったマルチチェーンブリッジ<br>・Hop Protocol：ETHのL2間の高速転送に特化<br>・Portal Bridge（Wormhole）：2022年に約340億円のハッキング被害あり<br>・IBC（Cosmos）：比較的安全</div>
+        <div class="box box-orange">✅ 実績のある大手ブリッジを使う<br>✅ 一度に大量を移動させずに少額でテスト<br>✅ ラップドトークンのデペッグリスクを理解する</div>` },
+    { id: 'i15', emoji: '📊', title: 'BollingerBandとMACD入門', locked: true, content: `<p>ボリンジャーバンドとMACDは、テクニカル分析の中でも特に広く使われる2大指標だ。2つを組み合わせることで相場の「過熱」と「転換」をより精度高く判断できる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「「ボリバン収縮＋MACDゴールデンクロス」は強い上昇サインとされることが多い。2つが同じシグナルを出したときに確信度が高まる。」</div></div></div>
+        <h3>ボリンジャーバンドの読み方</h3>
         <div class="box box-blue">
-          課税される：仮想通貨→円への換金・仮想通貨同士の交換・仮想通貨での商品購入・マイニング報酬受取・ステーキング報酬・エアドロップ受取<br><br>
-          課税されない：日本円で仮想通貨を購入するだけ・自分のウォレット間の移動・保有したまま（含み益は課税なし）
+          中心線（20日移動平均）・上部バンド（+標準偏差×2）・下部バンド（-標準偏差×2）で構成。<br><br>
+          ・バンド幅が狭くなる（スクイーズ）→大きな値動きの前兆<br>
+          ・価格が上部バンドに触れる→買われすぎ<br>
+          ・価格が下部バンドに触れる→売られすぎ<br>
+          ・バンドウォーク→強いトレンドの証拠
         </div>
-        <h3>税率と計算方法</h3>
-        <p>仮想通貨の利益は「雑所得」として他の所得と合算され、累進課税（5〜45%＋住民税10%）が適用される。利益が多いほど税率が上がる。取得単価の計算方法は「移動平均法」または「総平均法」を選択（毎年同じ方法を使う必要がある）。</p>
-        <h3>節税の基本戦略</h3>
-        <div class="box box-green">
-          <strong>① 損益通算</strong>：年内に含み損のある銘柄を売却して利益と相殺。12月が勝負。<br>
-          <strong>② 年をまたいだ利益調整</strong>：年収が高い年は利確を翌年に延ばすと税率が下がる場合がある。<br>
-          <strong>③ 法人化の検討</strong>：年間利益が500万円を超えるなら法人税率（約23〜34%）の方が有利になる場合がある。
-        </div>
-        <div class="box box-orange">
-          税務計算ツール（Koinly・Cryptact等）への取引所CSVのインポートが最も効率的。DeFi・NFTの記録は複雑なため、大きな利益が出た年は仮想通貨に詳しい税理士への相談を推奨。
-        </div>` },
-    { id: 'i13', emoji: '💰', title: 'DeFiのリスク管理と安全な使い方', locked: true, content: `<p>ビットコインの供給は4年ごとに半分になる「半減期」という仕組みを持つ。過去の半減期後には大きな価格上昇が起きてきた。次の半減期に向けた戦略を理解しよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「半減期は「BTCの供給が半分になる日」。需要が変わらなければ、供給が減ると価格は上がる——経済学の基本。過去3回の半減期後はいずれも大幅な価格上昇が起きた。ただし「今回も必ず上がる」とは限らない。」</div></div></div>
-        <h3>半減期の仕組み</h3>
-        <p>BTCのマイニング報酬は約21万ブロック（約4年）ごとに半分になる。2009年の最初の半減期には50BTC→25BTC、2012年に25BTC→12.5BTC、2016年に6.25BTC、2020年に3.125BTC、2024年に1.5625BTCになった。発行上限の2,100万BTCに達するのは2140年頃と予測されている。</p>
-        <h3>過去の半減期後の価格推移</h3>
+        <h3>MACDの読み方</h3>
         <div class="box box-blue">
-          <strong>第1回（2012年11月）</strong>：半減期後1年でBTC価格が約8,000%上昇<br>
-          <strong>第2回（2016年7月）</strong>：半減期後1年半で約2,900%上昇<br>
-          <strong>第3回（2020年5月）</strong>：半減期後1年半で約700%上昇<br>
-          <strong>第4回（2024年4月）</strong>：直後にATH更新・その後の動向は注目中
+          MACDライン（12日EMA－26日EMA）とシグナルライン（9日EMA）で構成。<br><br>
+          ・ゴールデンクロス→買いシグナル<br>
+          ・デッドクロス→売りシグナル<br>
+          ・ダイバージェンス→トレンド転換の予兆
         </div>
-        <h3>半減期後に価格が上がる理由</h3>
-        <p>マイナーへの報酬が半分になる→新規発行量が減少→供給が減る。一方で需要が変わらなければ需給バランスが崩れて価格が上昇する、という理論的な根拠がある。また「半減期＝強気相場」という市場心理（ナラティブ）自体が需要を生む自己成就的な側面もある。</p>
-        <div class="box box-orange">
-          <strong>注意点</strong><br>
-          過去のパターンは将来を保証しない。ETFによる機関投資家の参入・マクロ経済環境・規制動向など、以前の半減期にはなかった新しい変数が加わっている。「半減期だから必ず上がる」という思い込みは危険。
-        </div>` },
-    { id: 'i14', emoji: '🔄', title: 'ブリッジとクロスチェーン取引', locked: true, content: `<p>PoW（Proof of Work）とPoS（Proof of Stake）——ブロックチェーンの合意形成メカニズムの2大方式を理解することで、各仮想通貨の特性と将来性を判断するための重要な視点が得られる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「PoWは「電力を消費した分だけ信頼を得る」仕組み。PoSは「保有量を担保に信頼を得る」仕組み。どちらが優れているかではなく、それぞれのトレードオフを理解することが大切です。」</div></div></div>
-        <h3>PoW（Proof of Work）</h3>
-        <div class="box box-blue">
-          <strong>仕組み</strong>：複雑な計算問題を最初に解いたマイナーがブロックを追加する権利と報酬を得る。膨大な電力・計算機が必要。<br>
-          <strong>採用コイン</strong>：BTC・LTC等<br>
-          <strong>メリット</strong>：実績があり安全性が高い。攻撃するには莫大なハードウェアと電力が必要。<br>
-          <strong>デメリット</strong>：電力消費が大きい（環境負荷）。マイニング設備を持つ少数のプレイヤーに集中しやすい。
-        </div>
-        <h3>PoS（Proof of Stake）</h3>
-        <div class="box box-blue">
-          <strong>仕組み</strong>：一定量のコインを「ステーク（担保）」として預けることで取引の検証者（バリデーター）になれる。正直に行動しないと担保が没収（スラッシング）される。<br>
-          <strong>採用コイン</strong>：ETH（2022年移行）・SOL・ADA・DOT等<br>
-          <strong>メリット</strong>：電力消費が99%以上少ない。スケーラビリティが高い。<br>
-          <strong>デメリット</strong>：大量保有者が有利になりやすい（富の集中）。実績がPoWより短い。
-        </div>
-        <h3>その他の合意形成メカニズム</h3>
-        <div class="box box-gray">
-          <strong>DPoS（委任型PoS）</strong>：EOS・TRONが採用。投票で選ばれた少数のバリデーターが検証。高速だが中央集権的。<br>
-          <strong>PoH（Proof of History）</strong>：Solanaが採用。時刻の証明を組み込んで高速化を実現。
-        </div>` },
-    { id: 'i15', emoji: '📊', title: 'BollingerBandとMACD入門', locked: true, content: `<p>マクロ経済の動向は仮想通貨市場に直接影響する。FRBの金融政策・ドル指数・インフレ率——これらを追うことで、BTCが「なぜ今動いているのか」を理解できるようになる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「BTCチャートだけ見ていた時代は終わった。今はS&P500とBTCがほぼ同じ方向に動く局面が増えている。マクロを無視した投資判断はリスクが高い。」</div></div></div>
-        <h3>仮想通貨に影響するマクロ指標</h3>
-        <div class="box box-blue">
-          <strong>FRBの金融政策（利上げ・利下げ）</strong><br>
-          利上げ→資金がリスク資産から逃避→BTC下落。利下げ→緩和期待→BTC上昇。FOMCの声明は相場の転換点になりやすい。<br><br>
-          <strong>ドル指数（DXY）</strong><br>
-          DXY上昇（ドル高）→BTCなどドル建て資産が下落する傾向。DXY下落（ドル安）→BTCが上昇しやすい。<br><br>
-          <strong>CPI（消費者物価指数）</strong><br>
-          インフレ率を示す指標。CPIが高い→FRBが利上げへ→BTC下落リスク。<br><br>
-          <strong>米国債利回り（10年物）</strong><br>
-          利回り上昇→安全資産に資金が流れる→リスク資産のBTCに逆風。
-        </div>
-        <h3>BTCと株式市場の相関</h3>
-        <p>2020年以降、BTCとS&P500の相関係数が高まっている。機関投資家がBTCをポートフォリオに組み入れた結果、「リスクオフ局面では株もBTCも売られる」という現象が起きるようになった。一方で、法定通貨への信頼が揺らぐ局面では、BTCが「デジタルゴールド」として買われることもある。</p>
-        <div class="box box-orange">
-          <strong>マクロ環境の定期チェック習慣</strong><br>
-          ✅ 月2回のFOMC声明を確認<br>
-          ✅ 毎月のCPI発表日を把握<br>
-          ✅ DXYの方向性を週次で確認<br>
-          ✅ Fear & Greed Indexを定点観測
-        </div>` },
-    { id: 'i16', emoji: '🎲', title: 'レバレッジ取引の仕組みとリスク', locked: true, content: `<p>仮想通貨に関連する詐欺は年間数兆円規模の被害を生んでいる。手口のパターンを知っておくことが最大の防御だ。「知識があれば防げた詐欺」が圧倒的に多い。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「詐欺師はあなたの「欲」と「焦り」を狙っている。「今すぐ」「絶対儲かる」「限定」という言葉が出たら、一度立ち止まること。冷静に判断する時間を奪うのが詐欺の手口です。」</div></div></div>
-        <h3>主要な詐欺パターン</h3>
-        <div class="box box-orange">
-          <strong>フィッシング詐欺</strong><br>
-          取引所・ウォレットの偽サイトに誘導して秘密鍵やログイン情報を盗む。メール・SNS・検索広告から偽リンクが送られてくる。URLを必ず確認し、ブックマークからアクセスする習慣を。<br><br>
-          <strong>なりすまし詐欺</strong><br>
-          著名人・有名トレーダー・取引所スタッフを騙り「特別な投資案件」を持ちかける。イーロン・マスクや有名YouTuberになりすます手口が多い。<br><br>
-          <strong>ラグプル</strong><br>
-          新しいDeFiプロジェクト・NFTに資金を集めた後、開発者が流動性を引き出して消える。「著名人が宣伝している」だけでは安全の証明にならない。<br><br>
-          <strong>ロマンス詐欺（Pig Butchering）</strong><br>
-          SNSで友人・恋人として近づき、信頼関係を築いた後に投資案件を持ちかける。「一緒に儲けよう」と言われた時点で危険信号。
-        </div>
-        <h3>詐欺から身を守る鉄則</h3>
-        <div class="box box-green">
-          ✅ 秘密鍵・シードフレーズは絶対に他人に教えない（取引所スタッフも聞いてこない）<br>
-          ✅ 「絶対儲かる」という投資案件は存在しない<br>
-          ✅ 送金前に必ず公式チャンネルで確認する<br>
-          ✅ 新しいトークンはhoneypot.is等でハニーポット確認<br>
-          ✅ 不審に思ったら家族・友人に相談してから判断する
-        </div>` },
+        <div class="box box-orange">いずれも遅行指標。突発的なニュースでシグナルが崩れることがある。単独で売買判断をしないこと。</div>` },
+    { id: 'i16', emoji: '🎲', title: 'レバレッジ取引の仕組みとリスク', locked: true, content: `<p>レバレッジ取引は少ない資金で大きな利益を狙えるが、逆に動けば一瞬で全損する。初心者が最も多く資産を失うのがこのレバレッジ取引だ。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「レバレッジ取引で一番最初に覚えることは「何%動いたらロスカットされるか」の計算。これができない人は絶対に使ってはいけない。」</div></div></div>
+        <h3>レバレッジの仕組み</h3>
+        <p>10万円の証拠金で10倍レバレッジをかけると100万円分のポジションを持てる。BTCが10%上昇すれば10万円の利益。しかしBTCが10%下落すれば証拠金の10万円が全て消える（ロスカット）。</p>
+        <div class="box box-blue"><strong>ロスカット計算</strong><br>10倍→10%逆方向で全損<br>5倍→20%逆方向で全損<br>3倍→33%逆方向で全損<br><br>仮想通貨は1日で20〜30%動くことがある。3倍でも危険な理由がわかる。</div>
+        <h3>ファンディングレートのコスト</h3>
+        <p>パーペチュアル先物では8時間ごとにファンディング費用がかかる。長期保有目的でのレバレッジは非効率。</p>
+        <div class="box box-orange">✅ 全資産の5〜10%以内の資金のみ使う<br>✅ 最初は2〜3倍以内から始める<br>✅ ロスカットラインを事前に計算して把握する</div>` },
     { id: 'i17', emoji: '🌍', title: '仮想通貨と地政学リスク', locked: true, content: `<p>仮想通貨の価格は金融政策・戦争・制裁・経済崩壊など、一見関係なさそうな世界の出来事と深く連動している。地政学リスクを無視した投資判断は、予期せぬ損失につながる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ロシアのウクライナ侵攻時、制裁を逃れる手段としてBTC取引量が両国で急増した。これが現実に起きている。仮想通貨は地政学的事件の「逃げ道」として使われ始めている。」</div></div></div>
         <h3>制裁とBTC</h3>
@@ -2281,108 +2144,74 @@ const LESSONS = {
           <strong>⚠️ 地政学リスクの投資への影響</strong><br>
           有事はポジション縮小の理由になりうる。しかし「〇〇が戦争を始めた、BTCを売れ」という短絡的な行動も禁物。過去の急落は多くの場合、数週間〜数ヶ月で回復している。パニック売りより、事前のリスク管理の方が重要。
         </div>` },
-    { id: 'i18', emoji: '⚡', title: 'Solanaエコシステムを深掘りする', locked: true, content: `<p>Solana・Aptos・Sui——新世代のブロックチェーンが続々と登場している。それぞれの技術的な差別化点と、投資対象としての評価軸を整理しよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「新しいL1チェーンは必ず「ETHより速い・安い・優れている」と主張する。でも速さだけが価値ではない。開発者・資金・アプリケーション——エコシステムの厚みが長期的な勝敗を決める。」</div></div></div>
-        <h3>注目の新世代チェーン</h3>
+    { id: 'i18', emoji: '⚡', title: 'Solanaエコシステムを深掘りする', locked: true, content: `<p>SolanaはEthereum最大のライバルとして成長してきたレイヤー1ブロックチェーンだ。2024〜2025年にかけてミームコインブームを牽引し、エコシステムの全体像を深掘りしよう。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「SolanaはFTX破綻で一度死にかけたのに、見事に復活した。開発者コミュニティの強さとPump.funなどのキラーアプリの存在がエコシステムの厚みを作った。」</div></div></div>
+        <h3>Solanaの技術的特徴</h3>
         <div class="box box-blue">
-          <strong>Solana（SOL）</strong><br>
-          Proof of History（PoH）で高速処理を実現。65,000TPS・手数料$0.00025。ミームコイン・NFTで最大のユーザー基盤を持つ。FTX破綻後に大幅下落したが復活。<br><br>
-          <strong>Aptos（APT）</strong><br>
-          旧Metaのブロックチェーンプロジェクト「Diem」の元開発者が設立。Move言語採用でセキュリティが高い。まだエコシステムは発展途上。<br><br>
-          <strong>Sui（SUI）</strong><br>
-          Aptosと同じくMove言語採用。並列処理で高速化。ゲーム・エンターテイメント分野での採用を狙う。<br><br>
-          <strong>Sei（SEI）</strong><br>
-          DeFi・取引所に特化したL1。オーダーブック型DEXの実現を目指す。
+          <strong>Proof of History（PoH）</strong>：時間の証明をブロックチェーンに組み込む独自の仕組み。65,000TPS・手数料$0.00025程度を実現。<br><br>
+          <strong>並列処理（Sealevel）</strong>：複数のトランザクションを同時に処理。ETHのシリアル処理と異なり高いスループットを実現。
         </div>
-        <h3>新興L1への投資評価基準</h3>
-        <div class="box box-orange">
-          <strong>確認すべきこと</strong><br>
-          ・実際の開発者数とGitHubの活発さ<br>
-          ・TVL（Total Value Locked）の推移<br>
-          ・VCバックの質（a16z・Paradigm等の参入は信頼性の指標）<br>
-          ・トークンのロックアップスケジュール（大量アンロックは売り圧になる）
-        </div>` },
-    { id: 'i19', emoji: '🖼️', title: 'NFTの作り方・売り方入門', locked: true, content: `<p>ステーキングとイールドファーミングは「仮想通貨を持っているだけで収益を得る」方法として注目されている。ただし「高い利回り」の裏には必ずリスクがある。仕組みとリスクを理解してから使おう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「年利30%というDeFiの利回りは、インフレ（新規トークン発行）によるものがほとんど。本当の価値を生んでいるのか、ただトークンを印刷して配っているだけなのかを確認すること。」</div></div></div>
-        <h3>ステーキングの仕組み</h3>
-        <p>PoSチェーンではコインをネットワークに「預ける」ことで取引の検証者になり、報酬を得られる。ETHのステーキングは最低32ETHが必要だが、Lido（リキッドステーキング）を使えば少額からでも参加できる。年利3〜5%程度が相場。</p>
-        <div class="box box-blue">
-          <strong>ステーキングの種類</strong><br>
-          ・<strong>バリデーターステーキング</strong>：直接ネットワークに参加（ETH：32ETH以上必要）<br>
-          ・<strong>取引所ステーキング</strong>：取引所が代行（少額からOK・手数料あり）<br>
-          ・<strong>リキッドステーキング</strong>：stETH等のトークンを受け取って流動性を維持しながらステーキング（Lido・Rocket Pool）
-        </div>
-        <h3>イールドファーミングのリスク</h3>
-        <div class="box box-orange">
-          <strong>スマートコントラクトリスク</strong>：バグによる資金喪失。高利回りプロトコルほど未監査のことが多い。<br>
-          <strong>インパーマネントロス</strong>：流動性提供時の価格変動による機会損失。<br>
-          <strong>トークンインフレ</strong>：報酬として配られるトークンの価値が下がると実質利回りもマイナスになる。<br>
-          <strong>ラグプル</strong>：新興プロトコルへの資金提供後に開発者が逃げる。
-        </div>
-        <div class="box box-green">
-          <strong>安全なステーキングの選び方</strong><br>
-          ✅ 実績のある大手（Lido・Rocket Pool・取引所ステーキング）から始める<br>
-          ✅ 高すぎる利回り（年利50%超）は詐欺または持続不可能なモデルと疑う<br>
-          ✅ ステーキングした資産はロックアップ期間に引き出せないことを把握する
-        </div>` },
-    { id: 'i20', emoji: '💎', title: '長期投資（HODL）戦略の実践', locked: true, content: `<p>「ガス代」は仮想通貨を使う上で避けて通れないコストだ。特にETHネットワークは混雑時に手数料が高騰することで知られる。レイヤー2の登場で状況は大きく変わりつつある。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「ETHのガス代は需要と供給で決まる。混雑しているときに急いで送ろうとすると1万円以上かかることもある。でもレイヤー2を使えば1円以下で同じことができる。L2は必修知識です。」</div></div></div>
-        <h3>ガス代の仕組み</h3>
-        <p>ETHネットワーク上の全ての取引・スマートコントラクト実行には「ガス」という計算コストがかかる。ガス代＝ガス使用量×ガス価格（Gwei）。ガス価格は需要と供給で変動し、ネットワーク混雑時に急上昇する。EIP-1559以降、基本手数料がバーン（焼却）される仕組みになった。</p>
-        <h3>レイヤー2（L2）とは</h3>
-        <div class="box box-blue">
-          ETHのセキュリティを使いながら、処理をETHの外で行う技術。手数料を大幅に削減できる。<br><br>
-          <strong>主要なL2</strong><br>
-          ・<strong>Arbitrum</strong>：Optimistic Rollup方式。DeFiの利用が多い。<br>
-          ・<strong>Optimism</strong>：Arbitrumと同方式。使いやすいUI。<br>
-          ・<strong>Base</strong>：Coinbaseが運営するOptimism系L2。<br>
-          ・<strong>zkSync</strong>：ゼロ知識証明を使った高速・安全なL2。<br>
-          ・<strong>Polygon</strong>：サイドチェーン＋L2の機能を持つ。
-        </div>
-        <h3>ガス代を節約するコツ</h3>
-        <div class="box box-green">
-          ✅ L2（Arbitrum・Optimism等）を使う（ETH本体の1/10〜1/100の手数料）<br>
-          ✅ ネットワーク混雑が少ない時間帯（平日深夜・早朝の日本時間）に実行<br>
-          ✅ ethgas.watch等でガス代をリアルタイム確認してから実行<br>
-          ✅ 少額の取引はガス代が割に合わないことがある——まとめて実行する
-        </div>` },
-    { id: 'i21', emoji: '🔮', title: 'アルトコインの選び方', locked: true, content: `<p>仮想通貨には「4年サイクル」と呼ばれる価格パターンがある。BTCの半減期を中心に強気相場（ブル）と弱気相場（ベア）が繰り返されてきた。このサイクルを理解することで、長期的な戦略が立てやすくなる。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「4年サイクルを信じすぎると失敗する。でも「今がどのフェーズか」を意識するだけで、感情的な判断が減る。サイクルは羅針盤であって、地図ではない。」</div></div></div>
-        <h3>典型的な4年サイクル</h3>
-        <div class="box box-blue">
-          <strong>フェーズ1：蓄積期（ベア底→半減期前）</strong><br>
-          価格が長期低迷し、メディアが仮想通貨を「終わった」と報じる時期。長期保有者が静かに蓄積している。<br><br>
-          <strong>フェーズ2：上昇期（半減期後〜ブル相場）</strong><br>
-          半減期後に供給減少効果が現れ、価格上昇が加速。メディアが「仮想通貨バブル」と報じ始める。新規投資家が大量参入。<br><br>
-          <strong>フェーズ3：過熱期（ブル相場のピーク）</strong><br>
-          「誰でも仮想通貨で儲けている」という雰囲気になる。この時期に参入した人の多くが後悔する。<br><br>
-          <strong>フェーズ4：崩壊・低迷期（ベア相場）</strong><br>
-          -70〜80%の大幅下落。「仮想通貨は終わった」という声が再び高まる。
-        </div>
-        <h3>サイクルに乗るための実践</h3>
-        <p>サイクルのどのフェーズかを判断するためにオンチェーン指標（MVRV・Realized Price等）やファンディングレート・Fear & Greed Indexが使われる。ただしETF承認後の機関投資家の本格参入により、従来の4年サイクルがどう変化するかは不透明な部分もある。</p>
-        <div class="box box-orange">
-          <strong>サイクル投資の注意点</strong><br>
-          「ベア底で買ってブル天井で売る」は理論上完璧だが、底と天井は後から見てわかること。「もう底だろう」と思ってから30%さらに下がることも珍しくない。DCA（定期積立）で感情を排除するのが現実的な戦略。
-        </div>` },
-    { id: 'i22', emoji: '📱', title: 'モバイルウォレットの使い方', locked: true, content: `<p>オンチェーン分析は仮想通貨特有の強力な分析手法だ。ブロックチェーンのデータは全て公開されているため、誰でも「お金の動き」を追跡できる。主要指標と使い方を覚えよう。</p>
-        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「オンチェーンデータは嘘をつかない。価格チャートは操作できても、実際のBTCの移動は隠せない。スマートマネーが何をしているかを見るのがオンチェーン分析の本質です。」</div></div></div>
-        <h3>主要なオンチェーン指標</h3>
-        <div class="box box-blue">
-          <strong>MVRV（Market Value to Realized Value）</strong><br>
-          時価総額÷全BTCの平均取得コスト。3.5以上＝過熱、1以下＝底値圏のサインとして使われることが多い。<br><br>
-          <strong>SOPR（Spent Output Profit Ratio）</strong><br>
-          売却されたBTCが「利益」か「損失」か。1以上＝利益確定が優勢。1を下回ると投資家が損切りしている状態→底値圏のサイン。<br><br>
-          <strong>Exchange Netflow</strong><br>
-          取引所へのBTC流入（売り圧）と流出（保有意欲）の差。大量流入は売り圧のサイン。大量流出は長期保有への移行を示す。<br><br>
-          <strong>Long-term Holder Supply</strong><br>
-          155日以上保有されたBTCの量。増加傾向＝長期保有者が増えている強気サイン。
-        </div>
-        <h3>主要ツール</h3>
+        <h3>Solanaエコシステムの主要プロジェクト</h3>
         <div class="box box-gray">
-          <strong>Glassnode</strong>（glassnode.com）：最も充実したオンチェーン分析ツール。無料プランでも主要指標を確認できる。<br>
-          <strong>CryptoQuant</strong>：取引所フロー・マイナーデータ・デリバティブデータ。<br>
-          <strong>Dune Analytics</strong>：カスタムクエリで独自の分析が可能。DeFiデータに強い。
+          <strong>Jupiter（DEX）</strong>：Solana最大のDEXアグリゲーター<br>
+          <strong>Raydium</strong>：Solana上の主要AMM/DEX<br>
+          <strong>Pump.fun</strong>：ミームコイン発行プラットフォーム。2024年に爆発的な人気<br>
+          <strong>Magic Eden</strong>：Solana最大のNFTマーケットプレイス
+        </div>
+        <div class="box box-orange"><strong>注意点</strong><br>過去に複数回のネットワーク停止（アウテージ）を経験している。高速・低コストと引き換えに分散性が犠牲になっているという批判もある。</div>` },
+    { id: 'i19', emoji: '🖼️', title: 'NFTの作り方・売り方入門', locked: true, content: `<p>NFTを自分で作って売ることは、クリエイターにとって新しい収益機会になっている。基本的な手順は意外とシンプルだ。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「NFTを「売る」前に「誰が買うか」を考えること。コミュニティなきNFTは価値がない。まず小さなコミュニティを作ってから販売するのが成功パターンです。」</div></div></div>
+        <h3>NFT作成の基本手順</h3>
+        <div class="box box-blue">
+          <strong>① ウォレットを用意する</strong>：MetaMask（ETH系）またはPhantom（Solana系）を作成する。<br><br>
+          <strong>② マーケットプレイスを選ぶ</strong>：OpenSea（ETH・Polygon）・Magic Eden（Solana）など。<br><br>
+          <strong>③ ミントする</strong>：画像・動画などをアップロードし、タイトル・説明・ロイヤリティを設定してNFTを発行する。<br><br>
+          <strong>④ 販売設定</strong>：固定価格販売・オークション・オファー待ちなど販売方法を選ぶ。
+        </div>
+        <div class="box box-green">✅ 独自性がある（他と差別化できるコンセプト）<br>✅ コミュニティが先にある（Xフォロワー・Discordメンバー）<br>✅ 最初は安めに設定してコミュニティを広げる</div>
+        <div class="box box-orange">ミント時にガス代（ETH）がかかる。Polygonを使うとガス代がほぼゼロになる。著作権を持っていないものをNFT化するのは違法行為になる可能性がある。</div>` },
+    { id: 'i20', emoji: '💎', title: '長期投資（HODL）戦略の実践', locked: true, content: `<p>HODL（ホドル）とは「Hold（保有し続ける）」の仮想通貨スラングで、長期投資戦略を指す。短期の値動きに惑わされず保有し続けることで、長期的な資産形成を目指す。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「4年以上BTCを保有して損した人はほぼいない（過去実績）。問題は「保有し続けられるか」という精神的なハードルだけ。」</div></div></div>
+        <h3>HODLが機能する理由</h3>
+        <div class="box box-blue">
+          <strong>供給の上限</strong>：BTCは2,100万枚という上限があり、長期的に希少性が増す。<br>
+          <strong>半減期サイクル</strong>：約4年ごとに新規供給が半減し、過去には必ず大きな上昇が続いてきた。<br>
+          <strong>機関投資家の流入</strong>：ETF承認以降、長期保有者（機関）が増加し売り圧が減少している。
+        </div>
+        <h3>長期投資の実践</h3>
+        <div class="box box-green">
+          ✅ 積立投資（DCA）：毎月定額を機械的に購入。相場を読む必要がない。<br>
+          ✅ コールドウォレット保管：Ledger等のハードウェアウォレットで長期保管。<br>
+          ✅ チャートを毎日見ない：週1回の確認で十分。<br>
+          ✅ 「全額失っても生活できる金額」のみ投入。
+        </div>
+        <div class="box box-orange"><strong>HODLの落とし穴</strong><br>価値のないアルトコインをHODLするのは単なる損切り回避。HODLはBTC・ETHなど実績ある主要コインにのみ有効な戦略。</div>` },
+    { id: 'i21', emoji: '🔮', title: 'アルトコインの選び方', locked: true, content: `<p>アルトコインへの投資はBTCより高いリターンを狙える反面、価値がゼロになるリスクも高い。正しい評価軸を持つことで勝率を大きく高めることができる。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「アルトコインに投資するなら「このプロジェクトがなぜ必要か」を10秒で説明できること。説明できないなら投機。投機は悪くないが、「投機だ」と自覚した上でやること。」</div></div></div>
+        <h3>評価フレームワーク</h3>
+        <div class="box box-blue">
+          <strong>Problem</strong>：解決しようとしている問題が実在するか。<br><br>
+          <strong>Solution</strong>：その問題をブロックチェーンで解決する必然性があるか。<br><br>
+          <strong>Team</strong>：開発者の身元が公開されているか。GitHubのコミット頻度は活発か。<br><br>
+          <strong>Tokenomics</strong>：発行上限・チームへの配分・ロックアップ期間を確認。FDVが時価総額の10倍以上なら希薄化リスクに注意。<br><br>
+          <strong>Traction</strong>：TVL・DAU・取引量など実際に使われているか。
+        </div>
+        <div class="box box-orange">❌ 開発者が全員匿名・身元不明<br>❌ チームの配分が50%超・ロックアップなし<br>❌ 監査なし・バグバウンティなし<br>❌ 「次のBTC/ETH」という根拠のない比較</div>` },
+    { id: 'i22', emoji: '📱', title: 'モバイルウォレットの使い方', locked: true, content: `<p>モバイルウォレットはスマートフォンで仮想通貨を管理・送受信できるアプリだ。利便性が高い反面、スマホ紛失・盗難・マルウェアなどのリスクもある。</p>
+        <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「モバイルウォレットは「持ち歩く財布」。日常使いには便利だが、大金は入れない。現金財布に全財産を入れて街を歩かないのと同じ感覚を持つこと。」</div></div></div>
+        <h3>主要なモバイルウォレット</h3>
+        <div class="box box-blue">
+          <strong>MetaMask（iOS/Android）</strong>：ETH系の標準ウォレット。DeFi・NFT利用に必須。<br><br>
+          <strong>Phantom（iOS/Android）</strong>：Solana系の主要ウォレット。SOL・SPLトークンの管理に最適。<br><br>
+          <strong>Trust Wallet</strong>：Binanceが買収したマルチチェーン対応ウォレット。70種以上のブロックチェーンに対応。<br><br>
+          <strong>Rainbow Wallet</strong>：ETH特化のスタイリッシュなウォレット。NFT表示機能が充実。
+        </div>
+        <div class="box box-green">
+          ✅ シードフレーズは紙に書いてスマホには保存しない<br>
+          ✅ 大額はハードウェアウォレット（Ledger等）で管理<br>
+          ✅ 公式ストア以外からアプリをインストールしない<br>
+          ✅ スマホに生体認証を設定する<br>
+          ✅ 公共Wi-Fiでの操作は避ける
         </div>` },
     { id: 'i23', emoji: '🏗️', title: 'Layer2の詳しい仕組み', locked: true, content: `<p>仮想通貨の先物取引（フューチャーズ）は現物を保有せずに価格変動で利益を狙える。ヘッジ・投機・アービトラージと多様な用途があるが、理解なしに使うと一瞬で証拠金がゼロになる。</p>
         <div class="satoshi-say"><div class="satoshi-avatar">🧑‍🏫</div><div><div class="satoshi-name">SATOSHI先生</div><div class="satoshi-text">「先物は「将来の価格に今賭ける」ゲーム。レバレッジを使えば少額で大きなポジションを持てるが、逆に動けば一瞬で資金が消える。仕組みを100%理解してから使うこと。」</div></div></div>
