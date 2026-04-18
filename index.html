@@ -1416,6 +1416,7 @@ aside {
     <button class="nav-tab" onclick="showSection('dashboard')">📊 進捗</button>
     <button class="nav-tab" onclick="showSection('leaderboard')">🏅 ランキング</button>
     <button class="nav-tab" onclick="showSection('cert')">🏆 修了証</button>
+    <button class="nav-tab" onclick="showSection('tools')">🔧 ツール</button>
   </div>
 </nav>
 
@@ -1463,6 +1464,7 @@ aside {
   <div class="screen" id="screen-dashboard"><div id="dashContent"></div></div>
   <div class="screen" id="screen-leaderboard"><div id="lbContent"></div></div>
   <div class="screen" id="screen-cert"><div id="certContent"></div></div>
+  <div class="screen" id="screen-tools"><div id="toolsContent"></div></div>
 </div>
 </main>
 
@@ -3821,15 +3823,50 @@ function showSection(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + name).classList.add('active');
   document.querySelectorAll('.nav-tab').forEach((t, i) => {
-    t.classList.toggle('active', ['learn','chat','quiz','dashboard','leaderboard','cert'][i] === name);
+    t.classList.toggle('active', ['learn','chat','quiz','dashboard','leaderboard','cert','tools'][i] === name);
   });
   if (name === 'chat') renderChatScreen();
   if (name === 'quiz') renderQuizHome();
   if (name === 'dashboard') renderDashboard();
   if (name === 'leaderboard') renderLeaderboard();
   if (name === 'cert') renderCert();
+  if (name === 'tools') renderTools();
 }
-
+// ═══ TOOLS ═══
+function renderTools() {
+  const el = document.getElementById('toolsContent');
+  if (!el) return;
+  const tools = [
+    { icon: '📖', title: '仮想通貨用語集（300語）', desc: '初級〜上級の用語を網羅。カテゴリ別・レベル別に検索できる完全版用語集。', url: 'https://www.cryptoglossary.biz/glossary' },
+    { icon: '🧮', title: '税金計算シミュレーター', desc: '令和8年度税制改正対応。仮想通貨の利益にかかる税額をかんたん計算。', url: 'https://www.cryptoglossary.biz/tax' },
+    { icon: '📜', title: '確定申告ガイド', desc: '申告の基本から節税・控除まで。仮想通貨の確定申告を完全サポート。', url: 'https://www.cryptoglossary.biz/tax-guide' },
+    { icon: '📈', title: '歴史年表（2008〜2026）', desc: 'ビットコイン誕生から現在まで。BTCチャートと主要イベントで振り返る。', url: 'https://www.cryptoglossary.biz/history' },
+    { icon: '🛡️', title: 'セキュリティ防衛チェック', desc: 'チェックリストで自分のセキュリティスコアを確認。資産を守る知識。', url: 'https://www.cryptoglossary.biz/security' },
+    { icon: '🪙', title: '30種完全解説', desc: 'BTC・ETH・SOLなど主要コイン30種を徹底解説。レーダーチャートで比較。', url: 'https://www.cryptoglossary.biz/' },
+    { icon: '💬', title: '会員限定Discord', desc: 'メンバー同士で情報交換・質問・雑談。コミュニティに参加しよう。', url: 'https://discord.gg/KCt6PrwJ' },
+  ];
+  el.innerHTML = `
+    <div style="max-width:720px;margin:0 auto;padding:24px 16px 80px;">
+      <div style="text-align:center;margin-bottom:28px;">
+        <div style="font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">MEMBER TOOLS</div>
+        <h2 style="font-size:22px;font-weight:700;color:var(--text);margin:0 0 6px;">会員限定ツール</h2>
+        <p style="font-size:13px;color:var(--muted);margin:0;">学習をサポートする専用ツールをご活用ください</p>
+      </div>
+      <div style="display:grid;gap:12px;">
+        ${tools.map(t => `
+          <a href="${t.url}" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 20px;text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 4px 16px rgba(0,0,0,.08)'" onmouseout="this.style.transform='';this.style.boxShadow=''">
+            <div style="font-size:32px;flex-shrink:0;width:44px;text-align:center;">${t.icon}</div>
+            <div style="flex:1;min-width:0;">
+              <div style="font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;">${t.title}</div>
+              <div style="font-size:12px;color:var(--muted);line-height:1.5;">${t.desc}</div>
+            </div>
+            <div style="font-size:18px;color:var(--muted);flex-shrink:0;">→</div>
+          </a>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
 // ═══ MOBILE ═══
 function toggleSidebar() {
   const aside = document.getElementById('sidebar');
