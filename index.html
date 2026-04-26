@@ -5203,6 +5203,10 @@ const AIRDROP_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhY
 async function loadAirdrops() {
   const el = document.getElementById("airdropContent");
   if (!el) return;
+  if (!isPaidMember) {
+    el.innerHTML = "<div style='max-width:500px;margin:60px auto;text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:48px 32px;box-shadow:var(--shadow)'><div style='font-size:52px;margin-bottom:16px'>🪂</div><h2 style='font-size:20px;font-weight:900;margin-bottom:10px'>エアドロップ情報は有料会員限定</h2><p style='color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:24px'>毎週更新される日本人参加可能なエアドロップ情報はDiscordメンバー限定コンテンツです。</p><a href='https://discord.gg/YOUR_INVITE' target='_blank' style='display:inline-block;padding:12px 28px;background:#5865f2;color:#fff;border-radius:8px;font-size:14px;font-weight:700;text-decoration:none'>Discordに参加する</a></div>";
+    return;
+  }
   el.innerHTML = "<p style='text-align:center;padding:40px;color:var(--muted)'>読み込み中...</p>";
   try {
     const res = await fetch(AIRDROP_SUPABASE_URL + "/rest/v1/airdrops?is_active=eq.true&order=created_at.desc", {
