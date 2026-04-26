@@ -5302,13 +5302,25 @@ function renderAirdrops(list) {
 <script>
 // 初回ログイン時のQ1レポートモーダル表示
 function checkQ1ReportFirstLogin() {
-  // ログイン済みかチェック
-  if (typeof isPaidMember === 'undefined' || !isPaidMember) return;
   // 既に配布済みかチェック
   if (localStorage.getItem('q1_report_2026_shown') === '1') return;
-  // 表示
+  // 有料会員には表示しない（既にコンテンツアクセス可能）
+  if (typeof isPaidMember !== 'undefined' && isPaidMember) return;
+  // 学習画面（screen-learn）がアクティブな時のみ表示
+  const learnScreen = document.getElementById('screen-learn');
+  if (!learnScreen || !learnScreen.classList.contains('active')) return;
   setTimeout(showQ1ReportModal, 800);
 }
+
+// 学習画面到達を監視（LPからEラーニングへ進入時に発火）
+const _q1CheckInterval = setInterval(() => {
+  const learnScreen = document.getElementById('screen-learn');
+  if (learnScreen && learnScreen.classList.contains('active') && !document.getElementById('lp')?.style.display?.includes('block')) {
+    checkQ1ReportFirstLogin();
+    clearInterval(_q1CheckInterval);
+  }
+}, 500);
+setTimeout(() => clearInterval(_q1CheckInterval), 60000);
 
 function showQ1ReportModal() {
   if (document.getElementById('q1ReportOverlay')) return;
