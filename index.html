@@ -1475,6 +1475,7 @@ aside {
     <button class="nav-tab" onclick="showSection('dashboard')">📊 進捗</button>
     <button class="nav-tab" onclick="showSection('leaderboard')">🏅 ランキング</button>
     <button class="nav-tab" onclick="showSection('cert')">🏆 修了証</button>
+    <button class="nav-tab" onclick="showSection('airdrop');loadAirdrops()">🪂 エアドロ</button>
     <button class="nav-tab" onclick="showSection('tools')">🔧 ツール</button>
   </div>
 </nav>
@@ -1486,6 +1487,7 @@ aside {
   <button class="bottom-nav-item" id="bn3" onclick="showSection('dashboard');setBottomActive(3)"><span class="bn-icon">📊</span>進捗</button>
   <button class="bottom-nav-item" id="bn4" onclick="showSection('leaderboard');setBottomActive(4)"><span class="bn-icon">🏅</span>順位</button>
   <button class="bottom-nav-item" id="bn5" onclick="showSection('cert');setBottomActive(5)"><span class="bn-icon">🏆</span>修了証</button>
+  <button class="bottom-nav-item" id="bn6" onclick="showSection('airdrop');setBottomActive(6);loadAirdrops()" ><span class="bn-icon">🪂</span>エアドロ</button>
   <button class="bottom-nav-item" id="bnDiscord" onclick="handleBottomDiscordBtn()"><span class="bn-icon">🎮</span><span id="bnDiscordLabel">Discord</span></button>
 </nav>
 </div>
@@ -1523,6 +1525,7 @@ aside {
   <div class="screen" id="screen-dashboard"><div id="dashContent"></div></div>
   <div class="screen" id="screen-leaderboard"><div id="lbContent"></div></div>
   <div class="screen" id="screen-cert"><div id="certContent"></div></div>
+  <div class="screen" id="screen-airdrop"><div id="airdropContent"></div></div>
   <div class="screen" id="screen-tools"><div id="toolsContent"></div></div>
 </div>
 </main>
@@ -5194,5 +5197,56 @@ function enterApp() {
     <p style="text-align:center;font-size:11px;color:var(--muted);margin-top:8px">Stripe（世界標準の決済）で安全に処理されます</p>
   </div>
 </div>
+<script>
+const AIRDROP_SUPABASE_URL = "https://xgilsvscgczsrzeghosl.supabase.co";
+const AIRDROP_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhnaWxzdnNjZ2N6c3J6ZWdob3NsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY1MTY5MzgsImV4cCI6MjA5MjA5MjkzOH0.HscAThKS-nmux18hp-tsxs2FtDWX28ZWXCipBIocuvw";
+async function loadAirdrops() {
+  const el = document.getElementById("airdropContent");
+  if (!el) return;
+  el.innerHTML = "<p style='text-align:center;padding:40px;color:var(--muted)'>読み込み中...</p>";
+  try {
+    const res = await fetch(AIRDROP_SUPABASE_URL + "/rest/v1/airdrops?is_active=eq.true&order=created_at.desc", {
+      headers: { "apikey": AIRDROP_ANON_KEY, "Authorization": "Bearer " + AIRDROP_ANON_KEY }
+    });
+    const data = await res.json();
+    renderAirdrops(data);
+  } catch(e) {
+    el.innerHTML = "<p style='text-align:center;padding:40px;color:var(--red)'>取得に失敗しました</p>";
+  }
+}
+function renderAirdrops(list) {
+  const el = document.getElementById("airdropContent");
+  if (!el) return;
+  if (!list || list.length === 0) {
+    el.innerHTML = "<p style='text-align:center;padding:40px;color:var(--muted)'>現在エアドロップ情報はありません</p>";
+    return;
+  }
+  const updated = list[0].updated_at ? new Date(list[0].updated_at).toLocaleDateString("ja-JP") : "";
+  const diffBg = d => d==="簡単"?"var(--green-light)":d==="普通"?"var(--orange-light)":"var(--red-light)";
+  const diffCol = d => d==="簡単"?"var(--green)":d==="普通"?"var(--orange)":"var(--red)";
+  let html = "<div style='margin-bottom:24px'>";
+  html += "<h2 style='font-size:22px;font-weight:900;margin-bottom:6px'>🪂 エアドロップ情報</h2>";
+  html += "<p style='color:var(--muted);font-size:13px'>日本から参加できるエアドロップを毎週更新 · 最終更新: " + updated + "</p>";
+  html += "<div style='background:var(--orange-light);border-left:4px solid var(--orange);border-radius:8px;padding:12px 16px;margin-top:14px;font-size:13px;line-height:1.7'>⚠️ <strong>免責事項：</strong>本情報は参考提供のみです。投資は自己責任でお願いします。詐欺リスクに注意し、必ず公式サイトを確認してください。</div></div>";
+  html += "<div style='display:grid;gap:16px'>";
+  for (const a of list) {
+    html += "<div style='background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:var(--shadow)'>";
+    html += "<div style='display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px;flex-wrap:wrap'>";
+    html += "<div><h3 style='font-size:17px;font-weight:700;margin-bottom:4px'>" + a.project_name + "</h3>";
+    html += "<span style='font-size:11px;background:var(--accent-light);color:var(--accent);padding:2px 8px;border-radius:20px;font-weight:600'>" + (a.category||"") + "</span></div>";
+    html += "<div style='display:flex;gap:6px;flex-wrap:wrap'>";
+    html += "<span style='font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;background:" + diffBg(a.difficulty) + ";color:" + diffCol(a.difficulty) + "'>" + (a.difficulty||"") + "</span>";
+    html += "<span style='font-size:11px;padding:3px 10px;border-radius:20px;font-weight:700;background:var(--green-light);color:var(--green)'>リスク" + (a.risk_level||"低") + "</span></div></div>";
+    html += "<p style='font-size:13px;color:var(--muted);margin-bottom:12px;line-height:1.7'>" + (a.description||"") + "</p>";
+    html += "<div style='background:var(--surface2);border-radius:8px;padding:12px 14px;margin-bottom:12px;font-size:13px;line-height:1.8'><strong>📋 参加方法：</strong>" + (a.how_to_join||"") + "</div>";
+    html += "<div style='display:flex;gap:16px;font-size:12px;color:var(--muted);flex-wrap:wrap;margin-bottom:12px'>";
+    html += "<span>👛 " + (a.required_wallet||"不明") + "</span><span>💰 " + (a.required_funds||"不要") + "</span><span>⏰ " + (a.deadline||"未定") + "</span></div>";
+    if (a.official_url) html += "<a href='" + a.official_url + "' target='_blank' rel='noopener' style='display:inline-block;padding:8px 18px;background:var(--accent);color:#fff;border-radius:8px;font-size:13px;font-weight:600;text-decoration:none'>公式サイトへ →</a>";
+    html += "</div>";
+  }
+  html += "</div>";
+  el.innerHTML = html;
+}
+</script>
 </body>
 </html>
