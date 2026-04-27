@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>代理店バックオフィス | 暗号資産入門ラボ</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=DM+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0f1a;--surface:#111827;--surface2:#1a2234;--border:#1e2d45;
+  --text:#f1f5f9;--muted:#64748b;--accent:#f7931a;--accent2:#fbbf24;
+  --green:#10b981;--red:#ef4444;--blue:#3b82f6;
+  --radius:12px;--font:'Noto Sans JP',sans-serif;--mono:'DM Mono',monospace;
+}
+body{background:var(--bg);color:var(--text);font-family:var(--font);min-height:100vh}
+
+/* ヘッダー */
+.header{background:var(--surface);border-bottom:1px solid var(--border);padding:16px 24px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100}
+.header-logo{font-size:20px;font-weight:900;color:var(--accent)}
+.header-sub{font-size:12px;color:var(--muted);font-family:var(--mono)}
+.header-badge{margin-left:auto;background:rgba(247,147,26,0.15);color:var(--accent);border:1px solid rgba(247,147,26,0.3);padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;font-family:var(--mono)}
+
+/* ログイン画面 */
+.login-wrap{display:flex;align-items:center;justify-content:center;min-height:calc(100vh - 57px);padding:20px}
+.login-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px;width:100%;max-width:420px}
+.login-icon{font-size:40px;text-align:center;margin-bottom:16px}
+.login-title{font-size:22px;font-weight:900;text-align:center;margin-bottom:8px}
+.login-sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:28px;line-height:1.7}
+.form-group{margin-bottom:16px}
+.form-label{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-bottom:6px;font-family:var(--mono)}
+.form-input{width:100%;background:var(--surface2);border:1px solid var(--border);color:var(--text);padding:12px 14px;border-radius:10px;font-size:15px;font-family:var(--font);outline:none;transition:.2s}
+.form-input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(247,147,26,0.15)}
+.form-input::placeholder{color:var(--muted)}
+.btn-primary{width:100%;background:var(--accent);color:#fff;border:none;padding:14px;border-radius:10px;font-size:15px;font-weight:700;font-family:var(--font);cursor:pointer;transition:.2s}
+.btn-primary:hover{background:#e8820f;transform:translateY(-1px)}
+.btn-primary:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.error-msg{background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.3);color:#fca5a5;padding:10px 14px;border-radius:8px;font-size:13px;margin-top:12px;display:none}
+.register-link{text-align:center;margin-top:20px;font-size:13px;color:var(--muted)}
+.register-link a{color:var(--accent);text-decoration:none}
+
+/* メインコンテンツ */
+.main{max-width:1100px;margin:0 auto;padding:28px 20px}
+.page-title{font-size:22px;font-weight:900;margin-bottom:4px}
+.page-sub{font-size:13px;color:var(--muted);margin-bottom:28px}
+
+/* 統計カード */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;margin-bottom:28px}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px}
+.stat-label{font-size:11px;color:var(--muted);font-family:var(--mono);margin-bottom:6px;text-transform:uppercase}
+.stat-val{font-size:26px;font-weight:900;line-height:1.1}
+.stat-val.green{color:var(--green)}
+.stat-val.orange{color:var(--accent)}
+.stat-val.blue{color:var(--blue)}
+.stat-sub{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* セクション */
+.section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:20px;overflow:hidden}
+.section-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:10px}
+.section-title{font-size:14px;font-weight:800}
+.section-count{background:var(--surface2);color:var(--muted);padding:2px 8px;border-radius:99px;font-size:11px;font-family:var(--mono)}
+
+/* テーブル */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+thead th{background:var(--surface2);padding:10px 16px;text-align:left;font-size:11px;color:var(--muted);font-weight:700;font-family:var(--mono);text-transform:uppercase;white-space:nowrap}
+tbody td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:middle}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,0.02)}
+
+/* バッジ */
+.badge{display:inline-block;padding:3px 8px;border-radius:99px;font-size:11px;font-weight:700;font-family:var(--mono)}
+.badge-green{background:rgba(16,185,129,0.15);color:#6ee7b7;border:1px solid rgba(16,185,129,0.2)}
+.badge-red{background:rgba(239,68,68,0.15);color:#fca5a5;border:1px solid rgba(239,68,68,0.2)}
+.badge-orange{background:rgba(247,147,26,0.15);color:var(--accent2);border:1px solid rgba(247,147,26,0.2)}
+.badge-blue{background:rgba(59,130,246,0.15);color:#93c5fd;border:1px solid rgba(59,130,246,0.2)}
+.badge-gray{background:rgba(100,116,139,0.15);color:var(--muted);border:1px solid rgba(100,116,139,0.2)}
+
+/* 紹介URL */
+.url-section{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:20px}
+.url-label{font-size:12px;color:var(--muted);font-weight:700;font-family:var(--mono);margin-bottom:10px}
+.url-box{display:flex;gap:10px;align-items:center}
+.url-text{background:var(--surface2);border:1px solid var(--border);padding:10px 14px;border-radius:8px;font-family:var(--mono);font-size:12px;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--accent)}
+.copy-btn{background:var(--accent);color:#fff;border:none;padding:10px 16px;border-radius:8px;font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap;font-family:var(--font)}
+.copy-btn:hover{background:#e8820f}
+
+/* オーナーバッジ */
+.owner-badge{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,rgba(247,147,26,0.2),rgba(251,191,36,0.15));border:1px solid rgba(247,147,26,0.4);color:var(--accent2);padding:4px 12px;border-radius:99px;font-size:11px;font-weight:700;font-family:var(--mono)}
+
+/* 登録フォーム */
+.register-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:40px;width:100%;max-width:460px}
+.register-title{font-size:22px;font-weight:900;text-align:center;margin-bottom:8px}
+.register-sub{font-size:13px;color:var(--muted);text-align:center;margin-bottom:28px;line-height:1.7}
+
+/* ログアウト */
+.logout-btn{background:none;border:1px solid var(--border);color:var(--muted);padding:6px 14px;border-radius:8px;font-size:12px;cursor:pointer;font-family:var(--font);transition:.2s}
+.logout-btn:hover{border-color:var(--red);color:var(--red)}
+
+/* トースト */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--surface);border:1px solid var(--green);color:var(--green);padding:10px 20px;border-radius:99px;font-size:13px;font-weight:700;opacity:0;transition:.3s;pointer-events:none;z-index:9999;white-space:nowrap}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* ローディング */
+.loading{display:flex;align-items:center;justify-content:center;padding:40px;color:var(--muted);font-size:14px;gap:10px}
+
+/* 空状態 */
+.empty{text-align:center;padding:40px;color:var(--muted);font-size:14px}
+
+@media(max-width:600px){
+  .stats-grid{grid-template-columns:1fr 1fr}
+  .header{padding:12px 16px}
+  .main{padding:16px}
+  .login-card,.register-card{padding:28px 20px}
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-logo">₿ 暗号資産入門ラボ</div>
+  <div class="header-sub">代理店バックオフィス</div>
+  <div id="headerRight"></div>
+</div>
+
+<div id="app"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const WORKER_URL = 'https://cryptolab-stripe.laughrally.workers.dev';
+const STORAGE_KEY = 'cryptolab_affiliate_code';
+const OWNER_CODE = 'SAT44';
+const REGISTER_TOKEN = 'CRYPTOLAB_REGISTER_2026';
+
+let affiliateData = null;
+
+// URL判定
+const urlParams = new URLSearchParams(location.search);
+const isRegisterMode = urlParams.get('register') === '1';
+
+// 初期化
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem(STORAGE_KEY);
+  if (saved) {
+    doLogin(saved);
+  } else if (isRegisterMode) {
+    showRegisterForm();
+  } else {
+    showLoginForm();
+  }
+});
+
+// ── ログイン画面 ────────────────────────────────────────────
+function showLoginForm() {
+  document.getElementById('headerRight').innerHTML = '';
+  document.getElementById('app').innerHTML = `
+    <div class="login-wrap">
+      <div class="login-card">
+        <div class="login-icon">🔐</div>
+        <div class="login-title">代理店ログイン</div>
+        <div class="login-sub">代理店コードを入力してダッシュボードにアクセスしてください</div>
+        <div class="form-group">
+          <label class="form-label">代理店コード</label>
+          <input class="form-input" id="codeInput" type="text" placeholder="例：ABC1234" autocomplete="off">
+        </div>
+        <button class="btn-primary" id="loginBtn" onclick="doLogin()">ログイン</button>
+        <div class="error-msg" id="errorMsg"></div>
+        <div class="register-link">代理店登録がまだの方は<br><a href="?register=1">こちらから登録</a></div>
+      </div>
+    </div>`;
+  document.getElementById('codeInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+}
+
+// ── ログイン処理 ────────────────────────────────────────────
+async function doLogin(savedCode) {
+  const code = savedCode || document.getElementById('codeInput')?.value?.trim().toUpperCase();
+  if (!code) return;
+
+  const btn = document.getElementById('loginBtn');
+  const errEl = document.getElementById('errorMsg');
+  if (btn) { btn.disabled = true; btn.textContent = 'ログイン中...'; }
+  if (errEl) errEl.style.display = 'none';
+
+  try {
+    const res = await fetch(WORKER_URL + '/api/affiliate/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ code }),
+    });
+    const data = await res.json();
+
+    if (!res.ok || !data.ok) {
+      throw new Error(data.error || 'ログインに失敗しました');
+    }
+
+    localStorage.setItem(STORAGE_KEY, code);
+    affiliateData = data;
+
+    if (code === OWNER_CODE) {
+      const ownerRes = await fetch(WORKER_URL + '/api/affiliate/owner', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code }),
+      });
+      const ownerData = await ownerRes.json();
+      showOwnerDashboard(data, ownerData);
+    } else {
+      showAffiliateDashboard(data);
+    }
+  } catch (err) {
+    if (btn) { btn.disabled = false; btn.textContent = 'ログイン'; }
+    if (errEl) { errEl.textContent = err.message; errEl.style.display = 'block'; }
+    if (savedCode) {
+      localStorage.removeItem(STORAGE_KEY);
+      showLoginForm();
+    }
+  }
+}
+
+// ── 代理店ダッシュボード ────────────────────────────────────
+function showAffiliateDashboard(data) {
+  const { affiliate, members } = data;
+  const refUrl = `https://laughrally.github.io/cryptolab/?ref=${affiliate.code}`;
+
+  document.getElementById('headerRight').innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-left:auto">
+      <span style="font-size:13px;color:var(--muted)">${affiliate.name}</span>
+      <button class="logout-btn" onclick="doLogout()">ログアウト</button>
+    </div>`;
+
+  const memberRows = (members || []).map(m => {
+    const statusBadge = m.status === 'active'
+      ? '<span class="badge badge-green">アクティブ</span>'
+      : m.status === 'canceled'
+        ? '<span class="badge badge-red">解約済み</span>'
+        : '<span class="badge badge-gray">不明</span>';
+    const planBadge = m.plan === 'yearly'
+      ? '<span class="badge badge-orange">年額</span>'
+      : '<span class="badge badge-blue">月額</span>';
+    const paidBadge = m.paid
+      ? '<span class="badge badge-green">支払済</span>'
+      : '<span class="badge badge-orange">未払い</span>';
+    return `<tr>
+      <td style="font-family:var(--mono);font-size:12px">${m.email}</td>
+      <td>${planBadge}</td>
+      <td>${statusBadge}</td>
+      <td style="color:var(--green);font-weight:700">¥${(m.reward||0).toLocaleString()}</td>
+      <td>${paidBadge}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="main">
+      <div class="page-title">代理店ダッシュボード</div>
+      <div class="page-sub">コード：<span style="font-family:var(--mono);color:var(--accent)">${affiliate.code}</span>　${affiliate.name}</div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">紹介人数（累計）</div>
+          <div class="stat-val blue">${affiliate.total_referrals || 0}<span style="font-size:14px;color:var(--muted)"> 人</span></div>
+          <div class="stat-sub">アクティブ会員のみ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">累計報酬額</div>
+          <div class="stat-val green">¥${(affiliate.total_reward||0).toLocaleString()}</div>
+          <div class="stat-sub">全期間合計</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">未払い報酬</div>
+          <div class="stat-val orange">¥${(affiliate.unpaid_reward||0).toLocaleString()}</div>
+          <div class="stat-sub">月末締め・翌10日払い</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">今月の紹介</div>
+          <div class="stat-val">${(members||[]).filter(m=>m.status==='active').length}<span style="font-size:14px;color:var(--muted)"> 人</span></div>
+          <div class="stat-sub">アクティブのみ</div>
+        </div>
+      </div>
+
+      <div class="url-section">
+        <div class="url-label">あなたの紹介URL</div>
+        <div class="url-box">
+          <div class="url-text">${refUrl}</div>
+          <button class="copy-btn" onclick="copyText('${refUrl}','URLをコピーしました！')">コピー</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">👥 紹介メンバー一覧</div>
+          <div class="section-count">${(members||[]).length} 件</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>メールアドレス</th><th>プラン</th><th>状態</th><th>報酬</th><th>支払い</th></tr></thead>
+            <tbody>${memberRows || '<tr><td colspan="5" class="empty">紹介実績はまだありません</td></tr>'}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── オーナーダッシュボード ──────────────────────────────────
+function showOwnerDashboard(affiliateData, ownerData) {
+  const { stats, members, affiliates } = ownerData;
+  const registerUrl = `https://laughrally.github.io/cryptolab/affiliate.html?register=1`;
+
+  document.getElementById('headerRight').innerHTML = `
+    <div style="display:flex;align-items:center;gap:10px;margin-left:auto">
+      <span class="owner-badge">👑 OWNER</span>
+      <button class="logout-btn" onclick="doLogout()">ログアウト</button>
+    </div>`;
+
+  const memberRows = (members || []).map(m => {
+    const statusBadge = m.status === 'active'
+      ? '<span class="badge badge-green">アクティブ</span>'
+      : m.status === 'canceled'
+        ? '<span class="badge badge-red">解約済み</span>'
+        : '<span class="badge badge-gray">不明</span>';
+    const planBadge = m.plan === 'yearly'
+      ? '<span class="badge badge-orange">年額</span>'
+      : '<span class="badge badge-blue">月額</span>';
+    const joined = m.joined_at ? new Date(m.joined_at).toLocaleDateString('ja-JP') : '-';
+    return `<tr>
+      <td style="font-family:var(--mono);font-size:12px">${m.email}</td>
+      <td>${planBadge}</td>
+      <td>${statusBadge}</td>
+      <td style="font-size:12px;color:var(--muted)">${joined}</td>
+      <td style="font-family:var(--mono);font-size:12px;color:var(--muted)">${m.referral_code||'-'}</td>
+    </tr>`;
+  }).join('');
+
+  const affiliateRows = (affiliates || []).map(a => `<tr>
+    <td style="font-family:var(--mono);font-weight:700;color:var(--accent)">${a.code}</td>
+    <td>${a.name}</td>
+    <td>${a.total_referrals||0} 人</td>
+    <td style="color:var(--green);font-weight:700">¥${(a.total_reward||0).toLocaleString()}</td>
+    <td style="color:var(--accent)">¥${(a.pending_payout||0).toLocaleString()}</td>
+  </tr>`).join('');
+
+  document.getElementById('app').innerHTML = `
+    <div class="main">
+      <div class="page-title">オーナーダッシュボード</div>
+      <div class="page-sub">暗号資産入門ラボ 全体管理</div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">総会員数</div>
+          <div class="stat-val blue">${stats?.total_members||0}<span style="font-size:14px;color:var(--muted)"> 人</span></div>
+          <div class="stat-sub">アクティブのみ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">月額会員</div>
+          <div class="stat-val">${stats?.monthly_members||0}<span style="font-size:14px;color:var(--muted)"> 人</span></div>
+          <div class="stat-sub">¥2,980/月</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">年額会員</div>
+          <div class="stat-val">${stats?.yearly_members||0}<span style="font-size:14px;color:var(--muted)"> 人</span></div>
+          <div class="stat-sub">¥30,000/年</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">月次売上（推定）</div>
+          <div class="stat-val green">¥${(stats?.monthly_revenue||0).toLocaleString()}</div>
+          <div class="stat-sub">今月分</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">累計売上</div>
+          <div class="stat-val green">¥${(stats?.total_revenue||0).toLocaleString()}</div>
+          <div class="stat-sub">全期間</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">未払い報酬合計</div>
+          <div class="stat-val orange">¥${(stats?.total_unpaid||0).toLocaleString()}</div>
+          <div class="stat-sub">全代理店合計</div>
+        </div>
+      </div>
+
+      <div class="url-section">
+        <div class="url-label">代理店登録リンク（候補者に渡すURL）</div>
+        <div class="url-box">
+          <div class="url-text">${registerUrl}</div>
+          <button class="copy-btn" onclick="copyText('${registerUrl}','登録リンクをコピーしました！')">コピー</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">🤝 代理店一覧</div>
+          <div class="section-count">${(affiliates||[]).length} 件</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>コード</th><th>名前</th><th>紹介数</th><th>累計報酬</th><th>未払い</th></tr></thead>
+            <tbody>${affiliateRows||'<tr><td colspan="5" class="empty">代理店はまだいません</td></tr>'}</tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-header">
+          <div class="section-title">👤 全会員一覧</div>
+          <div class="section-count">${(members||[]).length} 件</div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>メールアドレス</th><th>プラン</th><th>状態</th><th>入会日</th><th>紹介元</th></tr></thead>
+            <tbody>${memberRows||'<tr><td colspan="5" class="empty">会員データがありません</td></tr>'}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>`;
+}
+
+// ── 代理店登録フォーム ──────────────────────────────────────
+function showRegisterForm() {
+  document.getElementById('headerRight').innerHTML = '';
+  document.getElementById('app').innerHTML = `
+    <div class="login-wrap">
+      <div class="register-card">
+        <div class="login-icon">✍️</div>
+        <div class="register-title">代理店登録</div>
+        <div class="register-sub">登録後、すぐにバックオフィスをご利用いただけます</div>
+        <div class="form-group">
+          <label class="form-label">お名前 / 屋号</label>
+          <input class="form-input" id="nameInput" type="text" placeholder="例：山田太郎">
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス</label>
+          <input class="form-input" id="emailInput" type="email" placeholder="例：taro@example.com">
+        </div>
+        <button class="btn-primary" id="registerBtn" onclick="doRegister()">登録してログイン</button>
+        <div class="error-msg" id="errorMsg"></div>
+        <div class="register-link">すでに登録済みの方は<br><a href="?">ログインページへ</a></div>
+      </div>
+    </div>`;
+}
+
+async function doRegister() {
+  const name = document.getElementById('nameInput')?.value?.trim();
+  const email = document.getElementById('emailInput')?.value?.trim();
+  const btn = document.getElementById('registerBtn');
+  const errEl = document.getElementById('errorMsg');
+
+  if (!name || !email) {
+    errEl.textContent = 'お名前とメールアドレスを入力してください';
+    errEl.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true; btn.textContent = '登録中...';
+  errEl.style.display = 'none';
+
+  try {
+    const res = await fetch(WORKER_URL + '/api/affiliate/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, token: REGISTER_TOKEN }),
+    });
+    const data = await res.json();
+    if (!res.ok || !data.ok) throw new Error(data.error || '登録に失敗しました');
+
+    showToast('登録完了！ダッシュボードに移動します');
+    setTimeout(() => doLogin(data.code), 1000);
+  } catch (err) {
+    btn.disabled = false; btn.textContent = '登録してログイン';
+    errEl.textContent = err.message; errEl.style.display = 'block';
+  }
+}
+
+// ── ユーティリティ ──────────────────────────────────────────
+function doLogout() {
+  localStorage.removeItem(STORAGE_KEY);
+  affiliateData = null;
+  showLoginForm();
+  showToast('ログアウトしました');
+}
+
+function copyText(text, msg) {
+  navigator.clipboard.writeText(text).then(() => showToast(msg || 'コピーしました'));
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2500);
+}
+</script>
+</body>
+</html>
