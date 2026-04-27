@@ -3886,7 +3886,7 @@ function showSection(name) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + name).classList.add('active');
   document.querySelectorAll('.nav-tab').forEach((t, i) => {
-    t.classList.toggle('active', ['learn','chat','quiz','dashboard','leaderboard','cert','tools'][i] === name);
+    t.classList.toggle('active', ['learn','chat','quiz','dashboard','leaderboard','cert','airdrop','tools'][i] === name);
   });
   if (name === 'chat') renderChatScreen();
   if (name === 'quiz') renderQuizHome();
