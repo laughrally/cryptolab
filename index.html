@@ -458,9 +458,14 @@ aside {
     height: 56px;
     box-shadow: 0 -2px 12px rgba(0,0,0,.08);
     width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
   }
+  .bottom-nav::-webkit-scrollbar { display: none; }
   .bottom-nav-item {
-    flex: 1;
+    flex: 0 0 auto;
+    min-width: 54px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -472,8 +477,9 @@ aside {
     font-size: 9px;
     color: var(--muted);
     cursor: pointer;
-    padding: 4px 2px;
+    padding: 4px 6px;
     transition: color .12s;
+    white-space: nowrap;
   }
   .bottom-nav-item .bn-icon { font-size: 18px; line-height: 1; }
   .bottom-nav-item.active { color: var(--accent); }
@@ -1487,8 +1493,10 @@ aside {
   <button class="bottom-nav-item" id="bn3" onclick="showSection('dashboard');setBottomActive(3)"><span class="bn-icon">📊</span>進捗</button>
   <button class="bottom-nav-item" id="bn4" onclick="showSection('leaderboard');setBottomActive(4)"><span class="bn-icon">🏅</span>順位</button>
   <button class="bottom-nav-item" id="bn5" onclick="showSection('cert');setBottomActive(5)"><span class="bn-icon">🏆</span>修了証</button>
-  <button class="bottom-nav-item" id="bn6" onclick="showSection('airdrop');setBottomActive(6);loadAirdrops()" ><span class="bn-icon">🪂</span>エアドロ</button>
-  <button class="bottom-nav-item" id="bnDiscord" onclick="handleBottomDiscordBtn()"><span class="bn-icon">🎮</span><span id="bnDiscordLabel">Discord</span></button>
+  <button class="bottom-nav-item" id="bn6" onclick="showSection('airdrop');setBottomActive(6);loadAirdrops()"><span class="bn-icon">🪂</span>エアドロ</button>
+  <button class="bottom-nav-item" id="bn7" onclick="showSection('tools');setBottomActive(7)"><span class="bn-icon">🔧</span>ツール</button>
+  <button class="bottom-nav-item" id="bnDiscord" onclick="handleBottomDiscordBtn()"><span class="bn-icon">🎮</span>Discord</button>
+  <button class="bottom-nav-item" id="bnLogin" onclick="handleBottomLoginBtn()"><span class="bn-icon" id="bnLoginIcon">👤</span><span id="bnLoginLabel">ログイン</span></button>
 </nav>
 </div>
 <div id="progressStrip" class="progress-strip"><div class="progress-fill" id="topBar" style="width:0%"></div></div>
@@ -3944,10 +3952,14 @@ function closeSidebar() {
   if (overlay) overlay.classList.remove('show');
 }
 function setBottomActive(idx) {
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 8; i++) {
     const el = document.getElementById('bn' + i);
     if (el) el.classList.toggle('active', i === idx);
   }
+  ['bnDiscord','bnLogin'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.remove('active');
+  });
 }
 
 // ═══ LEADERBOARD ═══
@@ -4578,6 +4590,7 @@ function updateNavAuth() {
       + '</div>';
   }
   updateBottomDiscordBtn();
+  if (typeof updateBottomLoginBtn === 'function') updateBottomLoginBtn();
 }
 
 function logoutPaid() {
@@ -4603,8 +4616,30 @@ function logoutDiscord() {
 }
 
 function handleBottomDiscordBtn() {
-  // 常にDiscordコミュニティへ
   window.open(DISCORD_URL, '_blank');
+}
+
+function handleBottomLoginBtn() {
+  if (isUnlocked()) {
+    showSection('dashboard');
+    setBottomActive(3);
+  } else {
+    showLoginModal();
+  }
+}
+
+function updateBottomLoginBtn() {
+  const icon = document.getElementById('bnLoginIcon');
+  const label = document.getElementById('bnLoginLabel');
+  if (!icon || !label) return;
+  if ((typeof isPaidMember !== 'undefined' && isPaidMember) ||
+      (typeof isDiscordMember !== 'undefined' && isDiscordMember)) {
+    icon.textContent = '✅';
+    label.textContent = '会員';
+  } else {
+    icon.textContent = '👤';
+    label.textContent = 'ログイン';
+  }
 }
 
 function updateBottomDiscordBtn() {
@@ -5510,4 +5545,5 @@ if (_origInitAuth) {
 }
 </script>
 
-</body
+</body>
+</html>
