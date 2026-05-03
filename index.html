@@ -514,8 +514,7 @@ aside {
   }
   .bottom-nav::-webkit-scrollbar { display: none; }
   .bottom-nav-item {
-    flex: 0 0 auto;
-    min-width: 54px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -527,7 +526,7 @@ aside {
     font-size: 9px;
     color: var(--muted);
     cursor: pointer;
-    padding: 4px 6px;
+    padding: 4px 2px;
     transition: color .12s;
     white-space: nowrap;
   }
@@ -4937,10 +4936,12 @@ async function startCheckout() {
     var mainNav = document.getElementById('mainNav');
     var mainApp = document.getElementById('mainApp');
     var ps = document.getElementById('progressStrip');
+    var bn = document.getElementById('bottomNav');
     if (lp) lp.style.display = 'none';
     if (mainNav) { mainNav.style.display = ''; mainNav.style.opacity = '0'; }
     if (mainApp) { mainApp.style.display = ''; mainApp.style.opacity = '0'; }
     if (ps) { ps.style.display = ''; ps.style.opacity = '0'; }
+    if (bn) bn.style.display = '';
     document.body.style.overflow = '';
     sessionStorage.setItem('crypto_entered', '1');
     setTimeout(function() {
@@ -4964,9 +4965,11 @@ async function startCheckout() {
     var mainNav = document.getElementById('mainNav');
     var mainApp = document.getElementById('mainApp');
     var ps = document.getElementById('progressStrip');
+    var bn = document.getElementById('bottomNav');
     if (mainNav) mainNav.style.display = 'none';
     if (mainApp) mainApp.style.display = 'none';
     if (ps) ps.style.display = 'none';
+    if (bn) bn.style.display = 'none';
   }
 })();
 
@@ -5239,7 +5242,9 @@ function enterApp() {
   var mainNav = document.getElementById('mainNav');
   var mainApp = document.getElementById('mainApp');
   var ps = document.getElementById('progressStrip');
+  var bn = document.getElementById('bottomNav');
   if (lp) { lp.classList.add('hide'); setTimeout(function(){ lp.style.display='none'; }, 400); }
+  if (bn) bn.style.display = '';
   // メインアプリは最初 opacity:0 で表示してからフェードイン（フォント切り替えガタつき防止）
   if (mainNav) { mainNav.style.display = ''; mainNav.style.opacity = '0'; }
   if (mainApp) { mainApp.style.display = ''; mainApp.style.opacity = '0'; }
