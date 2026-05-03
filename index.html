@@ -595,6 +595,18 @@ aside {
 }
 
 /* ===== LANDING PAGE ===== */
+/* LP表示中はボトムナビを隠す */
+#landingPage ~ .sidebar-toggle,
+#landingPage ~ #sidebarOverlay,
+#landingPage ~ #mainNav,
+#landingPage ~ #bottomNav,
+#landingPage ~ nav.bottom-nav {
+  display: none !important;
+}
+#landingPage.hide ~ nav.bottom-nav {
+  display: flex !important;
+}
+
 #landingPage {
   position: fixed; inset: 0; z-index: 1000;
   background: #f8fafc;
