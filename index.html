@@ -376,6 +376,56 @@ aside {
 .lb-input { flex:1; min-width:140px; padding:9px 14px; border:1.5px solid var(--border); border-radius:8px; font-family:var(--sans); font-size:14px; outline:none; }
 .lb-input:focus { border-color: var(--accent); }
 
+/* ===== ドロワーメニュー ===== */
+.drawer-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 9998;
+}
+.drawer-overlay.show { display: block; }
+.drawer-menu {
+  position: fixed;
+  bottom: 56px;
+  right: 0;
+  width: 200px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px 0 0 0;
+  box-shadow: -4px -4px 24px rgba(0,0,0,.15);
+  z-index: 9999;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideUpDrawer .2s ease;
+}
+.drawer-menu.show { display: flex; }
+@keyframes slideUpDrawer {
+  from { transform: translateY(20px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+.drawer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  border: none;
+  background: none;
+  font-family: var(--sans);
+  cursor: pointer;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  transition: background .12s;
+}
+.drawer-item:last-child { border-bottom: none; }
+.drawer-item:hover { background: var(--surface2); }
+.drawer-item .drawer-icon { font-size: 18px; width: 24px; text-align: center; }
+[data-theme="dark"] .drawer-menu { background: var(--surface); border-color: var(--border); }
+
 /* ===== MOBILE RESPONSIVE ===== */
 
 .sidebar-toggle {
@@ -1486,17 +1536,24 @@ aside {
   </div>
 </nav>
 
+<!-- ドロワーオーバーレイ -->
+<div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+<!-- ドロワーメニュー -->
+<div class="drawer-menu" id="drawerMenu">
+  <button class="drawer-item" onclick="drawerGo('leaderboard',4)"><span class="drawer-icon">🏅</span>順位</button>
+  <button class="drawer-item" onclick="drawerGo('cert',5)"><span class="drawer-icon">🏆</span>修了証</button>
+  <button class="drawer-item" onclick="drawerGo('airdrop',6)"><span class="drawer-icon">🪂</span>エアドロ</button>
+  <button class="drawer-item" onclick="drawerGo('tools',7)"><span class="drawer-icon">🔧</span>ツール</button>
+  <button class="drawer-item" onclick="closeDrawer();window.open(DISCORD_URL,'_blank')"><span class="drawer-icon">🎮</span>Discord</button>
+  <button class="drawer-item" id="drawerLoginBtn" onclick="handleDrawerLogin()"><span class="drawer-icon" id="drawerLoginIcon">👤</span><span id="drawerLoginLabel">ログイン</span></button>
+</div>
+<!-- ボトムナビ（5項目） -->
 <nav class="bottom-nav" id="bottomNav">
   <button class="bottom-nav-item active" id="bn0" onclick="showSection('learn');setBottomActive(0)"><span class="bn-icon">📚</span>学習</button>
   <button class="bottom-nav-item" id="bn1" onclick="showSection('chat');setBottomActive(1)"><span class="bn-icon">🤖</span>AI</button>
   <button class="bottom-nav-item" id="bn2" onclick="showSection('quiz');setBottomActive(2)"><span class="bn-icon">📝</span>テスト</button>
   <button class="bottom-nav-item" id="bn3" onclick="showSection('dashboard');setBottomActive(3)"><span class="bn-icon">📊</span>進捗</button>
-  <button class="bottom-nav-item" id="bn4" onclick="showSection('leaderboard');setBottomActive(4)"><span class="bn-icon">🏅</span>順位</button>
-  <button class="bottom-nav-item" id="bn5" onclick="showSection('cert');setBottomActive(5)"><span class="bn-icon">🏆</span>修了証</button>
-  <button class="bottom-nav-item" id="bn6" onclick="showSection('airdrop');setBottomActive(6);loadAirdrops()"><span class="bn-icon">🪂</span>エアドロ</button>
-  <button class="bottom-nav-item" id="bn7" onclick="showSection('tools');setBottomActive(7)"><span class="bn-icon">🔧</span>ツール</button>
-  <button class="bottom-nav-item" id="bnDiscord" onclick="handleBottomDiscordBtn()"><span class="bn-icon">🎮</span>Discord</button>
-  <button class="bottom-nav-item" id="bnLogin" onclick="handleBottomLoginBtn()"><span class="bn-icon" id="bnLoginIcon">👤</span><span id="bnLoginLabel">ログイン</span></button>
+  <button class="bottom-nav-item" id="bnMenuBtn" onclick="toggleDrawer()"><span class="bn-icon">☰</span>メニュー</button>
 </nav>
 </div>
 <div id="progressStrip" class="progress-strip"><div class="progress-fill" id="topBar" style="width:0%"></div></div>
@@ -3952,13 +4009,9 @@ function closeSidebar() {
   if (overlay) overlay.classList.remove('show');
 }
 function setBottomActive(idx) {
-  for (let i = 0; i < 8; i++) {
-    const el = document.getElementById('bn' + i);
-    if (el) el.classList.toggle('active', i === idx);
-  }
-  ['bnDiscord','bnLogin'].forEach(id => {
+  ['bn0','bn1','bn2','bn3','bnMenuBtn'].forEach((id, i) => {
     const el = document.getElementById(id);
-    if (el) el.classList.remove('active');
+    if (el) el.classList.toggle('active', i === idx);
   });
 }
 
@@ -4613,6 +4666,56 @@ function logoutDiscord() {
   updateNavAuth();
   renderSidebar();
   showToast('ログアウトしました');
+}
+
+function toggleDrawer() {
+  const menu = document.getElementById('drawerMenu');
+  const overlay = document.getElementById('drawerOverlay');
+  const isOpen = menu.classList.contains('show');
+  if (isOpen) {
+    menu.classList.remove('show');
+    overlay.classList.remove('show');
+  } else {
+    menu.classList.add('show');
+    overlay.classList.add('show');
+    updateDrawerLoginBtn();
+  }
+}
+
+function closeDrawer() {
+  document.getElementById('drawerMenu')?.classList.remove('show');
+  document.getElementById('drawerOverlay')?.classList.remove('show');
+}
+
+function drawerGo(section, idx) {
+  closeDrawer();
+  if (section === 'airdrop') { showSection(section); loadAirdrops(); }
+  else showSection(section);
+  setBottomActive(idx);
+}
+
+function handleDrawerLogin() {
+  closeDrawer();
+  if (isUnlocked()) {
+    showSection('dashboard');
+    setBottomActive(3);
+  } else {
+    showLoginModal();
+  }
+}
+
+function updateDrawerLoginBtn() {
+  const icon = document.getElementById('drawerLoginIcon');
+  const label = document.getElementById('drawerLoginLabel');
+  if (!icon || !label) return;
+  if ((typeof isPaidMember !== 'undefined' && isPaidMember) ||
+      (typeof isDiscordMember !== 'undefined' && isDiscordMember)) {
+    icon.textContent = '✅';
+    label.textContent = '会員ログイン済';
+  } else {
+    icon.textContent = '👤';
+    label.textContent = 'ログイン';
+  }
 }
 
 function handleBottomDiscordBtn() {
