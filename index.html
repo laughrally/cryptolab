@@ -457,6 +457,7 @@ aside {
 .sidebar-overlay.show { display: block; }
 
 .bottom-nav { display: none; }
+.lp-active .bottom-nav { display: none !important; }
 
 @media (max-width: 768px) {
   nav { padding: 0; gap: 0; }
@@ -595,18 +596,6 @@ aside {
 }
 
 /* ===== LANDING PAGE ===== */
-/* LP表示中はボトムナビを隠す */
-#landingPage ~ .sidebar-toggle,
-#landingPage ~ #sidebarOverlay,
-#landingPage ~ #mainNav,
-#landingPage ~ #bottomNav,
-#landingPage ~ nav.bottom-nav {
-  display: none !important;
-}
-#landingPage.hide ~ nav.bottom-nav {
-  display: flex !important;
-}
-
 #landingPage {
   position: fixed; inset: 0; z-index: 1000;
   background: #f8fafc;
@@ -4974,14 +4963,13 @@ async function startCheckout() {
     }, 50);
   } else {
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('lp-active');
     var mainNav = document.getElementById('mainNav');
     var mainApp = document.getElementById('mainApp');
     var ps = document.getElementById('progressStrip');
-    var bn = document.getElementById('bottomNav');
     if (mainNav) mainNav.style.display = 'none';
     if (mainApp) mainApp.style.display = 'none';
     if (ps) ps.style.display = 'none';
-    if (bn) bn.style.display = 'none';
   }
 })();
 
@@ -5254,9 +5242,8 @@ function enterApp() {
   var mainNav = document.getElementById('mainNav');
   var mainApp = document.getElementById('mainApp');
   var ps = document.getElementById('progressStrip');
-  var bn = document.getElementById('bottomNav');
+  document.body.classList.remove('lp-active');
   if (lp) { lp.classList.add('hide'); setTimeout(function(){ lp.style.display='none'; }, 400); }
-  if (bn) bn.style.display = '';
   // メインアプリは最初 opacity:0 で表示してからフェードイン（フォント切り替えガタつき防止）
   if (mainNav) { mainNav.style.display = ''; mainNav.style.opacity = '0'; }
   if (mainApp) { mainApp.style.display = ''; mainApp.style.opacity = '0'; }
